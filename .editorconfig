@@ -1,0 +1,19 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[*.{js,ts,jsx,tsx,astro}]
+indent_size = 8
+indent_style = tab
+print_width = 120
+
+[*.{json,yaml,yml}]
+indent_size = 2
+indent_style = space
+
+[{.prettierrc,.xo-config}]
+indent_size = 2
+indent_style = space
