@@ -1,3 +1,15 @@
 {
-  "extends": "astro/tsconfigs/strictest"
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "module": "ES2022",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@i18n": [
+        "src/i18n/util"
+      ],
+    }
+  },
 }

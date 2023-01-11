@@ -5,10 +5,12 @@ specifiers:
   eslint-plugin-astro: ^0.21.1
   prettier: ^2.8.2
   prettier-plugin-astro: ^0.7.2
+  typesafe-i18n: ^5.18.1
   xo: ^0.53.1
 
 dependencies:
   astro: 1.9.1
+  typesafe-i18n: 5.18.1
 
 devDependencies:
   eslint-plugin-astro: 0.21.1
@@ -5011,6 +5013,13 @@ packages:
       for-each: 0.3.3
       is-typed-array: 1.1.10
     dev: true
+
+  /typesafe-i18n/5.18.1:
+    resolution: {integrity: sha512-piqmgTwN1RFHKXgADSRs8otzcGsRh/bZkAfXKs0hvMiJ7QyK8fRsOn0xXgu3MHWre37PJAbcEZt9ps0CN3NokA==}
+    hasBin: true
+    peerDependencies:
+      typescript: '>=3.5.1'
+    dev: false
 
   /typescript/4.9.4:
     resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
