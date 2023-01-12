@@ -20,9 +20,10 @@ export async function getStaticPaths() {
 			// Pages that exists
 			if (pagesByLocale[locale]?.some((p) => p.url!.endsWith(slug))) continue;
 
-			paths.push({ params: { locale: locale, fallback: slug } });
+			paths.push({ params: { locale, fallback: slug } });
 		}
 	}
+
 	return paths;
 }
 
