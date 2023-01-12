@@ -14,6 +14,7 @@
     "typesafe-i18n": "typesafe-i18n"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.14.0",
     "astro": "^1.6.11",
     "typesafe-i18n": "^5.18.1"
   },
