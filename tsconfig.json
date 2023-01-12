@@ -7,9 +7,18 @@
       "@components/*": [
         "src/components/*"
       ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
       "@i18n": [
         "src/i18n/util"
       ],
+      "@config": [
+        "src/config"
+      ]
     }
   },
 }
