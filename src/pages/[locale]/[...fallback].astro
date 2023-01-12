@@ -1,0 +1,36 @@
+---
+import type { MarkdownInstance } from 'astro';
+import { siteConfig } from '@config';
+import { locales } from '@i18n';
+import { groupPages } from '@utils/group-pages';
+
+export async function getStaticPaths() {
+	const defaultLocale = siteConfig.defaultLocale;
+	const allPages = await Astro.glob<MarkdownInstance<Record<string, unknown>>>('../**/*.{md,mdx}');
+	const pagesByLocale = groupPages(allPages);
+	const paths = [];
+
+	// Create fallback pages based on pages of the default locale
+	for (const { url } of pagesByLocale[defaultLocale]!) {
+		const slug = url!.slice(defaultLocale.length + '//'.length);
+
+		for (const locale of locales) {
+			// Pages of default locale
+			if (locale === defaultLocale) continue;
+			// Pages that exists
+			if (pagesByLocale[locale]?.some((p) => p.url!.endsWith(slug))) continue;
+
+			paths.push({ params: { locale: locale, fallback: slug } });
+		}
+	}
+	return paths;
+}
+
+// Render the fallbacked page
+const allPages = await Astro.glob<MarkdownInstance<{}>>('../**/*.{md,mdx}');
+const { Content } = allPages.find(
+	(p) => p.url!.startsWith(`/${siteConfig.defaultLocale}/`) && p.url!.endsWith(Astro.params.fallback as string),
+)!;
+---
+
+<Content />

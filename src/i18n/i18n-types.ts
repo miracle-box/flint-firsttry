@@ -26,6 +26,12 @@ type RootTranslation = {
 			link: string
 		}
 	}
+	notfound: {
+		/**
+		 * 4​0​4​:​z​h
+		 */
+		title: string
+	}
 }
 
 export type TranslationFunctions = {
@@ -40,6 +46,12 @@ export type TranslationFunctions = {
 			 */
 			link: () => LocalizedString
 		}
+	}
+	notfound: {
+		/**
+		 * 404:zh
+		 */
+		title: () => LocalizedString
 	}
 }
 

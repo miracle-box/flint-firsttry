@@ -1,0 +1,10 @@
+---
+import { locales, getI18nHelper, getLocaleFromUrl } from '@i18n';
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = getI18nHelper(locale);
+---
+
+<span>{t.notfound.title()}</span>
