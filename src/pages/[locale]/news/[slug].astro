@@ -5,16 +5,16 @@ import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allNewsPosts = await getCollection('news');
-	const slugs = allNewsPosts.map((post) => post.slug);
 
 	const pages = [];
 	for (const locale of locales) {
 		pages.push(
-			...slugs.map((slug) => {
-				return { params: { locale, slug } };
+			...allNewsPosts.map((p) => {
+				return { params: { locale, slug: p.slug } };
 			}),
 		);
 	}
+
 	return pages;
 }
 
