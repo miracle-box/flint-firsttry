@@ -1,21 +1,24 @@
 ---
-export interface Props {
-	title: string;
-}
+import '@styles/global.scss';
+import { getI18nHelper, getLocaleFromUrl } from '@i18n';
+import Navbar from '@components/layout/navbar.astro';
 
-const { title } = Astro.props;
+const url = Astro.url;
+const locale = getLocaleFromUrl(url.pathname);
+const t = getI18nHelper(locale);
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale}>
 	<head>
 		<meta charset="utf8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{t.site.title()}</title>
 	</head>
 	<body>
+		<Navbar />
 		<slot />
 	</body>
 </html>

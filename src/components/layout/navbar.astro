@@ -1,0 +1,11 @@
+---
+import { getI18nHelper, getLocaleFromUrl } from '@i18n';
+
+const url = Astro.url;
+const locale = getLocaleFromUrl(url.pathname);
+const t = getI18nHelper(locale);
+---
+
+<nav>
+	{Object.values(t.navbar).map((item) => <a href={item.link()}>{item.text()}</a>)}
+</nav>

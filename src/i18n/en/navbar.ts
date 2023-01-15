@@ -1,6 +1,4 @@
-import type { NavbarTranslation } from '../custom-types';
-
-export const navbar: NavbarTranslation = {
+export const navbar = {
 	guiluo: {
 		text: 'GuiLuoYuan',
 		link: 'https://spark.yaasasi.cn/',
