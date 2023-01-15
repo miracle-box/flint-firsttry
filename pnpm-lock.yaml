@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/mdx': ^0.14.0
-  astro: ^1.6.11
+  astro: ^1.9.2
   eslint-plugin-astro: ^0.21.1
   modern-normalize: ^1.1.0
   prettier: ^2.8.2
@@ -13,7 +13,7 @@ specifiers:
 
 dependencies:
   '@astrojs/mdx': 0.14.0
-  astro: 1.9.1_sass@1.57.1
+  astro: 1.9.2_sass@1.57.1
   typesafe-i18n: 5.18.1
 
 devDependencies:
@@ -1023,8 +1023,8 @@ packages:
       - supports-color
     dev: true
 
-  /astro/1.9.1_sass@1.57.1:
-    resolution: {integrity: sha512-aQ6rvAP4w4VCgipVYA/zPmnkuTbFrMZ/+x/sAv2W1uJHWU2iQmrVRrrjUFJl+i1TuYYlHAuC2vKK7aRyXCjD4A==}
+  /astro/1.9.2_sass@1.57.1:
+    resolution: {integrity: sha512-L+Ma0eR0Aa6QZg7RF0lEs+106Ye1/zukvtq3KtsYIogAojltlwllwU9X5CwMBzFwA55NxpNp4gSRh5US/xb+8Q==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
