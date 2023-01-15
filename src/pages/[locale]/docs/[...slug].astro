@@ -1,0 +1,55 @@
+---
+import Layout from '@layouts/docs.astro';
+import { siteConfig } from '@config';
+import { locales } from '@i18n';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allPages = await getCollection('docs');
+	const ogPages = allPages.filter((p) => p.id.startsWith(`${siteConfig.defaultLocale}/`));
+	const ogSlugs = ogPages.map((p) => p.slug);
+
+	const paths = [];
+	// Add default locale pages
+	paths.push(
+		...ogSlugs.map((slug) => {
+			return { params: { locale: siteConfig.defaultLocale, slug } };
+		}),
+	);
+
+	// Add pages for other locales
+	for (const locale of locales) {
+		// Skip default locale
+		if (locale === siteConfig.defaultLocale) continue;
+
+		const localPages = allPages.filter((p) => p.id.startsWith(`${locale}/`));
+		const localSlugs = new Set(localPages.map((p) => p.slug));
+
+		paths.push(
+			...ogSlugs.map((slug) => {
+				// Fallback pages
+				if (!localSlugs.has(slug)) {
+					return { params: { locale, slug }, props: { fallback: true } };
+				}
+
+				// Native pages
+				return { params: { locale, slug } };
+			}),
+		);
+	}
+
+	return paths;
+}
+
+// Render the page
+const { locale, slug } = Astro.params;
+const ogPages = await getCollection('docs', ({ id }) => id.startsWith(`${siteConfig.defaultLocale}/`));
+const localPages = await getCollection('docs', ({ id }) => id.startsWith(`${locale}/`));
+const thisPage = localPages.find((p) => p.slug === slug) ?? ogPages.find((p) => p.slug === slug);
+const { Content } = await thisPage!.render();
+---
+
+<Layout>
+	{JSON.stringify(Astro.props)}
+	<Content />
+</Layout>
