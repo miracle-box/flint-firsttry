@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 
 	const allPages = await fetchDocs();
 	paths.push(
-		allPages.map(({ id, slug, content }) => ({
+		...allPages.map(({ id, slug, content }) => ({
 			params: { locale: getLocaleFromUrl(id), slug },
 			props: { content, fallback: false },
 		})),
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 		/* eslint-enable no-await-in-loop */
 
 		paths.push(
-			fallbackPages.map(({ slug, content }) => ({
+			...fallbackPages.map(({ slug, content }) => ({
 				params: { locale, slug },
 				props: { content, fallback: true },
 			})),
