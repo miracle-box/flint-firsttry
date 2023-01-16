@@ -19,6 +19,8 @@
       "@config": [
         "src/config"
       ]
-    }
-  },
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  }
 }
