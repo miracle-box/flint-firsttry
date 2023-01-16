@@ -1,44 +1,40 @@
 ---
 import Layout from '@layouts/docs.astro';
 import { siteConfig } from '@config';
-import { getLocaleFromUrl, isUrlOfLocale, locales } from '@utils/i18n';
-import { getCollection, getEntry } from 'astro:content';
+import { getLocaleFromUrl, locales } from '@utils/i18n';
+import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
 
 export async function getStaticPaths() {
-	const allPages = await getCollection('docs');
-	const ogPages = allPages.filter(({ id }) => isUrlOfLocale(id, siteConfig.defaultLocale));
 	const paths = [];
 
-	// Add existing pages
+	const allPages = await fetchDocs();
 	paths.push(
-		...allPages.map(({ id, slug, data }) => {
-			return { params: { locale: getLocaleFromUrl(id), slug }, props: { id, data } };
-		}),
+		allPages.map(({ id, slug, content }) => ({
+			params: { locale: getLocaleFromUrl(id), slug },
+			props: { content, fallback: false },
+		})),
 	);
 
-	// Add fallback pages
+	// Fallback pages
 	for (const locale of locales) {
-		// Skip default locale
 		if (locale === siteConfig.defaultLocale) continue;
 
-		const localPages = allPages.filter(({ id }) => isUrlOfLocale(id, locale));
-		const localSlugs = new Set(localPages.map((p) => p.slug));
-
-		for (const { id, slug, data } of ogPages) {
-			if (!localSlugs.has(slug)) paths.push({ params: { locale, slug }, props: { id, data, fallback: true } });
-		}
+		const localDocs = await getLocalDocs(locale);
+		const fallbackPages = await getFallbackBySlugs(localDocs.map(({ slug }) => slug));
+		paths.push(
+			fallbackPages.map(({ slug, content }) => ({
+				params: { locale: locale, slug },
+				props: { content, fallback: true },
+			})),
+		);
 	}
 
 	return paths;
 }
-
 // Render the page
-const { id } = Astro.props;
-const page = await getEntry('docs', id);
-const { Content } = await page!.render();
+const Content = Astro.props.content;
 ---
 
 <Layout>
-	{JSON.stringify(Astro.props)}
 	<Content />
 </Layout>

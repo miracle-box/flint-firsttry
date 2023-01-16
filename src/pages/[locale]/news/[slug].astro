@@ -5,8 +5,9 @@ import { fetchNews } from '@utils/news';
 
 export async function getStaticPaths() {
 	const paths = [];
+	const allPages = await fetchNews();
 	for (const locale of locales) {
-		const pages = (await fetchNews()).map(({ slug, content }) => ({
+		const pages = allPages.map(({ slug, content }) => ({
 			params: {
 				locale,
 				slug,

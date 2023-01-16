@@ -1,3 +1,5 @@
+import type { MarkdownHeading } from 'astro';
+
 export type News = {
 	id: string;
 	slug: string;
@@ -13,6 +15,7 @@ export type Docs = {
 	id: string;
 	slug: string;
 	content: unknown;
+	headings: MarkdownHeading[];
 	title: string;
 	desc: string;
 	outdated: boolean;
