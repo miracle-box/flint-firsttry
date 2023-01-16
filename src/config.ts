@@ -1,4 +1,4 @@
-import type { Locales } from '@i18n';
+import type { Locales } from '@utils/i18n';
 
 type SiteConfig = {
 	defaultLocale: Locales;

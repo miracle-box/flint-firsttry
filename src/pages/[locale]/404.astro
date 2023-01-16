@@ -1,5 +1,5 @@
 ---
-import { locales, getI18nHelper, getLocaleFromUrl } from '@i18n';
+import { locales, getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 

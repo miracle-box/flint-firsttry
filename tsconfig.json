@@ -16,9 +16,6 @@
       "@styles/*": [
         "src/styles/*"
       ],
-      "@i18n": [
-        "src/i18n/util"
-      ],
       "@config": [
         "src/config"
       ]
