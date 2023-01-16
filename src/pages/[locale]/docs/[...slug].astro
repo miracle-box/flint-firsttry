@@ -1,52 +1,41 @@
 ---
 import Layout from '@layouts/docs.astro';
 import { siteConfig } from '@config';
-import { locales } from '@i18n';
-import { getCollection } from 'astro:content';
+import { getLocaleFromUrl, isUrlOfLocale, locales } from '@utils/i18n';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allPages = await getCollection('docs');
-	const ogPages = allPages.filter((p) => p.id.startsWith(`${siteConfig.defaultLocale}/`));
-	const ogSlugs = ogPages.map((p) => p.slug);
-
+	const ogPages = allPages.filter(({ id }) => isUrlOfLocale(id, siteConfig.defaultLocale));
 	const paths = [];
-	// Add default locale pages
+
+	// Add existing pages
 	paths.push(
-		...ogSlugs.map((slug) => {
-			return { params: { locale: siteConfig.defaultLocale, slug } };
+		...allPages.map(({ id, slug, data }) => {
+			return { params: { locale: getLocaleFromUrl(id), slug }, props: { id, data } };
 		}),
 	);
 
-	// Add pages for other locales
+	// Add fallback pages
 	for (const locale of locales) {
 		// Skip default locale
 		if (locale === siteConfig.defaultLocale) continue;
 
-		const localPages = allPages.filter((p) => p.id.startsWith(`${locale}/`));
+		const localPages = allPages.filter(({ id }) => isUrlOfLocale(id, locale));
 		const localSlugs = new Set(localPages.map((p) => p.slug));
 
-		paths.push(
-			...ogSlugs.map((slug) => {
-				// Fallback pages
-				if (!localSlugs.has(slug)) {
-					return { params: { locale, slug }, props: { fallback: true } };
-				}
-
-				// Native pages
-				return { params: { locale, slug } };
-			}),
-		);
+		for (const { id, slug, data } of ogPages) {
+			if (!localSlugs.has(slug)) paths.push({ params: { locale, slug }, props: { id, data, fallback: true } });
+		}
 	}
 
 	return paths;
 }
 
 // Render the page
-const { locale, slug } = Astro.params;
-const ogPages = await getCollection('docs', ({ id }) => id.startsWith(`${siteConfig.defaultLocale}/`));
-const localPages = await getCollection('docs', ({ id }) => id.startsWith(`${locale}/`));
-const thisPage = localPages.find((p) => p.slug === slug) ?? ogPages.find((p) => p.slug === slug);
-const { Content } = await thisPage!.render();
+const { id } = Astro.props;
+const page = await getEntry('docs', id);
+const { Content } = await page!.render();
 ---
 
 <Layout>

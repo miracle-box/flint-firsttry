@@ -23,6 +23,16 @@ export function getLocaleFromUrl(pathname: string): Locales {
 }
 
 /**
+ * Check whether a url under certain locale
+ * @param url url to check
+ * @param locale target locale
+ * @returns Is `url` under `locale`
+ */
+export function isUrlOfLocale(url: string, locale: Locales): boolean {
+	return url.replace(/^\//, '').startsWith(locale + '/');
+}
+
+/**
  * Get the i18n helper object of certain locale.
  * @param locale locale code
  * @returns an object of type i18n you can use inside your code.

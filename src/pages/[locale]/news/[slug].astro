@@ -1,7 +1,7 @@
 ---
-import { locales } from '@i18n';
 import Layout from '@layouts/news-content.astro';
-import { getCollection } from 'astro:content';
+import { locales } from '@utils/i18n';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allNewsPosts = await getCollection('news');
@@ -9,8 +9,8 @@ export async function getStaticPaths() {
 	const pages = [];
 	for (const locale of locales) {
 		pages.push(
-			...allNewsPosts.map((p) => {
-				return { params: { locale, slug: p.slug } };
+			...allNewsPosts.map(({ id, slug, data }) => {
+				return { params: { locale, slug }, props: { id, data } };
 			}),
 		);
 	}
@@ -19,10 +19,9 @@ export async function getStaticPaths() {
 }
 
 // Render the content
-const { slug } = Astro.params;
-const allNewsPosts = await getCollection('news');
-const thisPage = allNewsPosts.find((p) => p.slug === slug);
-const { Content } = await thisPage!.render();
+const { id } = Astro.props;
+const page = await getEntry('news', id);
+const { Content } = await page!.render();
 ---
 
 <Layout>
