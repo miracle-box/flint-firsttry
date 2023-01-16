@@ -5,7 +5,7 @@ end_of_line = lf
 insert_final_newline = true
 charset = utf-8
 
-[*.{js,ts,jsx,tsx,astro}]
+[*.{js,ts,cjs,jsx,tsx,astro}]
 indent_size = 8
 indent_style = tab
 print_width = 120
@@ -15,7 +15,7 @@ indent_size = 4
 indent_style = tab
 print_width = 120
 
-[*.{css,scss}]
+[*.css]
 indent_size = 4
 indent_style = tab
 print_width = 120
