@@ -1,0 +1,11 @@
+---
+import { getLocaleFromUrl, locales } from '@utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+
+export function getStaticPaths() {
+	return locales.map((locale) => ({ params: { locale } }));
+}
+---
+
+<meta http-equiv="refresh" content={`0;url=/${locale}/docs/main`} />
