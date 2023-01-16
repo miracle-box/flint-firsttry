@@ -19,11 +19,14 @@ export async function getStaticPaths() {
 	for (const locale of locales) {
 		if (locale === siteConfig.defaultLocale) continue;
 
+		/* eslint-disable no-await-in-loop */
 		const localDocs = await getLocalDocs(locale);
 		const fallbackPages = await getFallbackBySlugs(localDocs.map(({ slug }) => slug));
+		/* eslint-enable no-await-in-loop */
+
 		paths.push(
 			fallbackPages.map(({ slug, content }) => ({
-				params: { locale: locale, slug },
+				params: { locale, slug },
 				props: { content, fallback: true },
 			})),
 		);
@@ -31,6 +34,7 @@ export async function getStaticPaths() {
 
 	return paths;
 }
+
 // Render the page
 const Content = Astro.props.content;
 ---
