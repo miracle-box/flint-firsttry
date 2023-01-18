@@ -4,7 +4,6 @@ import type { Locales } from '../i18n/i18n-types';
 import { locales } from '../i18n/i18n-util';
 
 export { locales } from '../i18n/i18n-util';
-export type { Locales } from '../i18n/i18n-types';
 
 /**
  * Get the locale code from url.

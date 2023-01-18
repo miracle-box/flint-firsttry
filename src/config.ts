@@ -1,9 +1,23 @@
-import type { Locales } from '@utils/i18n';
+import type { SiteConfig } from './types';
 
-type SiteConfig = {
-	defaultLocale: Locales;
-};
+function defineConfig<T extends SiteConfig>(input: T) {
+	return input;
+}
 
-export const siteConfig: SiteConfig = {
+export const siteConfig = defineConfig({
 	defaultLocale: 'zh',
-};
+	navbar: {
+		links: {
+			show: '#',
+			doc: '#',
+			res: '#',
+			guiluo: 'https://spark.yaasasi.cn/',
+		},
+		icons: {
+			github: {
+				icon: 'bi:github',
+				link: 'https://github.com/',
+			},
+		},
+	},
+});

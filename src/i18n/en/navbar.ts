@@ -1,6 +1,11 @@
 export const navbar = {
-	guiluo: {
-		text: 'GuiLuoYuan',
-		link: 'https://spark.yaasasi.cn/',
+	links: {
+		show: 'Showcase',
+		doc: 'Docs',
+		res: 'Resources',
+		guiluo: 'GuiLuoYuan',
+	},
+	icons: {
+		github: 'GitHub',
 	},
 };

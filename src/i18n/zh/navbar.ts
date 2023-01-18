@@ -1,8 +1,13 @@
-import type { NavbarTranslation } from '../custom-types';
+import type { NavbarTranslation } from 'src/types';
 
 export const navbar: NavbarTranslation = {
-	guiluo: {
-		text: '归落原',
-		link: 'https://spark.yaasasi.cn/',
+	links: {
+		show: '展示',
+		doc: '文档',
+		res: '资源',
+		guiluo: '归落原',
+	},
+	icons: {
+		github: 'GitHub',
 	},
 };
