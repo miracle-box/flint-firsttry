@@ -8,6 +8,7 @@ export type NavbarTranslation = Record<keyof typeof siteConfig.navbar, string>;
 
 export type SiteConfig = {
 	defaultLocale: Locales;
+	hero: Record<'bgImage' | 'mainImage' | 'primaryLink' | 'secondaryLink', string>;
 	navbar: Record<string, string>;
 };
 

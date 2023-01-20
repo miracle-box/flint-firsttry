@@ -6,6 +6,12 @@ function defineConfig<T extends SiteConfig>(input: T) {
 
 export const siteConfig = defineConfig({
 	defaultLocale: 'zh',
+	hero: {
+		bgImage: 'http://api.muvip.cn/api/bing',
+		mainImage: 'https://dummyimage.com/512x512',
+		primaryLink: './docs',
+		secondaryLink: './news',
+	},
 	navbar: {
 		show: '#',
 		doc: '#',

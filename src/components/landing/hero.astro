@@ -1,0 +1,55 @@
+---
+import { siteConfig } from '@config';
+import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+
+const url = Astro.url;
+const locale = getLocaleFromUrl(url.pathname);
+const t = getI18nHelper(locale);
+---
+
+<div class="bg-herobg rounded-3xl mx-2 mt-2" style={`background-image: url(${siteConfig.hero.bgImage});`}>
+	<header class="header-grid max-w-7xl mx-auto px-6 py-24">
+		<div class="flex flex-col justify-between gap-8 col-span-6">
+			<div class="flex flex-col gap-2 text-center lg:text-left">
+				<h1 class="text-white text-5xl sm:text-6xl font-semibold">{t.hero.title()}</h1>
+				<p class="text-white text-lg sm:text-2xl">{t.hero.desc()}</p>
+			</div>
+			<div class="flex gap-2 flex-wrap justify-center lg:justify-start">
+				<a
+					class="hero-button text-white bg-accent-500 hover:bg-accent-400 transition-colors"
+					href={siteConfig.hero.primaryLink}>{t.hero.primaryButton()}</a
+				>
+				<a
+					class="hero-button text-accent-800 bg-white hover:bg-gray-100 transition-colors"
+					href={siteConfig.hero.secondaryLink}>{t.hero.secondaryButton()}</a
+				>
+			</div>
+		</div>
+		<div
+			class="bg-heroimg rounded-xl col-span-6 w-full h-full"
+			style={`background-image: url("${siteConfig.hero.mainImage}")`}
+			title={t.hero.mainImageTitle()}
+		>
+		</div>
+	</header>
+</div>
+
+<style>
+	.bg-herobg {
+		background: rgba(0, 0, 0, 40%);
+		@apply bg-blend-multiply bg-cover bg-center bg-no-repeat;
+	}
+	.bg-heroimg {
+		@apply bg-cover bg-center bg-no-repeat;
+		@apply lg:max-h-[640px];
+	}
+
+	.header-grid {
+		@apply lg:grid lg:grid-cols-12 lg:gap-16 place-items-center;
+		@apply lg:h-[calc(100vh-64px-8px)] lg:min-h-[640px] lg:max-h-[min(75vw,100vh)];
+	}
+
+	.hero-button {
+		@apply px-6 py-3 text-center text-xl rounded-lg;
+	}
+</style>
