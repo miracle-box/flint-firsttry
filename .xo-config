@@ -8,11 +8,18 @@
   ],
   "rules": {
     "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/interface-name-prefix": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "n/file-extension-in-import": "off",
     "unicorn/no-process-exit": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-unassigned-import": [
+      "error",
+      {
+        "allow": [
+          "@fontsource/**"
+        ]
+      }
+    ]
   },
   "ignores": [
     "src/i18n/i18n-*.ts",

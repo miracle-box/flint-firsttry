@@ -1,0 +1,24 @@
+---
+import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+import '@fontsource/inter/variable.css';
+import '@fontsource/fira-mono';
+import '@fontsource/noto-sans-sc';
+
+const url = Astro.url;
+const locale = getLocaleFromUrl(url.pathname);
+const t = getI18nHelper(locale);
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{t.site.title()}</title>
+	</head>
+	<body class="min-h-screen bg-gray-50">
+		<slot />
+	</body>
+</html>

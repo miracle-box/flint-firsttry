@@ -1,24 +1,14 @@
 ---
-import '@styles/global.scss';
-import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+import Layout from '@layouts/base.astro';
+import Hero from '@components/landing/hero.astro';
 import Navbar from '@components/layout/navbar.astro';
-
-const url = Astro.url;
-const locale = getLocaleFromUrl(url.pathname);
-const t = getI18nHelper(locale);
 ---
 
-<!DOCTYPE html>
-<html lang={locale}>
-	<head>
-		<meta charset="utf8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{t.site.title()}</title>
-	</head>
-	<body>
-		<Navbar />
+<Layout>
+	<Hero />
+	<Navbar />
+
+	<main>
 		<slot />
-	</body>
-</html>
+	</main>
+</Layout>
