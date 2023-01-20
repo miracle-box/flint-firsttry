@@ -7,17 +7,9 @@ function defineConfig<T extends SiteConfig>(input: T) {
 export const siteConfig = defineConfig({
 	defaultLocale: 'zh',
 	navbar: {
-		links: {
-			show: '#',
-			doc: '#',
-			res: '#',
-			guiluo: 'https://spark.yaasasi.cn/',
-		},
-		icons: {
-			github: {
-				icon: 'bi:github',
-				link: 'https://github.com/',
-			},
-		},
+		show: '#',
+		doc: '#',
+		res: '#',
+		guiluo: 'https://spark.yaasasi.cn/',
 	},
 });

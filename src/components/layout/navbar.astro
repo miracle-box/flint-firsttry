@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon';
+import { siteConfig } from '@config';
 import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
 
 const url = Astro.url;
@@ -6,6 +8,36 @@ const locale = getLocaleFromUrl(url.pathname);
 const t = getI18nHelper(locale);
 ---
 
-<nav>
-	{Object.values(t.navbar).map((item) => <a href={item.link()}>{item.text()}</a>)}
+<nav class="sticky top-0 h-16 px-8 mx-auto max-w-7xl flex items-center justify-between">
+	<div class="flex gap-2">
+		{
+			() => {
+				const elements = [];
+				let key: keyof typeof siteConfig.navbar;
+				for (key in siteConfig.navbar) {
+					elements.push(
+						<a
+							class="px-4 py-2 hover:bg-accent-500 hover:text-white hover:border-transparent rounded transition-colors whitespace-nowrap"
+							href={siteConfig.navbar[key]}
+						>
+							{t.navbar[key]()}
+						</a>,
+					);
+				}
+				return elements;
+			}
+		}
+	</div>
+	<div class="flex gap-6 items-center mr-4">
+		<div class="flex gap-2">
+			<Icon class="button-icon" alt="alt" name="bi:sun" />
+			<Icon class="button-icon" alt="alt" name="bi:translate" />
+		</div>
+	</div>
 </nav>
+
+<style>
+	.button-icon {
+		@apply h-10 rounded p-2 border border-gray-300 hover:border-accent-400 text-accent-600 hover:text-accent-800 transition-colors;
+	}
+</style>
