@@ -1,6 +1,5 @@
 # astro typing cache
-src/content/types.generated.d.ts
-
+.astro/
 # i18n typing cache
 src/i18n/i18n-*
 

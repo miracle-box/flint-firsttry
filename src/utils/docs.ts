@@ -1,8 +1,8 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Docs } from 'src/types';
+import type { Locales, Docs } from 'src/types';
 import { siteConfig } from '@config';
-import { isUrlOfLocale, type Locales } from './i18n';
+import { isUrlOfLocale } from './i18n';
 
 async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 	const { id, slug, data } = page;
