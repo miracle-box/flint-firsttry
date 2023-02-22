@@ -1,0 +1,10 @@
+tasks:
+  - init: pnpm install
+    command: pnpm run dev
+
+# Ports to expose on workspace startup
+ports:
+  - port: 3000
+    onOpen: open-preview
+    name: Website
+    description: Website Preview
