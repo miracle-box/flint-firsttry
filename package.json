@@ -4,15 +4,17 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "sync": "astro sync",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
+    "dev": "npm-run-all --parallel i18n:gen-types astro:dev",
+    "check": "npm-run-all --continue-on-error i18n:gen-types-ci --parallel astro:check lint:check",
+    "build": "npm-run-all check astro:build",
+    "astro:dev": "astro dev",
+    "astro:check": "astro check",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "i18n:gen-types": "typesafe-i18n",
+    "i18n:gen-types-ci": "typesafe-i18n --no-watch",
     "lint:check": "xo",
-    "lint:fix": "xo --fix",
-    "typesafe-i18n": "typesafe-i18n"
+    "lint:fix": "xo --fix"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.16.0",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "eslint-plugin-astro": "^0.23.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.8.2",
     "prettier-plugin-astro": "^0.8.0",
     "xo": "^0.53.1"
