@@ -4,21 +4,11 @@
     "module": "ES2022",
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@config": [
-        "src/config"
-      ]
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"],
+      "@config": ["src/config"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
