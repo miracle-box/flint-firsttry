@@ -8,3 +8,12 @@ ports:
     onOpen: open-preview
     name: Website
     description: Website Preview
+
+vscode:
+  extensions:
+    - astro-build.astro-vscode
+    - unifiedjs.vscode-mdx
+    - bradlc.vscode-tailwindcss
+    - EditorConfig.EditorConfig
+    - esbenp.prettier-vscode
+    - samverschueren.linter-xo
