@@ -1,11 +1,12 @@
 ---
 import { Icon } from 'astro-icon';
 import { siteConfig } from '@config';
-import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
 
 const url = Astro.url;
 const locale = getLocaleFromUrl(url.pathname);
-const t = getI18nHelper(locale);
+await loadLocale(locale);
+const t = i18nObject(locale);
 ---
 
 <nav class="sticky top-0 h-16 px-8 mx-auto max-w-7xl flex items-center justify-between">

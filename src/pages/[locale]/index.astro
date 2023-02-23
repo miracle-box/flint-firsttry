@@ -1,13 +1,10 @@
 ---
 import Layout from '@layouts/landing.astro';
-import { getI18nHelper, getLocaleFromUrl, locales } from '@utils/i18n';
+import { locales } from '@utils/i18n';
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));
 }
-
-const locale = getLocaleFromUrl(Astro.url.pathname);
-const t = getI18nHelper(locale);
 ---
 
 <Layout />

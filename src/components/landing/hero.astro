@@ -1,10 +1,11 @@
 ---
 import { siteConfig } from '@config';
-import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+import { loadLocale, getLocaleFromUrl, i18nObject } from '@utils/i18n';
 
 const url = Astro.url;
 const locale = getLocaleFromUrl(url.pathname);
-const t = getI18nHelper(locale);
+await loadLocale(locale);
+const t = i18nObject(locale);
 ---
 
 <div class="bg-herobg rounded-3xl mx-2 mt-2" style={`background-image: url(${siteConfig.hero.bgImage});`}>

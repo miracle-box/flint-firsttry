@@ -1,9 +1,10 @@
 import { siteConfig } from '@config';
-import { L as i18nNode } from '../i18n/i18n-node';
-import type { Locales } from '../i18n/i18n-types';
+import { loadLocaleAsync } from 'src/i18n/i18n-util.async';
+import { loadLocale as loadLocaleSync } from '../i18n/i18n-util.sync';
 import { locales } from '../i18n/i18n-util';
+import type { Locales } from '../i18n/i18n-types';
 
-export { locales } from '../i18n/i18n-util';
+export { locales, i18nObject } from '../i18n/i18n-util';
 
 /**
  * Get the locale code from url.
@@ -32,10 +33,10 @@ export function isUrlOfLocale(url: string, locale: Locales): boolean {
 }
 
 /**
- * Get the i18n helper object of certain locale.
+ * Load locale depending on the env type
  * @param locale locale code
- * @returns an object of type i18n you can use inside your code.
  */
-export function getI18nHelper(locale: Locales) {
-	return i18nNode[locale];
+export async function loadLocale(locale: Locales) {
+	if (import.meta.env.DEV) await loadLocaleAsync(locale);
+	else loadLocaleSync(locale);
 }

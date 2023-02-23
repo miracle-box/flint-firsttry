@@ -1,12 +1,13 @@
 ---
-import { getI18nHelper, getLocaleFromUrl } from '@utils/i18n';
+import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
 import '@fontsource/inter/variable.css';
 import '@fontsource/fira-mono';
 import '@fontsource/noto-sans-sc';
 
 const url = Astro.url;
 const locale = getLocaleFromUrl(url.pathname);
-const t = getI18nHelper(locale);
+await loadLocale(locale);
+const t = i18nObject(locale);
 ---
 
 <!DOCTYPE html>
