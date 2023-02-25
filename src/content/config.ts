@@ -8,8 +8,6 @@ const news = defineCollection({
 		image: z.string().url(),
 		date: z.string().datetime(),
 	}),
-	// Remove the leading year (i.e. [2023/]something.md)
-	slug: ({ defaultSlug }) => defaultSlug.slice(5),
 });
 
 const docs = defineCollection({
@@ -18,8 +16,6 @@ const docs = defineCollection({
 		desc: z.string(),
 		outdated: z.boolean().optional(),
 	}),
-	// Remove the leading country code (i.e. [zh/]something.md)
-	slug: ({ defaultSlug }) => defaultSlug.split('/').splice(1, Number.POSITIVE_INFINITY).join('/'),
 });
 export const collections = {
 	news,

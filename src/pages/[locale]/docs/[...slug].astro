@@ -6,8 +6,8 @@ import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
 
 export async function getStaticPaths() {
 	const paths = [];
-
 	const allPages = await fetchDocs();
+
 	paths.push(
 		...allPages.map(({ id, slug, content }) => ({
 			params: { locale: getLocaleFromUrl(id), slug },
