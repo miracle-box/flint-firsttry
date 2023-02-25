@@ -36,7 +36,6 @@ async function load(): Promise<News[]> {
 let _pages: News[];
 export async function fetchNews(): Promise<News[]> {
 	if (!_pages) _pages = await load();
-	console.log(_pages);
 	return _pages;
 }
 
