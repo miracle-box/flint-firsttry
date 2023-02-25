@@ -1,5 +1,8 @@
 ---
-import Layout from '@layouts/landing.astro';
+import Layout from '@layouts/base.astro';
+import Navbar from '@components/layout/navbar.astro';
+import Hero from '@components/landing/hero.astro'
+
 import { locales } from '@utils/i18n';
 
 export function getStaticPaths() {
@@ -7,4 +10,7 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout />
+<Layout>
+	<Hero/>
+	<Navbar />
+</Layout>

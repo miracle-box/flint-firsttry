@@ -1,16 +1,12 @@
 ---
+import Layout from '@layouts/base.astro';
+import Navbar from '@components/layout/navbar.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Losenone</title>
-	</head>
-	<body>
+<Layout>
+	<Navbar />
+
+	<main>
 		<slot />
-	</body>
-</html>
+	</main>
+</Layout>
