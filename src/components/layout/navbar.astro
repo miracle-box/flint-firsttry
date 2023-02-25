@@ -19,7 +19,7 @@ const t = i18nObject(locale);
 					if (Object.prototype.hasOwnProperty.call(siteConfig.navbar, key)) {
 						elements.push(
 							<a
-								class="px-4 py-2 hover:bg-accent-500 hover:text-white hover:border-transparent rounded transition-colors whitespace-nowrap"
+								class="px-4 py-2 hover:bg-accent-500 hover:text-white rounded transition-colors whitespace-nowrap"
 								href={siteConfig.navbar[key]}
 							>
 								{t.navbar[key]()}

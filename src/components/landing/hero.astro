@@ -8,9 +8,9 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 ---
 
-<div class="bg-herobg rounded-3xl mx-2 mt-2" style={`background-image: url(${siteConfig.hero.bgImage});`}>
+<div class="bg-herobg rounded-b-3xl mx-2" style={`background-image: url(${siteConfig.hero.bgImage});`}>
 	<header class="header-grid max-w-7xl mx-auto px-6 py-24">
-		<div class="flex flex-col justify-between gap-8 col-span-6">
+		<div class="flex flex-col justify-between gap-8 col-span-6 w-full">
 			<div class="flex flex-col gap-2 text-center lg:text-left">
 				<h1 class="text-white text-5xl sm:text-6xl font-semibold">{t.hero.title()}</h1>
 				<p class="text-white text-lg sm:text-2xl">{t.hero.desc()}</p>
@@ -27,7 +27,7 @@ const t = i18nObject(locale);
 			</div>
 		</div>
 		<div
-			class="bg-heroimg rounded-xl col-span-6 w-full h-full"
+			class="bg-heroimg rounded-3xl col-span-6 w-full h-full"
 			style={`background-image: url("${siteConfig.hero.mainImage}")`}
 			title={t.hero.mainImageTitle()}
 		>
@@ -47,7 +47,7 @@ const t = i18nObject(locale);
 
 	.header-grid {
 		@apply lg:grid lg:grid-cols-12 lg:gap-16 place-items-center;
-		@apply lg:h-[calc(100vh-64px-8px)] lg:min-h-[640px] lg:max-h-[min(75vw,100vh)];
+		@apply lg:h-[calc(100vh-8px)] lg:min-h-[640px] lg:max-h-[min(75vw,100vh)];
 	}
 
 	.hero-button {
