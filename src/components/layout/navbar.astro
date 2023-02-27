@@ -9,36 +9,38 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 ---
 
-<nav class="sticky top-0 h-16 px-8 mx-auto max-w-7xl flex items-center justify-between">
-	<div class="flex gap-2">
-		{
-			() => {
-				const elements = [];
-				let key: keyof typeof siteConfig.navbar;
-				for (key in siteConfig.navbar) {
-					if (Object.prototype.hasOwnProperty.call(siteConfig.navbar, key)) {
-						elements.push(
-							<a
-								class="px-4 py-2 hover:bg-accent-500 hover:text-white rounded transition-colors whitespace-nowrap"
-								href={siteConfig.navbar[key]}
-							>
-								{t.navbar[key]()}
-							</a>,
-						);
-					}
-				}
-
-				return elements;
-			}
-		}
-	</div>
-	<div class="flex gap-6 items-center mr-4">
+<div class="border-b border-gray-200 w-full">
+	<nav class="sticky top-0 h-16 px-8 mx-auto flex items-center justify-between max-w-7xl">
 		<div class="flex gap-2">
-			<Icon class="button-icon" alt="alt" name="bi:sun" />
-			<Icon class="button-icon" alt="alt" name="bi:translate" />
+			{
+				() => {
+					const elements = [];
+					let key: keyof typeof siteConfig.navbar;
+					for (key in siteConfig.navbar) {
+						if (Object.prototype.hasOwnProperty.call(siteConfig.navbar, key)) {
+							elements.push(
+								<a
+									class="px-4 py-2 hover:bg-accent-500 hover:text-white rounded transition-colors whitespace-nowrap"
+									href={siteConfig.navbar[key]}
+								>
+									{t.navbar[key]()}
+								</a>,
+							);
+						}
+					}
+
+					return elements;
+				}
+			}
 		</div>
-	</div>
-</nav>
+		<div class="flex gap-6 items-center mr-4">
+			<div class="flex gap-2">
+				<Icon class="button-icon" alt="alt" name="bi:sun" />
+				<Icon class="button-icon" alt="alt" name="bi:translate" />
+			</div>
+		</div>
+	</nav>
+</div>
 
 <style>
 	.button-icon {
