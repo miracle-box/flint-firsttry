@@ -1,0 +1,7 @@
+@import '@fontsource/inter/variable.css';
+@import '@fontsource/fira-mono';
+@import '@fontsource/noto-sans-sc';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

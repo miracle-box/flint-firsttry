@@ -48,5 +48,5 @@ module.exports = {
 			],
 		},
 	},
-	plugins: [],
+	plugins: [require('./src/styles/index.cjs')],
 };
