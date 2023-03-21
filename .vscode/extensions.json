@@ -3,9 +3,10 @@
     "astro-build.astro-vscode",
     "unifiedjs.vscode-mdx",
     "bradlc.vscode-tailwindcss",
-    "EditorConfig.EditorConfig",
+    "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "samverschueren.linter-xo"
+    "samverschueren.linter-xo",
+    "laurenttreguier.vscode-simple-icons"
   ],
   "unwantedRecommendations": []
 }
