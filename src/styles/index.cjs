@@ -1,5 +1,5 @@
 const plugin = require('tailwindcss/plugin');
 
-module.exports = plugin(function ({ addComponents }) {
-	addComponents([require('./typography.cjs')]);
+module.exports = plugin(function () {
+	// Import like this: `addUtilities([require('./typography.cjs')]);`
 });
