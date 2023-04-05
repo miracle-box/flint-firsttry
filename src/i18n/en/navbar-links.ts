@@ -1,4 +1,4 @@
-export const navbar = {
+export const navbarLinks = {
 	show: 'Showcase',
 	doc: 'Docs',
 	res: 'Resources',

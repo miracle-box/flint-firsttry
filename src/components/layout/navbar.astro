@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import NavPopper from '@components/layout/nav-popper';
 import { siteConfig } from '@config';
 import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
 
@@ -9,41 +9,34 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 ---
 
-<div class="border-b border-gray-200 w-full">
-	<nav class="sticky top-0 h-16 px-8 mx-auto flex items-center justify-between max-w-7xl">
-		<div class="flex gap-2">
-			{
-				() => {
-					const elements = [];
-					let key: keyof typeof siteConfig.navbar;
-					for (key in siteConfig.navbar) {
-						if (Object.prototype.hasOwnProperty.call(siteConfig.navbar, key)) {
-							elements.push(
-								<a
-									class="px-4 py-2 hover:bg-primary-500 hover:text-white rounded transition-colors whitespace-nowrap"
-									href={siteConfig.navbar[key]}
-								>
-									{t.navbar[key]()}
-								</a>,
-							);
-						}
-					}
-
-					return elements;
+<div class="sticky w-full border-b border-gray-200">
+	<nav class="container top-0 py-4 px-4 mx-auto flex items-center justify-between font-semibold text-md">
+		<!-- Left -->
+		<div class="flex items-center gap-4">
+			<!-- Logo -->
+			<a class="flex items-center gap-1 outline-none focus:ring ring-gray-100 rounded" href="/">
+				<img class="w-8 h-8" src={siteConfig.site.logoImg} alt={t.site.logoAlt()} />
+				<span>{t.site.logotype()}</span>
+			</a>
+			<!-- Links -->
+			<div class="hidden md:flex gap-1">
+				{
+					Object.entries(siteConfig.navbarLinks).map(([item, link]) => (
+						<a
+							class="px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:ring ring-gray-100 rounded transition-colors outline-none"
+							href={link}
+						>
+							{t.navbarLinks[item as keyof typeof siteConfig.navbarLinks]()}
+						</a>
+					))
 				}
-			}
-		</div>
-		<div class="flex gap-6 items-center mr-4">
-			<div class="flex gap-2">
-				<Icon class="button-icon" alt="alt" name="bi:sun" />
-				<Icon class="button-icon" alt="alt" name="bi:translate" />
 			</div>
+		</div>
+		<!-- Right -->
+		<div>
+			<!-- Language Selector Stub -->
+			<!-- Nav Popper Stub -->
+			<NavPopper />
 		</div>
 	</nav>
 </div>
-
-<style>
-	.button-icon {
-		@apply h-10 rounded p-2 border border-gray-300 hover:border-primary-400 text-primary-600 hover:text-primary-800 transition-colors;
-	}
-</style>

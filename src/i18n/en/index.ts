@@ -1,12 +1,12 @@
 import type { Translation } from '../i18n-types';
 import { hero } from './hero';
-import { navbar } from './navbar';
+import { navbarLinks } from './navbar-links';
 import { notfound } from './notfound';
 import { site } from './site';
 
 const en: Translation = {
 	hero,
-	navbar,
+	navbarLinks,
 	notfound,
 	site,
 };

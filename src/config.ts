@@ -5,14 +5,17 @@ function defineConfig<T extends SiteConfig>(input: T) {
 }
 
 export const siteConfig = defineConfig({
-	defaultLocale: 'zh',
+	site: {
+		defaultLocale: 'zh',
+		logoImg: '/favicon.svg',
+	},
 	hero: {
 		bgImage: 'http://api.muvip.cn/api/bing',
 		mainImage: 'https://dummyimage.com/512x512',
 		primaryLink: './docs',
 		secondaryLink: './news',
 	},
-	navbar: {
+	navbarLinks: {
 		show: '#',
 		doc: '#',
 		res: '#',
