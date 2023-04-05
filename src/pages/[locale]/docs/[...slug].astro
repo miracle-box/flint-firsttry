@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 
 	// Fallback pages
 	for (const locale of locales) {
-		if (locale === siteConfig.defaultLocale) continue;
+		if (locale === siteConfig.site.defaultLocale) continue;
 
 		/* eslint-disable no-await-in-loop */
 		const localDocs = await getLocalDocs(locale);

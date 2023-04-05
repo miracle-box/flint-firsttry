@@ -46,7 +46,7 @@ export async function getLocalDocs(locale: Locales): Promise<Docs[]> {
 }
 
 export async function getFallbackBySlugs(slugs: string[]): Promise<Docs[]> {
-	const defaultPages = await getLocalDocs(siteConfig.defaultLocale);
+	const defaultPages = await getLocalDocs(siteConfig.site.defaultLocale);
 
 	// Filter by slugs
 	const filteredPages = defaultPages.filter((p) => !slugs.includes(p.slug));
