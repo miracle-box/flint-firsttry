@@ -7,6 +7,13 @@ const url = Astro.url;
 const locale = getLocaleFromUrl(url.pathname);
 await loadLocale(locale);
 const t = i18nObject(locale);
+
+function getNavItems() {
+	return Object.entries(siteConfig.navbarLinks).map(([item, link]) => ({
+		item: item as keyof typeof siteConfig.navbarLinks,
+		link,
+	}));
+}
 ---
 
 <div class="sticky w-full border-b border-gray-200">
@@ -21,12 +28,9 @@ const t = i18nObject(locale);
 			<!-- Links -->
 			<div class="hidden md:flex gap-1">
 				{
-					Object.entries(siteConfig.navbarLinks).map(([item, link]) => (
-						<a
-							class="px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:ring ring-gray-100 rounded transition-colors outline-none"
-							href={link}
-						>
-							{t.navbarLinks[item as keyof typeof siteConfig.navbarLinks]()}
+					getNavItems().map(({ item, link }) => (
+						<a class="nav-link" href={link}>
+							{t.navbarLinks[item]()}
 						</a>
 					))
 				}
@@ -35,8 +39,28 @@ const t = i18nObject(locale);
 		<!-- Right -->
 		<div>
 			<!-- Language Selector Stub -->
-			<!-- Nav Popper Stub -->
-			<NavPopper />
+			<!-- Nav Popper-->
+			<div class="md:hidden">
+				<NavPopper client:load>
+					<div slot="content">
+						<div class="flex flex-col gap-2">
+							{
+								getNavItems().map(({ item, link }) => (
+									<a class="nav-link" href={link}>
+										{t.navbarLinks[item]()}
+									</a>
+								))
+							}
+						</div>
+					</div>
+				</NavPopper>
+			</div>
 		</div>
 	</nav>
 </div>
+
+<style>
+	.nav-link {
+		@apply px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 focus:ring ring-gray-100 rounded transition-colors outline-none;
+	}
+</style>
