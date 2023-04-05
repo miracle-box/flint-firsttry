@@ -20,7 +20,7 @@ const t = i18nObject(locale);
 						if (Object.prototype.hasOwnProperty.call(siteConfig.navbar, key)) {
 							elements.push(
 								<a
-									class="px-4 py-2 hover:bg-accent-500 hover:text-white rounded transition-colors whitespace-nowrap"
+									class="px-4 py-2 hover:bg-primary-500 hover:text-white rounded transition-colors whitespace-nowrap"
 									href={siteConfig.navbar[key]}
 								>
 									{t.navbar[key]()}
@@ -44,6 +44,6 @@ const t = i18nObject(locale);
 
 <style>
 	.button-icon {
-		@apply h-10 rounded p-2 border border-gray-300 hover:border-accent-400 text-accent-600 hover:text-accent-800 transition-colors;
+		@apply h-10 rounded p-2 border border-gray-300 hover:border-primary-400 text-primary-600 hover:text-primary-800 transition-colors;
 	}
 </style>
