@@ -1,12 +1,19 @@
 ---
 import NavPopper from '@components/layout/nav-popper';
-import { siteConfig } from '@config';
-import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
+import { siteConfig, localeNames } from '@config';
+import { loadLocale, i18nObject, getLocaleFromUrl, replacePathLocale } from '@utils/i18n';
+import type { Locales } from '~/types';
 
 const url = Astro.url;
 const locale = getLocaleFromUrl(url.pathname);
 await loadLocale(locale);
 const t = i18nObject(locale);
+
+function getLocaleItems() {
+	return Object.entries(localeNames).map(([locale, locName]) => {
+		return { locName, link: replacePathLocale(url.pathname, locale as Locales) };
+	});
+}
 
 function getNavItems() {
 	return Object.entries(siteConfig.navbarLinks).map(([item, link]) => ({
@@ -37,11 +44,47 @@ function getNavItems() {
 			</div>
 		</div>
 		<!-- Right -->
-		<div>
-			<!-- Language Selector Stub -->
-			<!-- Nav Popper-->
+		<div class="flex items-center gap-4">
+			<!-- Language Selector -->
+			<NavPopper client:load>
+				<svg
+					slot="icon"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 256 256"
+					><path
+						fill="currentColor"
+						d="m239.15 212.42l-56-112a8 8 0 0 0-14.31 0l-21.71 43.43A88 88 0 0 1 100 126.93A103.65 103.65 0 0 0 127.69 64H152a8 8 0 0 0 0-16H96V32a8 8 0 0 0-16 0v16H24a8 8 0 0 0 0 16h87.63A87.76 87.76 0 0 1 88 116.35a87.74 87.74 0 0 1-19-31a8 8 0 1 0-15.08 5.34A103.63 103.63 0 0 0 76 127a87.55 87.55 0 0 1-52 17a8 8 0 0 0 0 16a103.46 103.46 0 0 0 64-22.08a104.18 104.18 0 0 0 51.44 21.31l-26.6 53.19a8 8 0 0 0 14.31 7.16L140.94 192h70.11l13.79 27.58A8 8 0 0 0 232 224a8 8 0 0 0 7.15-11.58ZM148.94 176L176 121.89L203.05 176Z"
+					></path></svg
+				>
+				<div slot="content">
+					<div class="flex flex-col gap-2">
+						{
+							getLocaleItems().map(({ locName, link }) => (
+								<a class="nav-link" href={link}>
+									{locName}
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</NavPopper>
+			<!-- Mobile Nav -->
 			<div class="md:hidden">
 				<NavPopper client:load>
+					<svg
+						slot="icon"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+					>
+						<path
+							fill="currentColor"
+							d="M3 17h18a1 1 0 0 1 .117 1.993L21 19H3a1 1 0 0 1-.117-1.993L3 17h18H3Zm0-6l18-.002a1 1 0 0 1 .117 1.993l-.117.007L3 13a1 1 0 0 1-.117-1.993L3 11l18-.002L3 11Zm0-6h18a1 1 0 0 1 .117 1.993L21 7H3a1 1 0 0 1-.117-1.993L3 5h18H3Z"
+						></path>
+					</svg>
 					<div slot="content">
 						<div class="flex flex-col gap-2">
 							{

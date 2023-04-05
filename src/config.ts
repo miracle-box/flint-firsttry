@@ -1,4 +1,4 @@
-import type { SiteConfig } from './types';
+import type { Locales, SiteConfig } from './types';
 
 function defineConfig<T extends SiteConfig>(input: T) {
 	return input;
@@ -22,3 +22,8 @@ export const siteConfig = defineConfig({
 		guiluo: 'https://spark.yaasasi.cn/',
 	},
 });
+
+export const localeNames: Record<Locales, string> = {
+	zh: '中文',
+	en: 'English',
+};

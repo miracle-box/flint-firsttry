@@ -18,7 +18,7 @@ export function getLocaleFromUrl(pathname: string): Locales {
 	const matcher = /^\/?([a-z]{2}-?[a-z]{0,2})\//;
 	const langMatches = matcher.exec(pathname) ?? [];
 
-	if (!locales.includes(langMatches[1] as Locales)) return siteConfig.defaultLocale;
+	if (!locales.includes(langMatches[1] as Locales)) return siteConfig.site.defaultLocale;
 	return langMatches[1] as Locales;
 }
 
@@ -30,6 +30,20 @@ export function getLocaleFromUrl(pathname: string): Locales {
  */
 export function isUrlOfLocale(url: string, locale: Locales): boolean {
 	return url.replace(/^\//, '').startsWith(locale + '/');
+}
+
+/**
+ * Replace the locale of a pathname with another locale, returns `/` when the pathname is not valid
+ * @param pathname path to replace
+ * @param locale target locale
+ * @returns New pathname or root path (`/`)
+ */
+export function replacePathLocale(pathname: string, locale: Locales): string {
+	if (!pathname.startsWith('/')) return '/';
+	const splittedPath = pathname.split('/');
+	if (splittedPath.length < 3) return '/';
+	splittedPath[1] = locale;
+	return splittedPath.join('/');
 }
 
 /**
