@@ -17,7 +17,7 @@ export default function NavPopper(props: any): JSX.Element {
 			<button
 				type="button"
 				onClick={openModal}
-				class="text-gray-500 hover:text-gray-700 focus:ring ring-gray-100 rounded outline-none align-middle"
+				class="p-1 md:p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded outline-none transition-colors align-middle"
 			>
 				{props.icon}
 			</button>
@@ -45,7 +45,7 @@ export default function NavPopper(props: any): JSX.Element {
 						>
 							<DialogPanel class="fixed top-4 right-4 w-36 p-4 pr-12 overflow-hidden bg-white shadow-xl rounded-xl">
 								<button
-									class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 hover:bg-gray-50 focus:ring ring-gray-100 rounded transition-colors outline-none"
+									class="absolute top-2 right-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded transition-colors outline-none"
 									onClick={closeModal}
 								>
 									<svg
