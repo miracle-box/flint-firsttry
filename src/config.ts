@@ -15,12 +15,6 @@ export const siteConfig = defineConfig({
 		primaryLink: './docs',
 		secondaryLink: './news',
 	},
-	navbarLinks: {
-		show: '#',
-		doc: '#',
-		res: '#',
-		guiluo: 'https://spark.yaasasi.cn/',
-	},
 });
 
 export const localeNames: Record<Locales, string> = {

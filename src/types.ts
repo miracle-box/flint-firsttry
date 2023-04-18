@@ -1,10 +1,7 @@
 import type { MarkdownHeading } from 'astro';
-import type { siteConfig } from '@config';
 import type { Locales } from './i18n/i18n-types';
 
 export type { Locales, Translations } from './i18n/i18n-types';
-
-export type NavbarTranslation = Record<keyof typeof siteConfig.navbarLinks, string>;
 
 export type SiteConfig = {
 	site: {
@@ -17,7 +14,6 @@ export type SiteConfig = {
 		primaryLink: string;
 		secondaryLink: string;
 	};
-	navbarLinks: Record<string, string>;
 };
 
 export type News = {
