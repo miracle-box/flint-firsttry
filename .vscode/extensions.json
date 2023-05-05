@@ -5,7 +5,7 @@
     "bradlc.vscode-tailwindcss",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
-    "samverschueren.linter-xo",
+    "dbaeumer.vscode-eslint",
     "laurenttreguier.vscode-simple-icons"
   ],
   "unwantedRecommendations": []

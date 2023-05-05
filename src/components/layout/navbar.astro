@@ -4,7 +4,7 @@ import { siteConfig, localeNames } from '@config';
 import { loadLocale, i18nObject, getLocaleFromUrl, replacePathLocale } from '@utils/i18n';
 import type { Locales } from '~/types';
 
-const url = Astro.url;
+const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
 await loadLocale(locale);
 const t = i18nObject(locale);

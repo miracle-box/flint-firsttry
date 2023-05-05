@@ -1,8 +1,8 @@
 ---
-import '~/styles/base.css';
 import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
+import '~/styles/base.css';
 
-const url = Astro.url;
+const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
 await loadLocale(locale);
 const t = i18nObject(locale);

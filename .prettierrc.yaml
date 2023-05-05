@@ -1,0 +1,24 @@
+bracketSpacing: true
+singleQuote: true
+trailingComma: all
+endOfLine: lf
+useTabs: true
+tabWidth: 4
+printWidth: 80
+plugins:
+  - './node_modules/prettier-plugin-astro'
+overrides:
+  - files: ['*.js', '*.ts', '*.cjs', '*.mjs']
+    options:
+      tabWidth: 8
+      printWidth: 120
+  - files: ['*.jsx', '*.tsx', '*.html', '*.astro']
+    options:
+      printWidth: 120
+  - files: ['*.json', '*.yaml', '*.yml']
+    options:
+      useTabs: false
+      tabWidth: 2
+  - files: '*.astro'
+    options:
+      parser: astro

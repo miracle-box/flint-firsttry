@@ -16,4 +16,4 @@ vscode:
     - bradlc.vscode-tailwindcss
     - EditorConfig.EditorConfig
     - esbenp.prettier-vscode
-    - samverschueren.linter-xo
+    - dbaeumer.vscode-eslint
