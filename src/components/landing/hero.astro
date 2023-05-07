@@ -1,5 +1,4 @@
 ---
-import { siteConfig } from '@config';
 import { loadLocale, getLocaleFromUrl, i18nObject } from '@utils/i18n';
 
 const { url } = Astro;
@@ -25,5 +24,4 @@ const t = i18nObject(locale);
 			>{t.hero.secondaryButton()}</a
 		>
 	</div>
-	<!-- <img src={siteConfig.hero.mainImage} alt={t.hero.mainImageTitle()} /> -->
 </header>
