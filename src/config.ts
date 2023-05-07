@@ -8,12 +8,10 @@ export const siteConfig = defineConfig({
 	site: {
 		defaultLocale: 'zh',
 		logoImg: '/favicon.svg',
-	},
-	hero: {
-		bgImage: 'http://api.muvip.cn/api/bing',
-		mainImage: 'https://dummyimage.com/512x512',
-		primaryLink: './docs',
-		secondaryLink: './news',
+		icpRecordText: '吉 ICP 备 2021002465 号',
+		icpRecordLink: 'https://beian.miit.gov.cn/',
+		secRecordText: '吉公网安备 22017202000263 号',
+		secRecordLink: 'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263',
 	},
 });
 

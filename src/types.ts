@@ -7,12 +7,10 @@ export type SiteConfig = {
 	site: {
 		defaultLocale: Locales;
 		logoImg: string;
-	};
-	hero: {
-		bgImage: string;
-		mainImage: string;
-		primaryLink: string;
-		secondaryLink: string;
+		icpRecordText: string;
+		icpRecordLink: string;
+		secRecordText: string;
+		secRecordLink: string;
 	};
 };
 

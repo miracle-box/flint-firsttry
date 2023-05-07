@@ -1,0 +1,17 @@
+---
+import { siteConfig } from '@config';
+---
+
+<footer
+	class="flex flex-col sm:flex-row py-4 px-4 gap-1 sm:gap-4 text-sm mt-auto justify-center items-center text-gray-500"
+>
+	<div class="flex gap-1">
+		<img class="w-4 h-4 flex-grow-0 my-auto" alt="" src="/images/sec-record.png" />
+		<a class="hover:text-gray-900" href={siteConfig.site.secRecordLink} rel="nofollow noopener"
+			>{siteConfig.site.secRecordText}</a
+		>
+	</div>
+	<a class="hover:text-gray-900" href={siteConfig.site.icpRecordLink} rel="nofollow noopener"
+		>{siteConfig.site.icpRecordText}</a
+	>
+</footer>
