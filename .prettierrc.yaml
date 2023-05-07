@@ -12,7 +12,7 @@ overrides:
     options:
       tabWidth: 8
       printWidth: 120
-  - files: ['*.jsx', '*.tsx', '*.html', '*.astro']
+  - files: ['*.jsx', '*.tsx', '*.html']
     options:
       printWidth: 120
   - files: ['*.json', '*.yaml', '*.yml']
@@ -22,3 +22,4 @@ overrides:
   - files: '*.astro'
     options:
       parser: astro
+      printWidth: 120

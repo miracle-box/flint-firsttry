@@ -13,8 +13,8 @@
     "astro:preview": "astro preview",
     "i18n:gen-types": "typesafe-i18n",
     "i18n:gen-types-ci": "typesafe-i18n --no-watch",
-    "format:check": "prettier . --check --ignore-path ./.gitignore",
-    "format:fix": "prettier . --write --ignore-path ./.gitignore",
+    "format:check": "prettier . --check --ignore-path ./.gitignore --plugin-search-dir=.",
+    "format:fix": "prettier . --write --ignore-path ./.gitignore --plugin-search-dir=.",
     "lint:check": "eslint . --ignore-path ./.gitignore",
     "lint:fix": "eslint . --ignore-path ./.gitignore"
   },
