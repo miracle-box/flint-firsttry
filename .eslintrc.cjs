@@ -63,7 +63,7 @@ module.exports = {
 			rules: {
 				...RULES,
 				...TS_RULES,
-				'@typescript-eslint/naming-convention': 'off',
+				'new-cap': 'off',
 			},
 		},
 		{
