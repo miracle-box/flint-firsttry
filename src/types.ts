@@ -18,7 +18,7 @@ export type News = {
 	id: string;
 	slug: string;
 	// Actually, the real type of property `content` is `AstroComponentFactory`
-	content: MarkdownInstance<Record<string, unknown>>['Content'];
+	Content: MarkdownInstance<Record<string, unknown>>['Content'];
 	title: string;
 	desc: string;
 	author: string;
@@ -30,7 +30,7 @@ export type Docs = {
 	id: string;
 	slug: string;
 	// Actually, the real type of property `content` is `AstroComponentFactory`
-	content: MarkdownInstance<Record<string, unknown>>['Content'];
+	Content: MarkdownInstance<Record<string, unknown>>['Content'];
 	headings: MarkdownHeading[];
 	title: string;
 	desc: string;

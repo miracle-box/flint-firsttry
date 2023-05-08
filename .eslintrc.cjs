@@ -11,6 +11,7 @@ const RULES = {
 };
 
 const TS_RULES = {
+	'@typescript-eslint/naming-convention': 'off',
 	'@typescript-eslint/triple-slash-reference': 'off',
 	'@typescript-eslint/no-explicit-any': 'off',
 	// Copied from XO for TypeScript files.

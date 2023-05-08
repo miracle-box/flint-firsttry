@@ -15,13 +15,13 @@ function getSlug(ogSlug: string) {
 async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 	const { id, slug, data } = page;
 	const { title, desc, outdated = false } = data;
-	const rendered = await page.render();
+	const { Content, headings } = await page.render();
 
 	return {
 		id,
 		slug: getSlug(slug),
-		content: rendered.Content,
-		headings: rendered.headings,
+		Content,
+		headings,
 		title,
 		desc,
 		outdated,

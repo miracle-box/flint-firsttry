@@ -3,16 +3,20 @@ import Layout from '@layouts/docs-content.astro';
 import { siteConfig } from '@config';
 import { getLocaleFromUrl, locales } from '@utils/i18n';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
-import type { Docs as Props } from '~/types';
+import type { Docs } from '~/types';
+
+type Props = Docs & {
+	fallback: boolean;
+};
 
 export async function getStaticPaths() {
 	const paths = [];
 	const allPages = await fetchDocs();
 
 	paths.push(
-		...allPages.map(({ id, slug, content }) => ({
-			params: { locale: getLocaleFromUrl(id), slug },
-			props: { content, fallback: false },
+		...allPages.map((p) => ({
+			params: { locale: getLocaleFromUrl(p.id), slug: p.slug },
+			props: { ...p, fallback: false },
 		})),
 	);
 
@@ -26,9 +30,9 @@ export async function getStaticPaths() {
 		/* eslint-enable no-await-in-loop */
 
 		paths.push(
-			...fallbackPages.map(({ slug, content }) => ({
-				params: { locale, slug },
-				props: { content, fallback: true },
+			...fallbackPages.map((p) => ({
+				params: { locale, slug: p.slug },
+				props: { ...p, fallback: true },
 			})),
 		);
 	}
@@ -37,7 +41,7 @@ export async function getStaticPaths() {
 }
 
 // Render the page
-const Content = Astro.props.content;
+const { Content } = Astro.props;
 ---
 
 <Layout>
