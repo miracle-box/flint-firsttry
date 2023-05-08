@@ -1,7 +1,12 @@
 import { createSignal, type JSX } from 'solid-js';
 import { Dialog, DialogPanel, Transition, TransitionChild, DialogOverlay } from 'solid-headless';
 
-export default function NavPopper(props: any): JSX.Element {
+type Props = {
+	icon: JSX.Element;
+	children: JSX.Element;
+};
+
+export function NavPopper(props: Props): JSX.Element {
 	const [isOpen, setIsOpen] = createSignal(false);
 
 	function closeModal() {
@@ -54,7 +59,7 @@ export default function NavPopper(props: any): JSX.Element {
 									/>
 								</svg>
 							</button>
-							{props.content}
+							{props.children}
 						</DialogPanel>
 					</TransitionChild>
 				</Dialog>
