@@ -60,7 +60,7 @@ const navItems = [
 		<!-- Right -->
 		<div class="flex items-center">
 			<!-- Language Selector -->
-			<NavPopper class:list="ml-4" icon={LanguageIcon()} client:load>
+			<NavPopper class:list="ml-4" icon={LanguageIcon} client:load>
 				<div>
 					<div class="flex flex-col gap-2">
 						{
@@ -75,7 +75,7 @@ const navItems = [
 			</NavPopper>
 			<!-- Mobile Nav -->
 			<div class="md:hidden ml-4">
-				<NavPopper icon={MenuIcon()} client:load>
+				<NavPopper icon={MenuIcon} client:load>
 					<div>
 						<div class="flex flex-col gap-2">
 							{
