@@ -1,3 +1,5 @@
 export const notfound = {
-	title: '404:en',
+	title: '404',
+	body: 'Not found~',
+	button: 'return',
 };

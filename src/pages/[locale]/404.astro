@@ -1,6 +1,8 @@
 ---
 import { locales, loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
 
+import '../../styles/404.css';
+
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 
 const locale = getLocaleFromUrl(Astro.url.pathname);
@@ -8,4 +10,16 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 ---
 
-<span>{t.notfound.title()}</span>
+<main>
+	<div class="bg-clip-padding">
+		<div class="text-center bg-clip-padding">
+			<h1 class="text-dp-2xl leading-relaxed m-10">{t.notfound.title()}</h1>
+			<img src="/404.png" alt="" class="max-h-48 m-auto">
+			<p class="leading-relaxed m-12">{t.notfound.body()}</p>
+			<div class="p-0"></div>
+		</div>
+		<div class="black text-center">
+			<button onclick="window.history.go(-1);">{t.notfound.button()}</button>
+		</div>
+	</div>
+</main>
