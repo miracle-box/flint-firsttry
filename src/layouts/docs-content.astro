@@ -1,9 +1,26 @@
 ---
+import type { MarkdownHeading } from 'astro';
 import Layout from '@layouts/base.astro';
+import { TableOfContents } from '@components/layout/table-of-contents';
+import { getTocTree } from '~/utils/generate-toc';
+
+type Props = {
+	headings: MarkdownHeading[];
+};
+
+const { headings } = Astro.props;
 ---
 
 <Layout>
-	<main>
-		<slot />
-	</main>
+	<div class="container flex mx-auto px-8 gap-8">
+		<div class="order-2 mt-12">
+			<nav class="sticky top-12 w-64 border p-2 rounded-lg">
+				<TableOfContents tocTree={getTocTree(headings)} client:visible />
+			</nav>
+		</div>
+		<main class="order-1 pt-12 markdown-body">
+			<slot />
+			<div class="h-48"></div>
+		</main>
+	</div>
 </Layout>

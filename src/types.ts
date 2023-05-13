@@ -36,3 +36,7 @@ export type Docs = {
 	desc: string;
 	outdated: boolean;
 };
+
+export type TocItem = MarkdownHeading & {
+	children: TocItem[];
+};

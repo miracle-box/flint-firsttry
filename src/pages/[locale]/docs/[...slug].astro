@@ -41,9 +41,9 @@ export async function getStaticPaths() {
 }
 
 // Render the page
-const { Content } = Astro.props;
+const { Content, headings } = Astro.props;
 ---
 
-<Layout>
+<Layout {headings}>
 	<Content />
 </Layout>
