@@ -24,7 +24,7 @@ export const NavPopper: Component<Props> = (props: Props) => {
 			<button
 				type="button"
 				onClick={openModal}
-				class="p-1 md:p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded outline-none transition-colors align-middle"
+				class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded outline-none transition-colors align-middle"
 			>
 				{props.icon}
 			</button>

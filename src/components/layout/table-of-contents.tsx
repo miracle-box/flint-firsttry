@@ -62,7 +62,9 @@ export const TableOfContents: Component<TocProps> = (props: TocProps) => {
 			}
 		}
 
-		const observer = new IntersectionObserver(handleObserver);
+		// Top margin = -1 * (height of navbar + 1px).
+		// NOTE: change this value after changing navbar height
+		const observer = new IntersectionObserver(handleObserver, { rootMargin: '-65px 0px 0px 0px' });
 		// Only H2 and H3 headings are included in the TOC.
 		for (const element of document.querySelectorAll('h2, h3')) observer.observe(element);
 	});
