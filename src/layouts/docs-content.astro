@@ -14,7 +14,7 @@ const { headings } = Astro.props;
 <Layout>
 	<div class="container flex mx-auto px-8 gap-8">
 		<div class="order-2 mt-12">
-			<nav class="sticky top-12 w-64 border p-2 rounded-lg">
+			<nav class="sticky top-32 w-64 border p-2 rounded-lg">
 				<TableOfContents tocTree={getTocTree(headings)} client:visible />
 			</nav>
 		</div>
