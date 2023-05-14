@@ -9,34 +9,22 @@ type TocItemProps = TocProps & {
 	activeId: string;
 };
 
-const TableOfContentsItem: Component<TocItemProps> = (props: TocItemProps) => {
-	return (
+const TableOfContentsItem: Component<TocItemProps> = (props: TocItemProps) => (
+	<ul class="ml-4">
 		<For each={props.tocTree}>
 			{({ slug, text, children }) => (
-				<ul class="ml-4">
-					<li class="w-full text-ellipsis overflow-hidden break-all whitespace-nowrap text-md">
-						<a
-							href={`#${slug}`}
-							class="leading-7"
-							classList={{ 'text-primary-600': props.activeId === slug }}
-							onClick={(event) => {
-								event.preventDefault();
-								document.querySelector(`#${slug}`)?.scrollIntoView({ behavior: 'smooth' });
-							}}
-						>
-							{text}
-						</a>
-					</li>
+				<li class="w-full text-ellipsis overflow-hidden break-all whitespace-nowrap text-md">
+					<a href={`#${slug}`} class="leading-7" classList={{ 'text-primary-600': props.activeId === slug }}>
+						{text}
+					</a>
 					<Show when={children.length > 0}>
-						<li>
-							<TableOfContentsItem tocTree={children} activeId={props.activeId} />
-						</li>
+						<TableOfContentsItem tocTree={children} activeId={props.activeId} />
 					</Show>
-				</ul>
+				</li>
 			)}
 		</For>
-	);
-};
+	</ul>
+);
 
 /**
  * Get an array of slugs from the TOC tree.
