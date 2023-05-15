@@ -71,10 +71,13 @@ export const TableOfContents: Component<TocProps> = (props: TocProps) => {
 
 	const marker = (
 		<div
-			class="absolute mt-1 transition ml-1 bg-primary-500 w-1 h-5 rounded"
+			class="absolute transition"
 			// Currently, the height of each entry in TOC is 28px.
 			style={{ transform: `translateY(${activeIndex() * 28}px)` }}
-		/>
+		>
+			<div class="absolute bg-primary-500 mt-[4px] h-5 w-[4px] rounded" />
+			<div class="absolute bg-primary-500/10 mt-[0px] h-[28px] w-[230px] ml-2 rounded-md" />
+		</div>
 	);
 
 	return (
