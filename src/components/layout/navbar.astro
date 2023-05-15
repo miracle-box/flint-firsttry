@@ -37,66 +37,64 @@ const navItems = [
 ];
 ---
 
-<div class="sticky top-0 w-full border-b border-gray-200 bg-white">
-	<nav class="container top-0 py-3 px-4 mx-auto flex items-center justify-between font-semibold text-md">
-		<!-- Left -->
-		<div class="flex items-center gap-4">
-			<!-- Logo -->
-			<a class="flex items-center gap-1 outline-none focus:ring ring-gray-200 rounded" href={`/${locale}/`}>
-				<img class="w-8 h-8" src={siteConfig.site.logoImg} alt={t.site.logoAlt()} />
-				<span>{t.site.logotype()}</span>
-			</a>
-			<!-- Links -->
-			<div class="hidden md:flex gap-1">
-				{
-					navItems.map(({ text, link }) => (
-						<a class="nav-link" href={link}>
-							{text}
-						</a>
-					))
-				}
-			</div>
+<nav class="container top-0 py-3 px-4 mx-auto flex items-center justify-between font-semibold text-md">
+	<!-- Left -->
+	<div class="flex items-center gap-4">
+		<!-- Logo -->
+		<a class="flex items-center gap-1 outline-none focus:ring ring-gray-200 rounded" href={`/${locale}/`}>
+			<img class="w-8 h-8" src={siteConfig.site.logoImg} alt={t.site.logoAlt()} />
+			<span>{t.site.logotype()}</span>
+		</a>
+		<!-- Links -->
+		<div class="hidden md:flex gap-1">
+			{
+				navItems.map(({ text, link }) => (
+					<a class="nav-link" href={link}>
+						{text}
+					</a>
+				))
+			}
 		</div>
-		<!-- Right -->
-		<div class="flex items-center">
-			<!-- Language Selector -->
-			<NavPopper class:list="ml-4" icon={LanguageIcon} client:load>
+	</div>
+	<!-- Right -->
+	<div class="flex items-center">
+		<!-- Language Selector -->
+		<NavPopper class:list="ml-4" icon={LanguageIcon} client:load>
+			<div>
+				<div class="flex flex-col gap-2">
+					{
+						getLocaleItems().map(({ locName, link }) => (
+							<a class="nav-link" href={link}>
+								{locName}
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</NavPopper>
+		<!-- Mobile Nav -->
+		<div class="md:hidden ml-4">
+			<NavPopper icon={MenuIcon} client:load>
 				<div>
 					<div class="flex flex-col gap-2">
 						{
-							getLocaleItems().map(({ locName, link }) => (
+							navItems.map(({ text, link }) => (
 								<a class="nav-link" href={link}>
-									{locName}
+									{text}
 								</a>
 							))
 						}
 					</div>
 				</div>
 			</NavPopper>
-			<!-- Mobile Nav -->
-			<div class="md:hidden ml-4">
-				<NavPopper icon={MenuIcon} client:load>
-					<div>
-						<div class="flex flex-col gap-2">
-							{
-								navItems.map(({ text, link }) => (
-									<a class="nav-link" href={link}>
-										{text}
-									</a>
-								))
-							}
-						</div>
-					</div>
-				</NavPopper>
-			</div>
 		</div>
-	</nav>
+	</div>
+</nav>
 
-	<style>
-		.nav-link {
-			@apply px-3 py-2 rounded transition-colors;
-			@apply text-gray-600 hover:text-gray-900 hover:bg-gray-100;
-			@apply outline-none focus:ring ring-gray-200;
-		}
-	</style>
-</div>
+<style>
+	.nav-link {
+		@apply px-3 py-2 rounded transition-colors;
+		@apply text-gray-600 hover:text-gray-900 hover:bg-gray-100;
+		@apply outline-none focus:ring ring-gray-200;
+	}
+</style>

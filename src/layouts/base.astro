@@ -25,8 +25,12 @@ const t = i18nObject(locale);
 		<title>{t.site.title()}</title>
 	</head>
 	<body class="min-h-screen flex flex-col">
-		<Navbar />
+		<header class="sticky top-0 w-full border-b border-gray-200 bg-white z-10">
+			<Navbar />
+		</header>
+
 		<slot />
+
 		<Footer />
 	</body>
 </html>
