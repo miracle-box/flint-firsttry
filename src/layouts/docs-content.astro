@@ -3,6 +3,7 @@ import type { MarkdownHeading } from 'astro';
 import Layout from '@layouts/base.astro';
 import { TableOfContents } from '@components/layout/table-of-contents';
 import { getTocTree } from '~/utils/generate-toc';
+import '~/styles/docs.temp.css';
 
 type Props = {
 	headings: MarkdownHeading[];
@@ -18,7 +19,7 @@ const { headings } = Astro.props;
 				<TableOfContents tocTree={getTocTree(headings)} client:visible />
 			</nav>
 		</div>
-		<main class="order-1 pt-12 markdown-body">
+		<main class="order-1 pt-12 markdown-body docs">
 			<slot />
 		</main>
 	</div>

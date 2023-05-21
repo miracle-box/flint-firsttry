@@ -1,4 +1,4 @@
-.black button{
+.black button {
 	width: 180px;
 	height: 60px;
 
@@ -18,11 +18,10 @@
 	overflow: hidden;
 
 	position: relative;
-
 }
 
-.black button::before{
-	content: "";
+.black button::before {
+	content: '';
 
 	width: 70%;
 	height: 100%;
@@ -35,17 +34,14 @@
 	transform: skewX(-15deg);
 
 	transition: 0.5s;
-
-
 }
 
 .black button:hover:before {
 	left: 130px;
 }
 
-
-.black button::after{
-	content: "";
+.black button::after {
+	content: '';
 	width: 50px;
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.1);
@@ -59,11 +55,8 @@
 	transform: 0.5s;
 
 	transition-delay: 0.2s;
-
 }
 
-.black button:hover::after{
+.black button:hover::after {
 	left: 200px;
 }
-
-

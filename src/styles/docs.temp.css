@@ -1,0 +1,106 @@
+/* h2 */
+
+.docs h2 {
+	margin: 1em 0;
+	font-size: 1.28571em;
+	border-left: 0.3em solid var(--docs-h-color);
+	padding-left: 0.5em;
+	margin-left: -0.8em;
+	line-height: 1;
+	font-weight: 600;
+}
+
+/* h3 */
+
+.docs h3 {
+	font-weight: 600;
+	margin-left: -0.95em;
+}
+
+.docs h3::before {
+	content: '#';
+	color: var(--docs-h-color);
+	margin-right: 0.4em;
+}
+
+/* a */
+
+.docs a {
+	margin: 0;
+	display: inline-block;
+	position: relative;
+	text-align: left;
+	font-weight: normal;
+
+	text-decoration: solid underline var(--docs-a-color) 2px;
+	transition: 0.3s linear;
+}
+
+.docs a:hover {
+	color: var(--docs-a-hover-color);
+	transition: 0.3s linear;
+}
+
+/* 列表 */
+
+.docs ul,
+ol {
+	padding-inline-start: 40px;
+}
+
+.docs ol li::before {
+	content: '->';
+	color: var(--docs-li-color);
+	margin-right: 0.4em;
+}
+
+/* code */
+
+.docs code {
+	background-color: var(--docs-code-background-color);
+	padding: 2px 5px 3px 1%;
+	border-radius: 5px;
+	overflow-x: auto;
+	font-size: 1px;
+}
+
+/* blockquote */
+
+.docs blockquote {
+	margin: 10px 0;
+	padding: 1.5em;
+	border-left: 4px solid #cecece;
+	background-color: #f4f4f4;
+	color: #585858;
+}
+
+/* table */
+
+.docs table {
+	width: 90%;
+	background: #ccc;
+	margin: 10px auto;
+	border-collapse: collapse;
+}
+.docs th,
+td {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+.docs th {
+	background: #eee;
+	font-weight: normal;
+}
+.docs tr {
+	background: #fff;
+}
+
+:root {
+	--docs-code-background-color: #f6f8fa;
+	--docs-h-color: #526fff;
+	--docs-a-color: rgba(255, 0, 0, 0.2);
+	--docs-a-hover-color: #526fff;
+	--docs-li-color: #526fff;
+}
