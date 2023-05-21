@@ -5,3 +5,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+	--astro-code-color-background: #F6F8FA;
+	--shiki-token-string-expression: #CC0000;
+	--astro-code-token-function: #6F42C1;
+	--astro-code-token-string-expression: #0A3069;
+	--astro-code-color-text: #24292E;
+	--astro-code-token-keyword :#D73A49;
+	--astro-code-token-comment : #7f7f7f;
+}
+
+
+pre {
+	padding: 1rem;
+	border-radius: 5px;
+	font-size: .875em;
+	font-weight: 400;
+	overflow-x: auto;
+}
+
+
+
