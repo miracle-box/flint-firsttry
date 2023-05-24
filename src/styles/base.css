@@ -2,21 +2,13 @@
 @import '@fontsource/fira-mono';
 @import '@fontsource/noto-sans-sc';
 
-
 @import 'tailwindcss/base';
-@import url(shiki.css) layer(base);
+@import url(code-colors.css) layer(base);
 /* @import url(base_styles.css) layer(base); */
 
 @import 'tailwindcss/components';
+@import url(docs.temp.css) layer(components);
 /* @import url(components_styles.css) layer(components); */
 
 @import 'tailwindcss/utilities';
 /* @import url(utilities_styles.css) layer(utilities); */
-
-pre {
-	padding: 1rem;
-	border-radius: 5px;
-	font-size: 0.875em;
-	font-weight: 400;
-	overflow-x: auto;
-}
