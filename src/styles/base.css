@@ -2,19 +2,16 @@
 @import '@fontsource/fira-mono';
 @import '@fontsource/noto-sans-sc';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-:root {
-	--astro-code-color-background: #f6f8fa;
-	--shiki-token-string-expression: #cc0000;
-	--astro-code-token-function: #6f42c1;
-	--astro-code-token-string-expression: #0a3069;
-	--astro-code-color-text: #24292e;
-	--astro-code-token-keyword: #d73a49;
-	--astro-code-token-comment: #7f7f7f;
-}
+@import 'tailwindcss/base';
+@import url(shiki.css) layer(base);
+/* @import url(base_styles.css) layer(base); */
+
+@import 'tailwindcss/components';
+/* @import url(components_styles.css) layer(components); */
+
+@import 'tailwindcss/utilities';
+/* @import url(utilities_styles.css) layer(utilities); */
 
 pre {
 	padding: 1rem;
