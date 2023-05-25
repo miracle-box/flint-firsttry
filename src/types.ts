@@ -29,6 +29,7 @@ export type News = {
 export type Docs = {
 	id: string;
 	slug: string;
+	locale: Locales;
 	// Actually, the real type of property `content` is `AstroComponentFactory`
 	Content: MarkdownInstance<Record<string, unknown>>['Content'];
 	headings: MarkdownHeading[];

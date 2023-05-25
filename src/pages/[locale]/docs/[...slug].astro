@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/docs-content.astro';
 import { siteConfig } from '@config';
-import { getLocaleFromUrl, locales } from '@utils/i18n';
+import { locales } from '@utils/i18n';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
 import type { Docs } from '~/types';
 
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 	paths.push(
 		...allPages.map((p) => ({
-			params: { locale: getLocaleFromUrl(p.id), slug: p.slug },
+			params: { locale: p.locale, slug: p.slug },
 			props: { ...p, fallback: false },
 		})),
 	);
