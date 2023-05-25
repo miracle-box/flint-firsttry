@@ -28,7 +28,7 @@ export function getLocaleFromUrl(pathname: string): Locales {
  * @param locale target locale
  * @returns Is `url` under `locale`
  */
-export function isUrlOfLocale(url: string, locale: Locales): boolean {
+export function isUrlUnderLocale(url: string, locale: Locales): boolean {
 	return url.replace(/^\//, '').startsWith(locale + '/');
 }
 
@@ -38,7 +38,7 @@ export function isUrlOfLocale(url: string, locale: Locales): boolean {
  * @param locale target locale
  * @returns New pathname or root path (`/`)
  */
-export function replacePathLocale(pathname: string, locale: Locales): string {
+export function changePathLocale(pathname: string, locale: Locales): string {
 	if (!pathname.startsWith('/')) return '/';
 	const splittedPath = pathname.split('/');
 	if (splittedPath.length < 3) return '/';
