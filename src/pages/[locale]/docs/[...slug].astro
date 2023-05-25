@@ -32,7 +32,8 @@ export async function getStaticPaths() {
 		paths.push(
 			...fallbackPages.map((p) => ({
 				params: { locale, slug: p.slug },
-				props: { ...p, fallback: true },
+				// Ensure we have fallbacked locale here.
+				props: { ...p, locale, fallback: true },
 			})),
 		);
 	}
@@ -41,9 +42,9 @@ export async function getStaticPaths() {
 }
 
 // Render the page
-const { Content, headings } = Astro.props;
+const { Content, headings, id, locale } = Astro.props;
 ---
 
-<Layout {headings}>
+<Layout headings={headings} fileId={id} locale={locale}>
 	<Content />
 </Layout>

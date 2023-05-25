@@ -3,12 +3,16 @@ import type { MarkdownHeading } from 'astro';
 import Layout from '@layouts/base.astro';
 import { TableOfContents } from '@components/docs/table-of-contents';
 import { getTocTree } from '~/utils/generate-toc';
+import Breadcrumb from '~/components/docs/breadcrumb.astro';
+import type { Locales } from '~/types';
 
 type Props = {
 	headings: MarkdownHeading[];
+	fileId: string;
+	locale: Locales;
 };
 
-const { headings } = Astro.props;
+const { headings, fileId, locale } = Astro.props;
 ---
 
 <Layout>
@@ -19,7 +23,12 @@ const { headings } = Astro.props;
 			</nav>
 		</div>
 		<main class="order-1 pt-12 markdown-body docs">
-			<slot />
+			<div>
+				<Breadcrumb fileId={fileId} locale={locale} />
+			</div>
+			<div>
+				<slot />
+			</div>
 		</main>
 	</div>
 </Layout>
