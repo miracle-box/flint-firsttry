@@ -1,29 +1,25 @@
 ---
-import { loadLocale, i18nObject } from '@utils/i18n';
+import { loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
 import { siteConfig } from '~/config';
-import type { Locales } from '~/types';
 import { fetchDocs } from '~/utils/docs';
 
 type Props = {
-	fileId: string;
-	locale: Locales;
+	filePath: string;
 };
 
-const { fileId, locale } = Astro.props;
+const { filePath } = Astro.props;
 
 // Load i18n
+const locale = getLocaleFromUrl(Astro.url.pathname);
 await loadLocale(locale);
 const t = i18nObject(locale);
 
 // Grab info for each level in breadcrumb.
 const allPages = await fetchDocs();
-const fileDir = fileId.split('/').slice(0, -1);
+const fileDir = filePath.split('/').slice(0, -1);
 
-const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index) => {
-	const path = fileId
-		.split('/')
-		.slice(0, index + 1)
-		.join('/');
+const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index, dirs) => {
+	const path = dirs.slice(0, index + 1).join('/');
 
 	// Find the localized page first.
 	// if there is no localized page, use the one under default locale.

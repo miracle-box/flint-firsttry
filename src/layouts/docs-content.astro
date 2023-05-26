@@ -1,30 +1,23 @@
 ---
-import type { MarkdownHeading } from 'astro';
 import Layout from '@layouts/base.astro';
 import { TableOfContents } from '@components/docs/table-of-contents';
 import { getTocTree } from '~/utils/generate-toc';
 import Breadcrumb from '~/components/docs/breadcrumb.astro';
-import type { Locales } from '~/types';
+import type { DocsPageProps as Props } from '~/types';
 
-type Props = {
-	headings: MarkdownHeading[];
-	fileId: string;
-	locale: Locales;
-};
-
-const { headings, fileId, locale } = Astro.props;
+const { contentProps } = Astro.props;
 ---
 
 <Layout>
 	<div class="container flex mx-auto px-8 gap-8">
 		<div class="order-2 mt-12">
 			<nav class="sticky top-32 w-64 border p-2 rounded-lg">
-				<TableOfContents tocTree={getTocTree(headings)} client:visible />
+				<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
 			</nav>
 		</div>
 		<main class="order-1 pt-12 markdown-body docs">
 			<div>
-				<Breadcrumb fileId={fileId} locale={locale} />
+				<Breadcrumb filePath={contentProps.id} />
 			</div>
 			<div>
 				<slot />

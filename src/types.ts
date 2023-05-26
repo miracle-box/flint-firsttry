@@ -26,6 +26,10 @@ export type News = {
 	date: string;
 };
 
+export type NewsPageProps = {
+	contentProps: News;
+};
+
 export type Docs = {
 	id: string;
 	slug: string;
@@ -36,6 +40,13 @@ export type Docs = {
 	title: string;
 	desc: string;
 	outdated: boolean;
+};
+
+export type DocsPageProps = {
+	contentProps: Docs;
+	pageProps: {
+		fallback: boolean;
+	};
 };
 
 export type TocItem = MarkdownHeading & {

@@ -3,11 +3,9 @@ import Layout from '@layouts/docs-content.astro';
 import { siteConfig } from '@config';
 import { locales } from '@utils/i18n';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '@utils/docs';
-import type { Docs } from '~/types';
+import type { DocsPageProps as Props } from '~/types';
 
-type Props = Docs & {
-	fallback: boolean;
-};
+const { contentProps, pageProps } = Astro.props;
 
 export async function getStaticPaths() {
 	const paths = [];
@@ -16,7 +14,7 @@ export async function getStaticPaths() {
 	paths.push(
 		...allPages.map((p) => ({
 			params: { locale: p.locale, slug: p.slug },
-			props: { ...p, fallback: false },
+			props: { contentProps: p, pageProps: { fallback: false } },
 		})),
 	);
 
@@ -33,18 +31,15 @@ export async function getStaticPaths() {
 			...fallbackPages.map((p) => ({
 				params: { locale, slug: p.slug },
 				// Ensure we have fallbacked locale here.
-				props: { ...p, locale, fallback: true },
+				props: { contentProps: p, pageProps: { fallback: true } },
 			})),
 		);
 	}
 
 	return paths;
 }
-
-// Render the page
-const { Content, headings, id, locale } = Astro.props;
 ---
 
-<Layout headings={headings} fileId={id} locale={locale}>
-	<Content />
+<Layout contentProps={contentProps} pageProps={pageProps}>
+	<contentProps.Content />
 </Layout>
