@@ -3,4 +3,4 @@ export const navItems = {
 	docs: '文档',
 	resources: '资源',
 	guiluo: '归落原',
-};
+} as const;

@@ -3,4 +3,4 @@ export const navItems = {
 	docs: 'Documents',
 	resources: 'Resources',
 	guiluo: 'GuiLuoYuan',
-};
+} as const;
