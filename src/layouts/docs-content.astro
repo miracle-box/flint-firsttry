@@ -4,8 +4,9 @@ import { TableOfContents } from '@components/docs/table-of-contents';
 import { getTocTree } from '~/utils/generate-toc';
 import Breadcrumb from '~/components/docs/breadcrumb.astro';
 import type { DocsPageProps as Props } from '~/types';
+import Fallback from '~/components/docs/fallback.astro';
 
-const { contentProps } = Astro.props;
+const { contentProps, pageProps } = Astro.props;
 ---
 
 <Layout>
@@ -16,6 +17,13 @@ const { contentProps } = Astro.props;
 			</nav>
 		</div>
 		<main class="order-1 pt-12 markdown-body docs">
+			<div>
+				{
+					() => {
+						if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
+					}
+				}
+			</div>
 			<div>
 				<Breadcrumb filePath={contentProps.id} />
 			</div>

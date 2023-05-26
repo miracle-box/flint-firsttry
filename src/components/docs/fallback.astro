@@ -1,0 +1,18 @@
+---
+import { getLocaleFromUrl, i18nObject, loadLocale } from '@utils/i18n';
+import type { Locales } from '~/types';
+
+type Props = {
+	fallbackLocale: Locales;
+};
+
+const { fallbackLocale } = Astro.props;
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+await loadLocale(locale);
+const t = i18nObject(locale);
+---
+
+<div>
+	{t.docs.fallbackTip(locale, fallbackLocale)}
+</div>
