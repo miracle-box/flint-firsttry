@@ -2,7 +2,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Locales, Docs } from 'src/types';
 import { siteConfig } from '@config';
-import { locales } from './i18n';
+import { isValidLocale } from '@utils/i18n';
 
 /**
  * Remove the tailing country code (i.e. /something/nested[/zh]) from a slug
@@ -16,7 +16,7 @@ function getLocaleFromSlug(slug: string): Locales {
 	const splitted = slug.split('/').reverse();
 
 	// Type guard here, throws an error when the locale is not valid.
-	if (splitted[0] ?? '' in locales) return splitted[0] as Locales;
+	if (isValidLocale(splitted[0]!)) return splitted[0];
 
 	throw new Error(`Unexpected locale found in docs:${slug}`);
 }
