@@ -34,7 +34,7 @@ const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index,
 				`(locale ${locale} and ${siteConfig.site.defaultLocale})`,
 		);
 
-	return { text: target.title, url: `/${locale}/docs/${target.slug}` };
+	return { text: target.title, url: `/${locale}/docs/${target.slug}/` };
 });
 ---
 
