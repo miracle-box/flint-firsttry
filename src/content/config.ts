@@ -7,6 +7,7 @@ const news = defineCollection({
 		author: z.string(),
 		image: z.string().url(),
 		date: z.string().datetime(),
+		tags: z.string().array(),
 	}),
 });
 
