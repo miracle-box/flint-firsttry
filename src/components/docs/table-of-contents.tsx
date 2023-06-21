@@ -76,7 +76,6 @@ export const TableOfContents: Component<TocProps> = (props: TocProps) => {
 			style={{ transform: `translateY(${activeIndex() * 28}px)` }}
 		>
 			<div class="absolute bg-primary-500 mt-[4px] h-5 w-[4px] rounded" />
-			<div class="absolute bg-primary-500/10 mt-[0px] h-[28px] w-[230px] ml-2 rounded-md" />
 		</div>
 	);
 
