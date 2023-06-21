@@ -10,23 +10,24 @@ const { contentProps, pageProps } = Astro.props;
 ---
 
 <Layout>
-	<div class="container flex mx-auto px-8 gap-8">
-		<div class="order-2 mt-12">
-			<nav class="sticky top-32 w-64 border p-2 rounded-lg">
-				<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
+	<div class="container flex mx-auto px-4 gap-8">
+		<aside class="order-2 hidden lg:block">
+			<!-- Height: 100vh - navHeight - 2*yMargin -->
+			<nav class="h-[calc(100vh-64px-32px*2)] sticky top-24 flex flex-col gap-2 w-[240px]">
+				<div class="text-sm font-bold">On this page</div>
+				<div class="relative overflow-auto">
+					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
+				</div>
 			</nav>
-		</div>
-		<main class="order-1 pt-12 markdown-body docs">
-			<div>
-				{
-					() => {
-						if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
-					}
+		</aside>
+		<main class="order-1 mt-16 flex-1 markdown-body docs">
+			<Breadcrumb filePath={contentProps.id} />
+			<h1 class="text-dp-lg font-semibold">{contentProps.title}</h1>
+			{
+				() => {
+					if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
 				}
-			</div>
-			<div>
-				<Breadcrumb filePath={contentProps.id} />
-			</div>
+			}
 			<div>
 				<slot />
 			</div>
