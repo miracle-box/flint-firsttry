@@ -10,11 +10,13 @@ const { contentProps, pageProps } = Astro.props;
 ---
 
 <Layout>
+	<!-- TODO: remove this magic value sometime later -->
 	<div class="grid grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr] mx-auto w-full gap-8">
 		<aside class="order-1"></aside>
-		<aside class="order-3 hidden lg:block">
-			<!-- Height: 100vh - navHeight - 2*yMargin -->
-			<nav class="h-[calc(100vh-64px-32px*2)] sticky grid top-24 gap-2">
+		<!-- Table of Contents -->
+		<aside class="order-3 hidden lg:block pr-4">
+			<!-- Height: 100vh - navHeight - topMargin - bottomMargin), Top: navHeight + topMargin -->
+			<nav class="h-[calc(100vh-64px-48px-48px)] top-[112px] sticky grid gap-2">
 				<div class="text-sm font-bold">On this page</div>
 				<div class="relative overflow-auto">
 					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
@@ -29,7 +31,6 @@ const { contentProps, pageProps } = Astro.props;
 					if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
 				}
 			}
-			<div class="mb-4"></div>
 			<div>
 				<slot />
 			</div>
