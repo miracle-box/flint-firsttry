@@ -38,12 +38,16 @@ const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index,
 });
 ---
 
-<span>{t.docs.breadcrumbBase()}</span>
-{
-	breadcrumb.map((item) => (
-		<>
-			<span>/</span>
-			<a href={item.url}>{item.text}</a>
-		</>
-	))
-}
+<div>
+	<span class="text-sm text-gray-800">{t.docs.breadcrumbBase()}</span>
+	{
+		breadcrumb.map((item) => (
+			<>
+				<span class="text-sm text-gray-800">/</span>
+				<a class="text-sm text-gray-500" href={item.url}>
+					{item.text}
+				</a>
+			</>
+		))
+	}
+</div>
