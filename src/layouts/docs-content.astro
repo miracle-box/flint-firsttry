@@ -11,21 +11,21 @@ const { contentProps, pageProps } = Astro.props;
 
 <Layout>
 	<!-- TODO: remove this magic value sometime later -->
-	<div class="grid grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr] mx-auto w-full gap-8">
+	<div class="mx-auto grid w-full grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr] gap-8">
 		<aside class="order-1"></aside>
 		<!-- Table of Contents -->
-		<aside class="order-3 hidden lg:block pr-4">
+		<aside class="order-3 hidden pr-4 lg:block">
 			<!-- Height: 100vh - navHeight - topMargin - bottomMargin), Top: navHeight + topMargin -->
-			<nav class="h-[calc(100vh-64px-48px-48px)] top-[112px] sticky grid gap-2">
+			<nav class="sticky top-[112px] grid h-[calc(100vh-64px-48px-48px)] gap-2">
 				<div class="text-sm font-bold">On this page</div>
 				<div class="relative overflow-auto">
 					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
 				</div>
 			</nav>
 		</aside>
-		<main class="order-2 mt-8 flex-1 border px-16 pb-16 pt-8 rounded-2xl shadow-2xl docs">
+		<main class="docs order-2 mt-8 flex-1 rounded-2xl border px-16 pb-16 pt-8 shadow-2xl">
 			<Breadcrumb filePath={contentProps.id} />
-			<h1 class="text-dp-lg font-semibold mb-4 mt-2">{contentProps.title}</h1>
+			<h1 class="mb-4 mt-2 text-dp-lg font-semibold">{contentProps.title}</h1>
 			{
 				() => {
 					if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;

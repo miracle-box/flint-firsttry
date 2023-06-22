@@ -13,7 +13,7 @@ const TableOfContentsItem: Component<TocItemProps> = (props: TocItemProps) => (
 	<ul class="ml-4">
 		<For each={props.tocTree}>
 			{({ slug, text, children }) => (
-				<li class="w-full text-ellipsis overflow-hidden break-all whitespace-nowrap text-md">
+				<li class="w-full overflow-hidden text-ellipsis whitespace-nowrap break-all text-md">
 					<a href={`#${slug}`} class="leading-7" classList={{ 'text-primary-600': props.activeId === slug }}>
 						{text}
 					</a>
@@ -75,7 +75,7 @@ export const TableOfContents: Component<TocProps> = (props: TocProps) => {
 			// Currently, the height of each entry in TOC is 28px.
 			style={{ transform: `translateY(${activeIndex() * 28}px)` }}
 		>
-			<div class="absolute bg-primary-500 mt-[4px] h-5 w-[4px] rounded" />
+			<div class="absolute mt-[4px] h-5 w-[4px] rounded bg-primary-500" />
 		</div>
 	);
 

@@ -24,7 +24,7 @@ export const NavPopper: Component<Props> = (props: Props) => {
 			<button
 				type="button"
 				onClick={openModal}
-				class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded outline-none transition-colors align-middle"
+				class="rounded p-2 align-middle text-gray-500 outline-none ring-gray-200 transition-colors hover:bg-gray-100 hover:text-gray-700 focus:ring"
 			>
 				{props.icon}
 			</button>
@@ -49,9 +49,9 @@ export const NavPopper: Component<Props> = (props: Props) => {
 						leaveFrom="opacity-100"
 						leaveTo="opacity-0"
 					>
-						<DialogPanel class="fixed top-4 right-4 w-36 p-4 pr-12 overflow-hidden bg-white shadow-xl rounded-xl">
+						<DialogPanel class="w-36 fixed right-4 top-4 overflow-hidden rounded-xl bg-white p-4 pr-12 shadow-xl">
 							<button
-								class="absolute top-2 right-2 p-1 text-gray-500 hover:text-gray-700 hover:bg-gray-100 focus:ring ring-gray-200 rounded transition-colors outline-none"
+								class="absolute right-2 top-2 rounded p-1 text-gray-500 outline-none ring-gray-200 transition-colors hover:bg-gray-100 hover:text-gray-700 focus:ring"
 								onClick={closeModal}
 							>
 								<DismissIcon />
