@@ -1,0 +1,165 @@
+---
+title: Long Document Test
+desc: This is used to test whether the Markdown typesetting is correct
+---
+
+This document is used to test whether the common Markdown typesetting is correct.
+
+## Typesetting
+
+### Basic
+
+**Bold**
+
+_Italic_
+
+**_Bold and italic_**
+
+~~Strikethrough~~
+
+**_~~Bold, italic and strikethrough~~_**
+
+> Quoting block
+
+### Links & Images
+
+Link：[GO to Yaasasi](https://spark.yaasasi.cn/)
+
+![](https://img1.imgtp.com/2023/06/24/JZETcdbW.jpg)
+
+### Headings
+
+All headings here:
+
+```
+# h1
+## h2
+### h3
+#### h4
+##### h4
+###### h5
+```
+
+## Lists
+
+### Ordered List
+
+1. Ordered lists
+2. Code blocks
+3. Typesetting
+
+### Unordered List
+
+-   Typesetting
+-   Code blocks
+-   Unordered lists
+
+### Compose lists with other elements
+
+1.  > An item in an ordered list of quoting blocks
+2.  > This is the second item
+
+> 1. An ordered list in a quoting block
+> 2. An ordered list in a quoting block
+
+-   > An item in an unordered list of quoting blocks
+-   > This is the second item
+
+> -   An unordered list in a quoting block
+> -   An unordered list in a quoting block
+
+## Code Blocks
+
+### C
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    /* Example program written in C */
+    printf("Hello, World! \n");
+    return 0;
+}
+```
+
+### Java
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+```
+
+### JavaScript
+
+```javascript
+/**
+ * nth element in the fibonacci series.
+ * @param n >= 0
+ * @return the nth element, >= 0.
+ */
+function fib(n) {
+	var a = 1,
+		b = 1;
+	var tmp;
+	while (--n >= 0) {
+		tmp = a;
+		a += b;
+		b = tmp;
+	}
+	return a;
+}
+
+document.write(fib(10));
+```
+
+### Golang
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+```
+
+### Python
+
+```python
+class Employee:
+   empCount = 0
+
+   def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+        Employee.empCount += 1
+```
+
+### Quoted Code Block
+
+> Python code below
+>
+> ```python
+> print("Hello World") # echo Hello World
+> ```
+
+## Tables
+
+| Item     | Value | Qty |
+| :------- | ----: | :-: |
+| Computer | $1600 |  5  |
+| Phone    |  \$12 | 12  |
+| Pipe     |   \$1 | 234 |
+
+## Others
+
+Horizontal rule:
+
+---
+
+End of test
