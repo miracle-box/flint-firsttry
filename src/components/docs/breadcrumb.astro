@@ -39,7 +39,7 @@ const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index,
 ---
 
 <div>
-	<span class="text-sm text-gray-800">{t.docs.breadcrumbBase()}</span>
+	<span class="text-sm text-gray-800"><a href={`/${locale}/docs/main/`}>{t.docs.breadcrumbBase()}</a></span>
 	{
 		breadcrumb.map((item) => (
 			<>
