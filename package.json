@@ -1,8 +1,13 @@
 {
-  "name": "@losenone/web-front",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "@miracle-box/astro-theme-rocket",
+  "author": {
+    "name": "The Miracle Box",
+    "email": "contact@sagirii.me",
+    "url": "https://sagirii.me"
+  },
   "license": "Apache-2.0",
+  "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "npm-run-all --parallel i18n:gen-types astro:dev",
