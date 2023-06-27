@@ -1,16 +1,33 @@
 import type { Translation } from '../i18n-types';
-import { hero } from './hero';
-import { navItems } from './nav-items';
-import { notfound } from './notfound';
-import { site } from './site';
-import { docs } from './docs';
 
 const en: Translation = {
-	hero,
-	navItems,
-	notfound,
-	site,
-	docs,
+	site: {
+		logotype: 'Losenone',
+		logoAlt: 'Logo',
+		title: 'Losenone',
+	},
+	navItems: {
+		news: 'News',
+		docs: 'Docs',
+		resources: 'Resolution',
+		guiluo: 'GuiLuoYuan',
+	},
+	hero: {
+		title: 'Losenone',
+		desc: 'Amazing description here.',
+		primaryButton: 'Primary',
+		secondaryButton: 'Secondary',
+	},
+	notfound: {
+		title: 'missing',
+		body: "Sorry, but the page you requested isn't here!",
+		button: 'Return',
+	},
+	docs: {
+		breadcrumbBase: 'Docs',
+		fallbackTip:
+			'Requested page is not yet translated to the selected language ({0|localeName}), showing {1|localeName} version.',
+	},
 };
 
 export default en;
