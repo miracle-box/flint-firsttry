@@ -5,4 +5,8 @@
 	ol {
 		@apply list-decimal pl-8;
 	}
+
+	pre {
+		@apply border border-gray-200;
+	}
 }

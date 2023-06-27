@@ -3,7 +3,6 @@
 @import '@fontsource/noto-sans-sc';
 
 @import 'tailwindcss/base';
-@import url('code-colors.css') layer(base);
 
 @import 'tailwindcss/components';
 /* Base markdown style */
