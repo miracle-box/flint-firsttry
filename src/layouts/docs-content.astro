@@ -12,7 +12,7 @@ const { contentProps, pageProps } = Astro.props;
 <Layout>
 	<!-- TODO: remove this magic value sometime later -->
 	<div class="mx-auto grid w-full grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr] gap-8">
-		<aside class="order-1"></aside>
+		<aside class="order-1 hidden lg:block"></aside>
 		<!-- Table of Contents -->
 		<aside class="order-3 hidden pr-4 lg:block">
 			<!-- Max height: 100vh - navHeight - topMargin - bottomMargin), Top offset: navHeight + topMargin -->
@@ -23,7 +23,9 @@ const { contentProps, pageProps } = Astro.props;
 				</div>
 			</nav>
 		</aside>
-		<main class="order-2 mt-8 flex-1 rounded-2xl border px-16 py-12 shadow-2xl">
+		<main
+			class="order-2 col-span-3 mx-4 mt-8 flex-1 rounded-2xl border px-16 py-12 shadow-2xl lg:col-span-1 lg:mx-0"
+		>
 			<Breadcrumb filePath={contentProps.id} />
 			<article class="markdown-body mt-6">
 				<h1>{contentProps.title}</h1>
