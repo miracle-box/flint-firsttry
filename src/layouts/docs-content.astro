@@ -23,17 +23,19 @@ const { contentProps, pageProps } = Astro.props;
 				</div>
 			</nav>
 		</aside>
-		<main class="docs order-2 mt-8 flex-1 rounded-2xl border px-16 pb-16 pt-8 shadow-2xl">
+		<main class="order-2 mt-8 flex-1 rounded-2xl border px-16 py-12 shadow-2xl">
 			<Breadcrumb filePath={contentProps.id} />
-			<h1 class="mb-4 mt-2 text-dp-lg font-semibold">{contentProps.title}</h1>
-			{
-				() => {
-					if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
+			<article class="markdown-body mt-6">
+				<h1>{contentProps.title}</h1>
+				{
+					() => {
+						if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
+					}
 				}
-			}
-			<div>
-				<slot />
-			</div>
+				<div>
+					<slot />
+				</div>
+			</article>
 		</main>
 	</div>
 </Layout>

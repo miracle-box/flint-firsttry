@@ -22,6 +22,9 @@ dependencies:
   astro:
     specifier: ^2.4.2
     version: 2.4.2
+  github-markdown-css:
+    specifier: ^5.2.0
+    version: 5.2.0
   solid-headless:
     specifier: ^0.13.1
     version: 0.13.1(solid-js@1.7.5)
@@ -3832,6 +3835,13 @@ packages:
         integrity: sha512-MjhiaIWCJ1sAU4pIQ5i5OfOuHHxVo1oYeNsWTON7jxYkod8pHocXeh+SSbmu5OZZZK73B6cbJ2XADzXehLyovQ==,
       }
     dev: true
+
+  /github-markdown-css@5.2.0:
+    resolution:
+      {
+        integrity: sha512-hq5RaCInSUZ48bImOZpkppW2/MT44StRgsbsZ8YA4vJFwLKB/Vo3k7R2t+pUGqO+ThG0QDMi96TewV/B3vyItg==,
+      }
+    dev: false
 
   /github-slugger@1.5.0:
     resolution:

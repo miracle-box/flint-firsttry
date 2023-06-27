@@ -3,12 +3,12 @@
 @import '@fontsource/noto-sans-sc';
 
 @import 'tailwindcss/base';
-@import url(code-colors.css) layer(base);
-/* @import url(base_styles.css) layer(base); */
+@import url('code-colors.css') layer(base);
 
 @import 'tailwindcss/components';
-@import url(docs.temp.css) layer(components);
-/* @import url(components_styles.css) layer(components); */
+/* Base markdown style */
+@import 'github-markdown-css/github-markdown-light.css' layer(components);
+/* Markdown style fixes */
+@import url('markdown.css') layer(components);
 
 @import 'tailwindcss/utilities';
-/* @import url(utilities_styles.css) layer(utilities); */

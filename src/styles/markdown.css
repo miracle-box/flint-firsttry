@@ -1,0 +1,8 @@
+.markdown-body {
+	ul {
+		@apply list-disc pl-8;
+	}
+	ol {
+		@apply list-decimal pl-8;
+	}
+}
