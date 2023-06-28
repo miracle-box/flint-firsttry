@@ -1,8 +1,8 @@
 ---
+import type { NewsPageProps as Props } from '~/types';
 import Layout from '~/layouts/news-content.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
-import type { NewsPageProps as Props } from '~/types';
 
 const { contentProps } = Astro.props;
 

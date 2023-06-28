@@ -1,10 +1,10 @@
 ---
 import type { Locales } from '~/types';
-import { siteConfig, localeNames } from '~/config';
-import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
-import { NavPopper } from '~/components/layout/nav-popper';
 import { LanguageIcon } from '~/components/icon/language';
 import { MenuIcon } from '~/components/icon/menu';
+import { NavPopper } from '~/components/layout/nav-popper';
+import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
+import { siteConfig, localeNames } from '~/config';
 
 const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);

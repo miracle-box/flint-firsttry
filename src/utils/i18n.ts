@@ -1,7 +1,7 @@
-import { loadLocaleAsync } from 'src/i18n/i18n-util.async';
-import { loadLocale as loadLocaleSync } from '../i18n/i18n-util.sync';
-import { locales } from '../i18n/i18n-util';
-import type { Locales } from '../i18n/i18n-types';
+import type { Locales } from '~/i18n/i18n-types';
+import { locales } from '~/i18n/i18n-util';
+import { loadLocaleAsync } from '~/i18n/i18n-util.async';
+import { loadLocale as loadLocaleSync } from '~/i18n/i18n-util.sync';
 import { siteConfig } from '~/config';
 
 export { locales, i18nObject } from '../i18n/i18n-util';

@@ -1,5 +1,6 @@
-import { type Component, For, Show, createSignal, createEffect } from 'solid-js';
+import type { Component } from 'solid-js';
 import type { TocItem } from '~/types';
+import { For, Show, createSignal, createEffect } from 'solid-js';
 
 type TocProps = {
 	tocTree: TocItem[];
