@@ -17,7 +17,7 @@ const { contentProps, pageProps } = Astro.props;
 		<aside class="order-3 hidden pr-4 lg:block">
 			<!-- Max height: 100vh - navHeight - topMargin - bottomMargin), Top offset: navHeight + topMargin -->
 			<nav class="sticky top-[112px] flex max-h-[calc(100vh-64px-48px-48px)] flex-col gap-2">
-				<div class="text-sm font-bold">On this page</div>
+				<div class="text-sm font-bold">{t.docs.tocHeading()}</div>
 				<div class="relative overflow-auto">
 					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
 				</div>
