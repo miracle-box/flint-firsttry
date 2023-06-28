@@ -1,8 +1,8 @@
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import type { Locales, Docs } from 'src/types';
-import { siteConfig } from '@config';
-import { isValidLocale } from '@utils/i18n';
+import { siteConfig } from '~/config';
+import { isValidLocale } from '~/utils/i18n';
 
 /**
  * Remove the tailing country code (i.e. /something/nested[/zh]) from a slug

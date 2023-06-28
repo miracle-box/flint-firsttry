@@ -1,10 +1,10 @@
 ---
-import { NavPopper } from '@components/layout/nav-popper';
-import { LanguageIcon } from '@components/icon/language';
-import { MenuIcon } from '@components/icon/menu';
-import { siteConfig, localeNames } from '@config';
-import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '@utils/i18n';
 import type { Locales } from '~/types';
+import { siteConfig, localeNames } from '~/config';
+import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
+import { NavPopper } from '~/components/layout/nav-popper';
+import { LanguageIcon } from '~/components/icon/language';
+import { MenuIcon } from '~/components/icon/menu';
 
 const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
@@ -13,7 +13,10 @@ const t = i18nObject(locale);
 
 function getLocaleItems() {
 	return Object.entries(localeNames).map(([locale, locName]) => {
-		return { locName, link: changePathLocale(url.pathname, locale as Locales) };
+		return {
+			locName,
+			link: changePathLocale(url.pathname, locale as Locales),
+		};
 	});
 }
 

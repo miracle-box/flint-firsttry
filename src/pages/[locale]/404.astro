@@ -1,6 +1,6 @@
 ---
-import Layout from '@layouts/blank.astro';
-import { locales, loadLocale, i18nObject, getLocaleFromUrl } from '@utils/i18n';
+import Layout from '~/layouts/blank.astro';
+import { locales, loadLocale, i18nObject, getLocaleFromUrl } from '~/utils/i18n';
 import '~/styles/404.css';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
@@ -13,13 +13,17 @@ const t = i18nObject(locale);
 <Layout>
 	<div class="bg-clip-padding">
 		<div class="bg-clip-padding text-center">
-			<h1 class="m-10 text-dp-2xl leading-relaxed">{t.notfound.title()}</h1>
+			<h1 class="m-10 text-dp-2xl leading-relaxed">
+				{t.notfound.title()}
+			</h1>
 			<img src="/404.png" alt="" class="m-auto max-h-48" />
 			<p class="m-12 leading-relaxed">{t.notfound.body()}</p>
 			<div class="p-0"></div>
 		</div>
 		<div class="black text-center">
-			<button onclick="window.history.go(-1);">{t.notfound.button()}</button>
+			<button onclick="
+			window.history.go(-1);
+			">{t.notfound.button()}</button>
 		</div>
 	</div>
 </Layout>

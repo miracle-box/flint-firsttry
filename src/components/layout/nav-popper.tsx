@@ -1,5 +1,5 @@
-import { createSignal } from 'solid-js';
 import type { JSX, Component } from 'solid-js';
+import { createSignal } from 'solid-js';
 import { Dialog, DialogPanel, Transition, TransitionChild, DialogOverlay } from 'solid-headless';
 import { DismissIcon } from '../icon/dismiss';
 

@@ -1,7 +1,7 @@
 ---
-import Layout from '@layouts/blank.astro';
-import Hero from '@components/landing/hero.astro';
-import { locales } from '@utils/i18n';
+import Layout from '~/layouts/blank.astro';
+import { locales } from '~/utils/i18n';
+import Hero from '~/components/landing/hero.astro';
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));

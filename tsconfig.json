@@ -5,11 +5,7 @@
     "module": "ES2022",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@utils/*": ["src/utils/*"],
-      "@config": ["src/config"]
+      "~/*": ["src/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js"

@@ -1,10 +1,10 @@
 ---
-import Layout from '@layouts/base.astro';
-import { TableOfContents } from '@components/docs/table-of-contents';
-import { getTocTree } from '~/utils/generate-toc';
-import Breadcrumb from '~/components/docs/breadcrumb.astro';
 import type { DocsPageProps as Props } from '~/types';
+import Layout from '~/layouts/base.astro';
+import Breadcrumb from '~/components/docs/breadcrumb.astro';
 import Fallback from '~/components/docs/fallback.astro';
+import { TableOfContents } from '~/components/docs/table-of-contents';
+import { getTocTree } from '~/utils/generate-toc';
 
 const { contentProps, pageProps } = Astro.props;
 ---
