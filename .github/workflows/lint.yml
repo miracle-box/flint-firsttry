@@ -24,17 +24,19 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-
       - name: Install pnpm package manager
         uses: pnpm/action-setup@v2
         with:
           version: 8
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          # Global packages cache
+          cache: 'pnpm'
+
+      # node_modules cache
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
