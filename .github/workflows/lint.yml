@@ -1,10 +1,6 @@
 name: Lint
 
 on:
-  push:
-    branches:
-      - main
-      - develop
   pull_request:
     branches:
       - main
@@ -24,19 +20,17 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v3
 
-      - name: Install pnpm package manager
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          # Global packages cache
-          cache: 'pnpm'
 
-      # node_modules cache
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+  
+      # pnpm store cache
       - name: Get pnpm store directory
         id: pnpm-cache
         shell: bash
@@ -54,8 +48,11 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm install
 
-      - name: Generate types
-        run: pnpm exec run-p i18n:gen-types-ci astro:gen-types
+      - name: Generate i18n types
+        run: pnpm exec typesafe-i18n --no-watch
+
+      - name: Run linters (Astro)
+        run: pnpm exec astro check
 
       - name: Run linters (Prettier, ESLint, TSC)
         uses: wearerequired/lint-action@v2
@@ -67,9 +64,3 @@ jobs:
           eslint_args: '--ignore-path ./.gitignore'
           eslint_extensions: 'astro,ts,tsx,cjs,mjs,js,jsx'
           tsc: true
-
-      - name: Run linters (Astro)
-        uses: radenpioneer/astro-check@v0
-        with:
-          check-command: 'check:astro'
-          node-version: 18
