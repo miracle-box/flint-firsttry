@@ -1,0 +1,59 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+# Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
+permissions:
+  checks: write
+  contents: write
+
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install pnpm package manager
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install Node.js dependencies
+        run: pnpm install
+
+      - name: Generate types
+        run: pnpm exec run-p i18n:gen-types-ci astro:gen-types
+
+      - name: Run linters (Prettier, ESLint, TSC)
+        uses: wearerequired/lint-action@v2
+        with:
+          prettier: true
+          prettier_args: '--ignore-path ./.gitignore --plugin-search-dir=.'
+          prettier_extensions: 'js,ts,cjs,mjs,jsx,tsx,html,json,yaml,yml,astro'
+          eslint: true
+          eslint_args: '--ignore-path ./.gitignore'
+          eslint_extensions: 'astro,ts,tsx,cjs,mjs,js,jsx'
+          tsc: true
+
+      - name: Run linters (Astro)
+        uses: radenpioneer/astro-check@v0
+        with:
+          check-command: 'check:astro'
+          node-version: 18
