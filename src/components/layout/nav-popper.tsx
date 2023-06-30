@@ -1,11 +1,12 @@
 import type { JSX, Component } from 'solid-js';
 import { Dialog, DialogPanel, Transition, TransitionChild, DialogOverlay } from 'solid-headless';
 import { createSignal } from 'solid-js';
-import { DismissIcon } from '../icon/dismiss';
+import DismissIcon from '~icons/octicon/x-24';
 
 type Props = {
-	icon: astroHTML.JSX.Element;
-	children: JSX.Element;
+	// `icon` is a slot
+	icon?: JSX.Element;
+	children: JSX.Element[];
 };
 
 export const NavPopper: Component<Props> = (props: Props) => {
@@ -54,7 +55,7 @@ export const NavPopper: Component<Props> = (props: Props) => {
 								class="absolute right-2 top-2 rounded p-1 text-gray-500 outline-none ring-gray-200 transition-colors hover:bg-gray-100 hover:text-gray-700 focus:ring"
 								onClick={closeModal}
 							>
-								<DismissIcon />
+								<DismissIcon width="24" height="24" />
 							</button>
 							{props.children}
 						</DialogPanel>
