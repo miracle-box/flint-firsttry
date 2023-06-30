@@ -1,10 +1,10 @@
 ---
 import type { Locales } from '~/types';
-import { LanguageIcon } from '~/components/icon/language';
-import { MenuIcon } from '~/components/icon/menu';
 import { NavPopper } from '~/components/layout/nav-popper';
 import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
 import { siteConfig, localeNames } from '~/config';
+import LanguageIcon from '~icons/octicon/globe-24';
+import MenuIcon from '~icons/octicon/three-bars-16';
 
 const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
@@ -62,7 +62,8 @@ const navItems = [
 	<!-- Right -->
 	<div class="flex items-center">
 		<!-- Language Selector -->
-		<NavPopper class:list="ml-4" icon={LanguageIcon} client:load>
+		<NavPopper class:list="ml-4" client:load>
+			<LanguageIcon slot="icon" />
 			<div>
 				<div class="flex flex-col gap-2">
 					{
@@ -77,7 +78,8 @@ const navItems = [
 		</NavPopper>
 		<!-- Mobile Nav -->
 		<div class="ml-4 md:hidden">
-			<NavPopper icon={MenuIcon} client:load>
+			<NavPopper client:load>
+				<MenuIcon slot="icon" />
 				<div>
 					<div class="flex flex-col gap-2">
 						{

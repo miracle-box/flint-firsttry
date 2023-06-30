@@ -9,6 +9,6 @@
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["unplugin-icons/types/astro"]
+    "types": ["unplugin-icons/types/solid"]
   }
 }
