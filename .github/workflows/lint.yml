@@ -29,7 +29,7 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-  
+
       # pnpm store cache
       - name: Get pnpm store directory
         id: pnpm-cache
