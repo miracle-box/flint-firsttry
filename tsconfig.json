@@ -8,6 +8,7 @@
       "~/*": ["src/*"]
     },
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "types": ["unplugin-icons/types/solid"]
   }
 }
