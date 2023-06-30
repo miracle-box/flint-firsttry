@@ -1,5 +1,5 @@
 ---
-import { loadLocale, getLocaleFromUrl, i18nObject } from '@utils/i18n';
+import { loadLocale, getLocaleFromUrl, i18nObject } from '~/utils/i18n';
 
 const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
@@ -9,8 +9,12 @@ const t = i18nObject(locale);
 
 <header class="flex flex-col gap-4 px-8 py-24 md:gap-8 lg:gap-12">
 	<div class="flex flex-col items-center justify-center gap-3 md:gap-6">
-		<h1 class="text-dp-md font-semibold sm:text-dp-lg md:text-dp-xl lg:text-dp-2xl">{t.hero.title()}</h1>
-		<p class="text-md font-medium sm:text-lg md:text-xl lg:text-dp-sm">{t.hero.desc()}</p>
+		<h1 class="text-dp-md font-semibold sm:text-dp-lg md:text-dp-xl lg:text-dp-2xl">
+			{t.hero.title()}
+		</h1>
+		<p class="text-md font-medium sm:text-lg md:text-xl lg:text-dp-sm">
+			{t.hero.desc()}
+		</p>
 	</div>
 	<div class="flex items-center justify-center gap-3 sm:flex-row">
 		<a

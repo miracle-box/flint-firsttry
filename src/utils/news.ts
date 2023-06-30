@@ -1,6 +1,6 @@
-import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { News } from 'src/types';
+import type { News } from '~/types';
+import { getCollection } from 'astro:content';
 
 /**
  *  Remove the leading year (i.e. [2023/]something.md) from a slug

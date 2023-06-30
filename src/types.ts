@@ -1,5 +1,5 @@
-import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import type { Locales } from './i18n/i18n-types';
+import type { MarkdownHeading, MarkdownInstance } from 'astro';
 
 export type { Locales, Translations } from './i18n/i18n-types';
 

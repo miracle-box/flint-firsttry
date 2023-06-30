@@ -1,11 +1,31 @@
 const RULES = {
 	'unicorn/no-process-exit': 'off',
 	'n/file-extension-in-import': 'off',
-	'import/extensions': 'off',
-	'import/no-unassigned-import': [
+	'import/extensions': ['error', 'never', { pattern: { astro: 'always', css: 'always' } }],
+	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+	'import/order': [
 		'error',
 		{
-			allow: ['@fontsource/**', '**/*.css'],
+			groups: [
+				'type',
+				'builtin',
+				'external',
+				'internal',
+				'parent',
+				'sibling',
+				'index',
+				'object',
+				'unknown',
+			],
+			pathGroups: [
+				{ pattern: '~/config', group: 'object', position: 'after' },
+				{ pattern: '**/*.css', group: 'object', position: 'after' },
+			],
+			alphabetize: {
+				order: 'asc',
+			},
+			'newlines-between': 'never',
+			warnOnUnassignedImports: true,
 		},
 	],
 };
@@ -18,9 +38,10 @@ const TS_RULES = {
 	// https://github.com/xojs/xo/blob/a815db35d84b99709ac1f1de9d016d3b7d11e84a/lib/options-manager.js#L386
 	'unicorn/import-style': 'off',
 	'node/file-extension-in-import': 'off',
-	'import/export': 'off',
+	// 'import/export': 'off', -- This is fixed
 	'import/default': 'off',
 	'import/named': 'off',
+	// End of copied rules.
 };
 
 module.exports = {
@@ -39,9 +60,13 @@ module.exports = {
 	},
 	settings: {
 		'import/resolver': {
-			node: {
-				extensions: ['.js', '.cjs', '.mjs', '.jsx', '.ts', '.tsx'],
-			},
+			typescript: true,
+			node: true,
+		},
+		'import/extensions': ['.js', '.cjs', '.mjs', '.jsx', '.ts', '.tsx'],
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.ts', '.tsx'],
+			'astro-eslint-parser': ['.astro'],
 		},
 	},
 
@@ -52,6 +77,7 @@ module.exports = {
 				'xo',
 				'xo-typescript',
 				'./node_modules/xo/config/plugins.cjs',
+				'plugin:import/typescript',
 				'plugin:astro/recommended',
 				'plugin:prettier/recommended',
 			],
@@ -72,6 +98,7 @@ module.exports = {
 				'xo',
 				'xo-typescript',
 				'./node_modules/xo/config/plugins.cjs',
+				'plugin:import/typescript',
 				'plugin:prettier/recommended',
 			],
 			parser: '@typescript-eslint/parser',
@@ -86,6 +113,7 @@ module.exports = {
 				'xo',
 				'xo-typescript',
 				'./node_modules/xo/config/plugins.cjs',
+				'plugin:import/typescript',
 				'plugin:solid/recommended',
 				'plugin:prettier/recommended',
 			],
