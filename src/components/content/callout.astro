@@ -37,25 +37,15 @@ const { title } = Astro.props;
 
 <aside class="my-4 rounded-lg border px-5 py-4" class:list={style[type]}>
 	{
-		() => {
-			if (title) {
-				return (
-					<p class="!mb-2 flex items-center gap-2 text-lg font-bold leading-[18px]">
-						<IconComponent width={18} height={18} />
-						<span>{title}</span>
-					</p>
-				);
-			}
-		}
+		title && (
+			<p class="!mb-2 flex items-center gap-2 text-lg font-bold leading-[18px]">
+				<IconComponent width={18} height={18} />
+				<span>{title}</span>
+			</p>
+		)
 	}
 	<div class="flex items-start gap-2">
-		{
-			() => {
-				if (!title) {
-					return <IconComponent width={18} height={18} class="mt-[3px] flex-shrink-0" />;
-				}
-			}
-		}
+		{!title && <IconComponent width={18} height={18} class="mt-[3px] flex-shrink-0" />}
 		<section class="clearmb">
 			<slot />
 		</section>

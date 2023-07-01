@@ -35,11 +35,7 @@ const { contentProps, pageProps } = Astro.props;
 			<Breadcrumb filePath={contentProps.id} />
 			<article class="markdown-body mt-6">
 				<h1>{contentProps.title}</h1>
-				{
-					() => {
-						if (pageProps.fallback) return <Fallback fallbackLocale={contentProps.locale} />;
-					}
-				}
+				{pageProps.fallback && <Fallback fallbackLocale={contentProps.locale} />}
 				<div>
 					<slot />
 				</div>
