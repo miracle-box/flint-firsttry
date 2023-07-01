@@ -1,5 +1,6 @@
 ---
 import type { Locales } from '~/types';
+import Callout from '@comp/callout.astro';
 import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
 
 type Props = {
@@ -13,6 +14,6 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 ---
 
-<div class="mb-4 rounded-lg border border-warning-300 bg-warning-50 px-8 py-4 text-warning-800">
+<Callout type="warning" title={false}>
 	{t.docs.fallbackTip(locale, fallbackLocale)}
-</div>
+</Callout>
