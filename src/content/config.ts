@@ -15,9 +15,11 @@ const docs = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		desc: z.string(),
-		outdated: z.boolean().optional(),
+		outdated: z.boolean().default(false).optional(),
+		outdated_translation: z.union([z.string().url(), z.literal(false)]).optional(),
 	}),
 });
+
 export const collections = {
 	news,
 	docs,
