@@ -41,6 +41,7 @@ export type Docs = {
 	title: string;
 	desc: string;
 	outdated: boolean;
+	outdated_translation: string | false;
 };
 
 export type DocsPageProps = {

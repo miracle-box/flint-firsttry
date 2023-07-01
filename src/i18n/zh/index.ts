@@ -27,6 +27,12 @@ const zh: BaseTranslation = {
 		breadcrumbBase: '文档',
 		fallbackTip:
 			'请求的页面还没有没有被翻译为您的语言（{0:I18nLocales|localeName}），正在显示 {1:I18nLocales|localeName} 版本。',
+		outdatedTranslationTip: [
+			'本文是原始内容的过期翻译，请查阅',
+			' {0:I18nLocales|localeName} 版本',
+			'以获得最准确的信息。',
+			'（欢迎你来帮助更新翻译）！',
+		],
 		tocHeading: '在本页上',
 	},
 };
