@@ -23,7 +23,7 @@ function getLocaleFromSlug(slug: string): Locales {
 
 async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 	const { id, slug, data } = page;
-	const { title, desc, outdated = false } = data;
+	const { title, desc, outdated = false, outdated_translation = false } = data;
 	const { Content, headings } = await page.render();
 	const locale = getLocaleFromSlug(slug);
 
@@ -36,6 +36,7 @@ async function getNormalizedPage(page: CollectionEntry<'docs'>): Promise<Docs> {
 		title,
 		desc,
 		outdated,
+		outdated_translation,
 	};
 }
 
