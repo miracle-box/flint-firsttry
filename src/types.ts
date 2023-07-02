@@ -48,6 +48,7 @@ export type DocsPageProps = {
 	contentProps: Docs;
 	pageProps: {
 		fallback: boolean;
+		outdated: boolean;
 	};
 };
 

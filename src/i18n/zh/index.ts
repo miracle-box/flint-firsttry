@@ -27,6 +27,7 @@ const zh: BaseTranslation = {
 		breadcrumbBase: '文档',
 		fallbackTip:
 			'请求的页面还没有没有被翻译为您的语言（{0:I18nLocales|localeName}），正在显示 {1:I18nLocales|localeName} 版本。',
+		outdatedTip: '此页面的内容不完整或已过时。 如果你能帮忙，请一起更新这篇文章！',
 		outdatedTranslationTip: [
 			'本文是原始内容的过期翻译，请查阅',
 			' {0:I18nLocales|localeName} 版本',
