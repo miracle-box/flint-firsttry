@@ -27,6 +27,8 @@ const en: Translation = {
 		breadcrumbBase: 'Docs',
 		fallbackTip:
 			'Requested page is not yet translated to the selected language ({0|localeName}), showing {1|localeName} version.',
+		outdatedTip:
+			'The content on this page is incomplete or outdated. If you are able to help out, please consider updating the article!',
 		outdatedTranslationTip: [
 			'This page contains an outdated translation of the original content. Please check the',
 			' {0|localeName} version ',
