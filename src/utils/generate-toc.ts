@@ -2,25 +2,36 @@ import type { MarkdownHeading } from 'astro';
 import type { TocItem } from '~/types';
 
 /**
+ * Limit the depth of TocTree
+ * @param tree TOC tree
+ * @param level maximum nesting level
+ */
+function limitTreeNesting(tree: TocItem[], level: number): TocItem[] {
+	if (level === 1) for (const item of tree) item.children = [];
+	else if (level > 1) for (const item of tree) item.children = limitTreeNesting(item.children, level - 1);
+
+	return tree;
+}
+
+/**
  * Get TOC tree from flat headings array. (H2/H3 only)
  * @param headings Headings array from rendered document
  * @returns TOC tree
  */
 export function getTocTree(headings: MarkdownHeading[]): TocItem[] {
-	const tree: TocItem[] = [];
+	const stack: TocItem[] = [];
+	const root: TocItem[] = [];
 
-	// We only need H2 and H3 headings
-	headings = headings.filter(({ depth }) => depth === 2 || depth === 3);
+	for (const heading of headings) {
+		const node: TocItem = { ...heading, children: [] };
 
-	// Ensure the first heading is H2
-	if (headings.length > 0 && headings[0]!.depth !== 2)
-		throw new Error(`Unexpected heading: ${headings[0]!.text} should be H2.`);
+		while (stack.length > 0 && stack[stack.length - 1]!.depth >= heading.depth) stack.pop();
 
-	for (const item of headings) {
-		const lastTocItem = tree[tree.length - 1];
-		if (item.depth === 2) tree.push({ ...item, children: [] });
-		else if (item.depth === 3) lastTocItem?.children.push({ ...item, children: [] });
+		if (stack.length > 0) stack[stack.length - 1]!.children.push(node);
+		else root.push(node);
+
+		stack.push(node);
 	}
 
-	return tree;
+	return limitTreeNesting(root, 2);
 }
