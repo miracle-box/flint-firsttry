@@ -8,7 +8,7 @@ import ErrorIcon from '~icons/octicon/x-circle-16';
 
 type CalloutTypes = 'note' | 'tip' | 'success' | 'warning' | 'error';
 
-const style: Record<CalloutTypes, string> = {
+const styles: Record<CalloutTypes, string> = {
 	note: 'border-gray-400 bg-gray-50 text-gray-800',
 	tip: 'border-primary-400 bg-primary-50 text-primary-800',
 	success: 'border-success-400 bg-success-50 text-success-800',
@@ -17,7 +17,6 @@ const style: Record<CalloutTypes, string> = {
 } as const;
 
 const icons: Record<CalloutTypes, Icon> = {
-	// WRITE THIS INTO types.ts
 	note: NoteIcon,
 	tip: TipIcon,
 	success: SuccessIcon,
@@ -26,7 +25,7 @@ const icons: Record<CalloutTypes, Icon> = {
 } as const;
 
 type Props = {
-	type?: keyof typeof style;
+	type?: CalloutTypes;
 	title: string | false;
 };
 
@@ -35,7 +34,7 @@ const IconComponent: Icon = icons[type];
 const { title } = Astro.props;
 ---
 
-<aside class="my-4 rounded-lg border px-5 py-4" class:list={style[type]}>
+<aside class="my-4 rounded-lg border px-5 py-4" class:list={styles[type]}>
 	{
 		title && (
 			<p class="!mb-2 flex items-center gap-2 text-lg font-bold leading-[18px]">
