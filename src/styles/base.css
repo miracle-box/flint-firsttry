@@ -2,11 +2,12 @@
 @import '@fontsource/fira-mono';
 @import '@fontsource/noto-sans-sc';
 
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
 /* Base markdown style */
 @import 'github-markdown-css/github-markdown-light.css' layer(components);
 /* Markdown style fixes */
 @import url('markdown.css') layer(components);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/utilities";
