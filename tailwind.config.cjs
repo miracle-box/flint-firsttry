@@ -101,7 +101,7 @@ module.exports = {
 		},
 		fontFamily: {
 			sans: [
-				'InterVariable',
+				'Inter Variable',
 				'Noto Sans SC',
 				'system-ui',
 				'-apple-system',
