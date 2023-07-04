@@ -7,13 +7,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	trailingSlash: 'always',
-	integrations: [
-		mdx(),
-		tailwind({
-			config: { applyBaseStyles: false },
-		}),
-		solidJs(),
-	],
+	integrations: [mdx(), tailwind({ applyBaseStyles: false }), solidJs()],
 	markdown: {
 		shikiConfig: {
 			theme: 'github-light',
