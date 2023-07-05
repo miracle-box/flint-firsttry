@@ -1,0 +1,54 @@
+---
+import type { GetStaticPathsResult, Page } from 'astro';
+import type { Locales, News } from '~/types';
+import Layout from '~/layouts/blank.astro';
+import { locales } from '~/utils/i18n';
+import { fetchNews } from '~/utils/news';
+
+type Path = {
+	params: {
+		locale: Locales;
+	};
+	props: {
+		contentProps: News;
+	};
+};
+
+export async function getStaticPaths({
+	paginate,
+}: {
+	// More strict typing for PaginateFunction
+	paginate: (data: Path[], args: { params: Path['params']; pageSize: number }) => GetStaticPathsResult;
+}) {
+	const allPages = await fetchNews();
+
+	return locales.map((locale) => {
+		// The paginate function for each locale
+		return paginate(
+			allPages.map(
+				(p): Path => ({
+					// This is for page data
+					params: { locale },
+					props: { contentProps: p },
+				}),
+			),
+			{
+				// This is for paginating
+				params: { locale },
+				pageSize: 12,
+			},
+		);
+	});
+}
+
+const page = Astro.props.page as Page<Path>;
+---
+
+<Layout>
+	<div>
+		Current: {page.currentPage}
+	</div>
+	<div>
+		<pre>{JSON.stringify(page, undefined, 4)}</pre>
+	</div>
+</Layout>
