@@ -46,8 +46,10 @@ const page = Astro.props.page as Page<Path>;
 
 <Layout>
 	<div>
-		Current: {page.currentPage}
+		Page: {page.currentPage} / {page.lastPage}
 	</div>
+	{page.url.next && <div>Next: {page.url.next}</div>}
+	{page.url.prev && <div>Prev: {page.url.prev}</div>}
 	<div>
 		<pre>{JSON.stringify(page, undefined, 4)}</pre>
 	</div>
