@@ -1,19 +1,17 @@
 ---
-import type { Locales, News, NewsPageProps as Props } from '~/types';
+import type { Locales, NewsPageProps, NewsPageProps as Props } from '~/types';
 import Layout from '~/layouts/news-content.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
 
-const { contentProps } = Astro.props;
+const { contentProps, pageProps } = Astro.props;
 
 type Path = {
 	params: {
 		locale: Locales;
 		slug: string;
 	};
-	props: {
-		contentProps: News;
-	};
+	props: NewsPageProps;
 };
 
 export async function getStaticPaths() {
@@ -22,9 +20,15 @@ export async function getStaticPaths() {
 
 	for (const locale of locales) {
 		const pages = allPages.map(
-			(p): Path => ({
+			(p, index): Path => ({
 				params: { locale, slug: p.slug },
-				props: { contentProps: p },
+				props: {
+					contentProps: p,
+					pageProps: {
+						prevPost: allPages[index + 1],
+						nextPost: allPages[index - 1],
+					},
+				},
 			}),
 		);
 
@@ -35,6 +39,6 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout contentProps={contentProps}>
+<Layout contentProps={contentProps} pageProps={pageProps}>
 	<contentProps.Content />
 </Layout>
