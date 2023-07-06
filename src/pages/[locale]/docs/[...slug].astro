@@ -7,7 +7,7 @@ import { siteConfig } from '~/config';
 
 const { contentProps, pageProps } = Astro.props;
 
-type StaticPath = {
+type Path = {
 	params: {
 		locale: Locales;
 		slug: string;
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 	paths.push(
 		...allPages.map(
-			(p): StaticPath => ({
+			(p): Path => ({
 				params: { locale: p.locale, slug: p.slug },
 				props: {
 					contentProps: p,
@@ -45,7 +45,7 @@ export async function getStaticPaths() {
 
 		paths.push(
 			...fallbackPages.map(
-				(p): StaticPath => ({
+				(p): Path => ({
 					params: { locale, slug: p.slug },
 					// Ensure we have fallbacked locale here.
 					props: {

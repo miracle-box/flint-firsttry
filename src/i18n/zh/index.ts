@@ -36,6 +36,9 @@ const zh: BaseTranslation = {
 		],
 		tocHeading: '在本页上',
 	},
+	news: {
+		breadcrumbBase: '新闻',
+	},
 };
 
 export default zh;
