@@ -29,8 +29,12 @@ async function getNormalizedPage(page: CollectionEntry<'news'>): Promise<News> {
 
 async function load(): Promise<News[]> {
 	const allNews = await getCollection('news');
-	const renderedNews = allNews.map(async (page) => getNormalizedPage(page));
-	return Promise.all(renderedNews);
+	const renderPromises = allNews.map(async (page) => getNormalizedPage(page));
+
+	const renderedNews = await Promise.all(renderPromises);
+
+	// Sort by date in descending order.
+	return renderedNews.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 }
 
 let _pages: News[];
