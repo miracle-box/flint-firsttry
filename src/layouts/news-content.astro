@@ -1,9 +1,31 @@
 ---
+import type { NewsPageProps as Props } from '~/types';
 import Layout from '~/layouts/base.astro';
+import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+await loadLocale(locale);
+const t = i18nObject(locale);
 ---
 
 <Layout>
-	<main>
-		<slot />
+	<main class="grid w-full grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr]">
+		<aside class="order-1 hidden lg:block"></aside>
+		<aside class="order-3 hidden lg:block"></aside>
+
+		<main
+			class="order-2 col-span-3 mx-2 mt-8 rounded-2xl border px-6 py-12 shadow-2xl sm:px-8 md:px-12 lg:col-span-1 lg:mx-0 lg:px-16"
+		>
+			<!-- Breadcrumb -->
+			<div>
+				<span class="text-sm text-gray-800"><a href={`/${locale}/news/1/`}>News</a></span>
+				<span class="text-sm text-gray-800">/</span>
+				<a class="text-sm text-gray-500" href=".">{Astro.props.contentProps.title}</a>
+			</div>
+
+			<article class="markdown-body mt-6">
+				<slot />
+			</article>
+		</main>
 	</main>
 </Layout>
