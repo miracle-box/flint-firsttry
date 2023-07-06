@@ -18,7 +18,7 @@ const t = i18nObject(locale);
 		>
 			<!-- Breadcrumb -->
 			<div>
-				<span class="text-sm text-gray-800"><a href={`/${locale}/news/1/`}>News</a></span>
+				<span class="text-sm text-gray-800"><a href={`/${locale}/news/1/`}>{t.news.breadcrumbBase()}</a></span>
 				<span class="text-sm text-gray-800">/</span>
 				<a class="text-sm text-gray-500" href=".">{Astro.props.contentProps.title}</a>
 			</div>

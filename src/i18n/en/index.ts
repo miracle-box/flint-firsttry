@@ -37,6 +37,9 @@ const en: Translation = {
 		],
 		tocHeading: 'On this page',
 	},
+	news: {
+		breadcrumbBase: 'News',
+	},
 };
 
 export default en;
