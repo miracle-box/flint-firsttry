@@ -52,7 +52,10 @@ const page = Astro.props.page as Page<Path>;
 			{
 				page.data.map((p) => (
 					<article class="flex flex-col gap-3 border-t border-gray-200 pt-6 text-gray-800">
-						<a href={`../${p.props.contentProps.slug}/`} class="overflow-hidden rounded-lg">
+						<a
+							href={`../${p.props.contentProps.slug}/`}
+							class="overflow-hidden rounded-lg border border-gray-200"
+						>
 							<img
 								src={p.props.contentProps.image}
 								alt={p.props.contentProps.title}

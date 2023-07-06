@@ -29,6 +29,10 @@ export type News = {
 
 export type NewsPageProps = {
 	contentProps: News;
+	pageProps: {
+		nextPost: News | undefined;
+		prevPost: News | undefined;
+	};
 };
 
 export type Docs = {
