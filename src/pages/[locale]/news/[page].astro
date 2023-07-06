@@ -45,10 +45,10 @@ const page = Astro.props.page as Page<Path>;
 ---
 
 <Layout>
-	<main class="order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
+	<main class="container order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
 		<header class="mb-6 text-center text-dp-lg font-semibold">News</header>
 
-		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+		<div class="grid gap-8 border-b border-gray-200 pb-6 md:grid-cols-2 lg:grid-cols-3">
 			{
 				page.data.map((p) => (
 					<article class="flex flex-col gap-3 border-t border-gray-200 pt-6 text-gray-800">
@@ -77,28 +77,46 @@ const page = Astro.props.page as Page<Path>;
 			}
 		</div>
 
-		<div class="mt-6 flex justify-center gap-2 border-t border-gray-200 pt-6">
+		<div class="mx-auto mt-6 flex min-w-[20ch] justify-center gap-2">
 			{
 				page.url.prev && (
-					<a
-						class="rounded border border-primary-200 bg-primary-50 px-4 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-						href={page.url.prev}
-					>
-						&lt;
-					</a>
+					<>
+						<a
+							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+							href="../1/"
+						>
+							&lt;&lt;
+						</a>
+						<a
+							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+							href={page.url.prev}
+						>
+							&lt;
+						</a>
+					</>
 				)
 			}
-			<span class="rounded border border-gray-200 bg-gray-50 px-4 py-2 text-gray-800">
+			<span
+				class="flex-grow rounded border border-gray-200 bg-gray-50 px-4 py-2 text-center font-mono text-gray-800"
+			>
 				{page.currentPage} / {page.lastPage}
 			</span>
 			{
 				page.url.next && (
-					<a
-						class="rounded border border-primary-200 bg-primary-50 px-4 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-						href={page.url.next}
-					>
-						&gt;
-					</a>
+					<>
+						<a
+							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+							href={page.url.next}
+						>
+							&gt;
+						</a>
+						<a
+							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+							href={`../${page.lastPage}/`}
+						>
+							&gt;&gt;
+						</a>
+					</>
 				)
 			}
 		</div>
