@@ -3,29 +3,53 @@ title: Main Page
 desc: Find everything you want to know.
 ---
 
-Test pages here.
+import IntroPane from '@comp/intro-pane.astro';
+import IntroHeader from '@comp/intro-header.astro';
+import IntroCard from '@comp/intro-card.astro';
 
-## Locale Fallback
+<IntroPane>
+	<IntroHeader>
+	Test pages here.
+	</IntroHeader>
 
--   Test that it correctly falls back to the original version when there is no translated version
--   [Link](../test-fallback-locale/)
+    <IntroCard fullWidth={true}>
+    ## Locale Fallback
 
-## Outdated Document
+    Test that it correctly falls back to the original version when there is no translated version.
 
--   Test whether the outdated document is working properly.
--   [Link](../test-outdated/)
+    -   [Link](../test-fallback-locale/)
+    </IntroCard>
 
-## Long Article
+    <IntroCard>
+    ## Outdated Document
 
--   Includes commonly used styles in Markdown to test typesetting effects
--   [Link](../test-long/)
+    Test whether the outdated document is working properly.
 
-## Short Article
+    -   [Link](../test-outdated/)
+    </IntroCard>
 
--   Check if the layout is correct when the body height is less than 100vh
--   [Link](../test-short/)
+    <IntroCard>
+    ## Long Article
 
-## Nested Routes
+    Includes commonly used styles in Markdown to test typesetting effects.
 
--   Test whether the route generation is correct
--   [Link](../test-nested/)
+    -   [Link](../test-long/)
+      </IntroCard>
+
+    <IntroCard>
+    ## Short Article
+
+    Check if the layout is correct when the body height is less than 100vh.
+
+    -   [Link](../test-short/)
+    </IntroCard>
+
+    <IntroCard>
+    ## Nested Routes
+
+    Test whether the route generation is correct
+
+    -   [Link](../test-nested/)
+    </IntroCard>
+
+</IntroPane>
