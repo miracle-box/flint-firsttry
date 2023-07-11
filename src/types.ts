@@ -1,6 +1,7 @@
 import type { Locales } from './i18n/i18n-types';
 import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import type { ComponentProps, JSX } from 'solid-js';
+import type { siteConfig } from '~/config';
 
 export type { Locales, Translations } from './i18n/i18n-types';
 
@@ -13,7 +14,13 @@ export type SiteConfig = {
 		secRecordText: string;
 		secRecordLink: string;
 	};
+	news: {
+		tags: Record<string, string>;
+	};
 };
+
+export type NewsTag = keyof typeof siteConfig.news.tags;
+export type NewsTags = [NewsTag, ...NewsTag[]];
 
 export type News = {
 	id: string;
@@ -25,6 +32,7 @@ export type News = {
 	author: string;
 	image: string;
 	date: string;
+	tags: NewsTags;
 };
 
 export type NewsPageProps = {

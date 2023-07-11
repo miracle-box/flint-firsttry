@@ -1,13 +1,15 @@
 ---
 import type { GetStaticPathsResult, Page } from 'astro';
-import type { Locales, News } from '~/types';
+import type { Locales, News, NewsTag, NewsTags } from '~/types';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
+import { siteConfig } from '~/config';
 
 type Path = {
 	params: {
 		locale: Locales;
+		tag: NewsTag;
 	};
 	props: {
 		contentProps: News;
@@ -22,23 +24,23 @@ export async function getStaticPaths({
 }) {
 	const allPages = await fetchNews();
 
-	return locales.map((locale) => {
-		// The paginate function for each locale
-		return paginate(
-			allPages.map(
-				(p): Path => ({
-					// This is for page data
-					params: { locale },
-					props: { contentProps: p },
-				}),
+	// For each locale, do the paginating process
+	const result = locales.map((locale) => {
+		// Find the articles with each tag, then do the paginate function
+		return (Object.keys(siteConfig.news.tags) as NewsTags).map((tag) =>
+			paginate(
+				allPages
+					.filter((p) => p.tags.includes(tag))
+					// Page data
+					.map((p): Path => ({ params: { locale, tag }, props: { contentProps: p } })),
+				// Data used for paginating
+				{ params: { locale, tag }, pageSize: 12 },
 			),
-			{
-				// This is for paginating
-				params: { locale },
-				pageSize: 12,
-			},
 		);
 	});
+
+	// Convert level 3 recursion to level 2 recursion for Astro
+	return result.flat(2);
 }
 
 const page = Astro.props.page as Page<Path>;

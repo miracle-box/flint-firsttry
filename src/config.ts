@@ -13,7 +13,13 @@ export const siteConfig = defineConfig({
 		secRecordText: '吉公网安备 22017202000263 号',
 		secRecordLink: 'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263',
 	},
-});
+	news: {
+		tags: {
+			updates: 'Updates',
+			monthly: 'Monthly',
+		},
+	},
+} as const);
 
 export const localeNames: Record<Locales, string> = {
 	zh: '中文',
