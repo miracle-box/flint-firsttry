@@ -6,21 +6,37 @@ import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
 import { siteConfig } from '~/config';
 
-type Path = {
-	params: {
+// Typings for the card data
+type ContentProps = {
+	contentProps: News;
+};
+
+// Typings for the listing page
+type PageProps = {
+	pageProps: {
 		locale: Locales;
 		tag: NewsTag;
 	};
-	props: {
-		contentProps: News;
-	};
+};
+
+// eslint-disable-next-line unicorn/prevent-abbreviations
+type Params = {
+	locale: Locales;
+	tag: NewsTag;
+};
+type Path = {
+	params: Params;
+	props: PageProps;
+};
+type Props = PageProps & {
+	page: Page<Path & { props: ContentProps }>;
 };
 
 export async function getStaticPaths({
 	paginate,
 }: {
 	// More strict typing for PaginateFunction
-	paginate: (data: Path[], args: { params: Path['params']; pageSize: number }) => GetStaticPathsResult;
+	paginate: (data: Array<{ props: ContentProps }>, args: Path & { pageSize: number }) => GetStaticPathsResult;
 }) {
 	const allPages = await fetchNews();
 
@@ -31,10 +47,10 @@ export async function getStaticPaths({
 			paginate(
 				allPages
 					.filter((p) => p.tags.includes(tag))
-					// Page data
-					.map((p): Path => ({ params: { locale, tag }, props: { contentProps: p } })),
-				// Data used for paginating
-				{ params: { locale, tag }, pageSize: 12 },
+					// Content data (only requires pageProps)
+					.map((p): { props: ContentProps } => ({ props: { contentProps: p } })),
+				// Data used for the listing page (only requires pageProps)
+				{ params: { locale, tag }, props: { pageProps: { locale, tag } }, pageSize: 12 },
 			),
 		);
 	});
@@ -43,13 +59,14 @@ export async function getStaticPaths({
 	return result.flat(2);
 }
 
-const page = Astro.props.page as Page<Path>;
+const { page } = Astro.props;
+const { locale, tag } = Astro.props.pageProps;
 ---
 
 <Layout>
 	<main class="container order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
 		<header class="text-center text-dp-lg font-semibold">News</header>
-		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {siteConfig.news.tags[Astro.params.tag as NewsTag]}</span>
+		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {siteConfig.news.tags[tag]}</span>
 
 		<div class="grid gap-8 border-b border-gray-200 pb-6 md:grid-cols-2 lg:grid-cols-3">
 			{
@@ -75,9 +92,7 @@ const page = Astro.props.page as Page<Path>;
 						<div class="flex items-baseline gap-2">
 							<span class="font-semibold">{p.props.contentProps.author}</span>
 							<span class="text-sm text-gray-600">
-								{new Date(p.props.contentProps.date).toLocaleDateString(p.params.locale, {
-									dateStyle: 'long',
-								})}
+								{new Date(p.props.contentProps.date).toLocaleDateString(locale, { dateStyle: 'long' })}
 							</span>
 						</div>
 					</article>
