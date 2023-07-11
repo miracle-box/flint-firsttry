@@ -12,7 +12,7 @@ function getSlug(ogSlug: string) {
 
 async function getNormalizedPage(page: CollectionEntry<'news'>): Promise<News> {
 	const { id, slug, data } = page;
-	const { title, desc, author, image, date } = data;
+	const { title, desc, author, image, date, tags } = data;
 	const { Content } = await page.render();
 
 	return {
@@ -24,6 +24,7 @@ async function getNormalizedPage(page: CollectionEntry<'news'>): Promise<News> {
 		author,
 		image,
 		date,
+		tags,
 	};
 }
 

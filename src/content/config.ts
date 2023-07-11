@@ -1,4 +1,6 @@
+import type { NewsTags } from '~/types';
 import { z, defineCollection } from 'astro:content';
+import { siteConfig } from '~/config';
 
 const news = defineCollection({
 	schema: z.object({
@@ -7,7 +9,10 @@ const news = defineCollection({
 		author: z.string(),
 		image: z.string().url(),
 		date: z.string().datetime(),
-		tags: z.string().array(),
+		tags: z
+			.enum(Object.keys(siteConfig.news.tags) as NewsTags)
+			.array()
+			.nonempty(),
 	}),
 });
 
