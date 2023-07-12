@@ -1,11 +1,15 @@
 ---
-import { getLocaleFromUrl, locales } from '~/utils/i18n';
-
-const locale = getLocaleFromUrl(Astro.url.pathname);
+import Layout from '~/layouts/blank.astro';
+import { locales } from '~/utils/i18n';
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));
 }
 ---
 
-<meta http-equiv="refresh" content={`0;url=/${locale}/news/1/`} />
+<Layout>
+	<div class="flex h-[calc(100vh-52px-65px)] flex-col items-center justify-center gap-2">
+		<span class="font-semibold text-gray-600">this page is under construction, come back later!</span>
+		<a class="text-primary-500 underline" href="./tags/">Tags</a>
+	</div>
+</Layout>
