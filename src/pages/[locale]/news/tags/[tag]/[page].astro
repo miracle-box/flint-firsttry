@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPathsResult, Page } from 'astro';
-import type { Locales, News, NewsTag, NewsTags } from '~/types';
+import type { Locales, News, NewsTag } from '~/types';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
@@ -43,7 +43,7 @@ export async function getStaticPaths({
 	// For each locale, do the paginating process
 	const result = locales.map((locale) => {
 		// Find the articles with each tag, then do the paginate function
-		return (Object.keys(siteConfig.news.tags) as NewsTags).map((tag) =>
+		return (Object.keys(siteConfig.news.tags) as NewsTag[]).map((tag) =>
 			paginate(
 				allPages
 					.filter((p) => p.tags.includes(tag))
