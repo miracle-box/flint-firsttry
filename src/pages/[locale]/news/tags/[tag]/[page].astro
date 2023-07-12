@@ -73,7 +73,7 @@ const { locale, tag } = Astro.props.pageProps;
 				page.data.map((p) => (
 					<article class="flex flex-col gap-3 border-t border-gray-200 pt-6 text-gray-800">
 						<a
-							href={`../${p.props.contentProps.slug}/`}
+							href={`/${locale}/news/${p.props.contentProps.slug}/`}
 							class="overflow-hidden rounded-lg border border-gray-200"
 						>
 							<img
