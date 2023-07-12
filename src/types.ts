@@ -15,7 +15,7 @@ export type SiteConfig = {
 		secRecordLink: string;
 	};
 	news: {
-		tags: Record<string, string>;
+		tags: Record<string, { name: string; desc: string }>;
 	};
 };
 
