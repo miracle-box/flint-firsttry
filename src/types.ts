@@ -20,7 +20,6 @@ export type SiteConfig = {
 };
 
 export type NewsTag = keyof typeof siteConfig.news.tags;
-export type NewsTags = [NewsTag, ...NewsTag[]];
 
 export type News = {
 	id: string;
@@ -32,7 +31,7 @@ export type News = {
 	author: string;
 	image: string;
 	date: string;
-	tags: NewsTags;
+	tags: [NewsTag, ...NewsTag[]];
 };
 
 export type NewsPageProps = {
