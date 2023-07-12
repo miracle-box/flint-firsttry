@@ -66,7 +66,7 @@ const { locale, tag } = Astro.props.pageProps;
 <Layout>
 	<main class="container order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
 		<header class="text-center text-dp-lg font-semibold">News</header>
-		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {siteConfig.news.tags[tag]}</span>
+		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {siteConfig.news.tags[tag].name}</span>
 
 		<div class="grid gap-8 border-b border-gray-200 pb-6 md:grid-cols-2 lg:grid-cols-3">
 			{

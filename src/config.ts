@@ -15,8 +15,8 @@ export const siteConfig = defineConfig({
 	},
 	news: {
 		tags: {
-			updates: 'Updates',
-			monthly: 'Monthly',
+			updates: { name: 'Updates', desc: '' },
+			monthly: { name: 'Monthly', desc: '' },
 		},
 	},
 } as const);
