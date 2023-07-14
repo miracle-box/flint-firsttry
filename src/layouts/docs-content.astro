@@ -38,7 +38,6 @@ const { contentProps, pageProps } = Astro.props;
 			<Breadcrumb filePath={contentProps.id} />
 			<article class="markdown-body mt-6">
 				<h1>{contentProps.title}</h1>
-				{pageProps.fallback && <Fallback fallbackLocale={contentProps.locale} />}
 				{
 					contentProps.outdated_translation && (
 						<OutdatedTranslation
@@ -48,6 +47,7 @@ const { contentProps, pageProps } = Astro.props;
 					)
 				}
 				{pageProps.outdated && <Outdated />}
+				{pageProps.fallback && <Fallback fallbackLocale={contentProps.locale} />}
 
 				<div>
 					<slot />
