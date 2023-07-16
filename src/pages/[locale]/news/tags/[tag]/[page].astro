@@ -2,6 +2,7 @@
 import type { GetStaticPathsResult, Page } from 'astro';
 import type { Locales, News, NewsTag } from '~/types';
 import Card from '~/components/news/card.astro';
+import Pagination from '~/components/news/pagination.astro';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
@@ -72,48 +73,15 @@ const { tag } = Astro.props.pageProps;
 			{page.data.map((p) => <Card {...p.props.contentProps} />)}
 		</div>
 
-		<div class="mx-auto mt-6 flex min-w-[20ch] justify-center gap-2">
-			{
-				page.url.prev && (
-					<>
-						<a
-							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-							href="../1/"
-						>
-							&lt;&lt;
-						</a>
-						<a
-							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-							href={page.url.prev}
-						>
-							&lt;
-						</a>
-					</>
-				)
-			}
-			<span
-				class="flex-grow rounded border border-gray-200 bg-gray-50 px-4 py-2 text-center font-mono text-gray-800"
-			>
-				{page.currentPage} / {page.lastPage}
-			</span>
-			{
-				page.url.next && (
-					<>
-						<a
-							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-							href={page.url.next}
-						>
-							&gt;
-						</a>
-						<a
-							class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
-							href={`../${page.lastPage}/`}
-						>
-							&gt;&gt;
-						</a>
-					</>
-				)
-			}
+		<div class="mx-auto mt-6">
+			<Pagination
+				firstUrl="../1/"
+				lastUrl={`../${page.lastPage}/`}
+				prevUrl={page.url.prev}
+				nextUrl={page.url.next}
+				current={page.currentPage}
+				total={page.total}
+			/>
 		</div>
 	</main>
 </Layout>

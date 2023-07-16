@@ -1,0 +1,58 @@
+---
+type Props = {
+	firstUrl?: string;
+	lastUrl?: string;
+	prevUrl: string | undefined;
+	nextUrl: string | undefined;
+	current: number;
+	total: number;
+};
+
+const { firstUrl, lastUrl, prevUrl, nextUrl, current, total } = Astro.props;
+---
+
+<div class="flex min-w-[20ch] justify-center gap-2">
+	{
+		prevUrl && (
+			<>
+				{firstUrl && (
+					<a
+						class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+						href={firstUrl}
+					>
+						&lt;&lt;
+					</a>
+				)}
+				<a
+					class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+					href={prevUrl}
+				>
+					&lt;
+				</a>
+			</>
+		)
+	}
+	<span class="flex-grow rounded border border-gray-200 bg-gray-50 px-4 py-2 text-center font-mono text-gray-800">
+		{current} / {total}
+	</span>
+	{
+		nextUrl && (
+			<>
+				<a
+					class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+					href={nextUrl}
+				>
+					&gt;
+				</a>
+				{lastUrl && (
+					<a
+						class="rounded border border-primary-200 bg-primary-50 px-3 py-2 text-primary-800 hover:border-primary-400 hover:bg-primary-100"
+						href={lastUrl}
+					>
+						&gt;&gt;
+					</a>
+				)}
+			</>
+		)
+	}
+</div>
