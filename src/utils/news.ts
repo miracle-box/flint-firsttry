@@ -12,7 +12,8 @@ function getSlug(ogSlug: string) {
 
 async function getNormalizedPage(page: CollectionEntry<'news'>): Promise<News> {
 	const { id, slug, data } = page;
-	const { title, desc, author, image, date, tags } = data;
+	const { title, desc, author, image, tags } = data;
+	const date = new Date(data.date);
 	const { Content } = await page.render();
 
 	return {
@@ -35,7 +36,7 @@ async function load(): Promise<News[]> {
 	const renderedNews = await Promise.all(renderPromises);
 
 	// Sort by date in descending order.
-	return renderedNews.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+	return renderedNews.sort((a, b) => b.date.valueOf() - a.date.valueOf());
 }
 
 let _pages: News[];

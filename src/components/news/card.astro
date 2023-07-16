@@ -23,7 +23,7 @@ const { slug, title, desc, author, image, date } = Astro.props;
 	<div class="flex items-baseline gap-2">
 		<span class="font-semibold">{author}</span>
 		<span class="text-sm text-gray-600">
-			{new Date(date).toLocaleDateString(locale, { dateStyle: 'long' })}
+			{date.toLocaleDateString(locale, { dateStyle: 'long' })}
 		</span>
 	</div>
 </article>

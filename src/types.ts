@@ -30,7 +30,7 @@ export type News = {
 	desc: string;
 	author: string;
 	image: string;
-	date: string;
+	date: Date;
 	tags: [NewsTag, ...NewsTag[]];
 };
 
