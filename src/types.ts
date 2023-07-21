@@ -5,6 +5,8 @@ import type { siteConfig } from '~/config';
 
 export type { Locales, Translations } from './i18n/i18n-types';
 
+export type { RawFlintConfig, FlintConfig } from './utils/config';
+
 export type SiteConfig = {
 	site: {
 		defaultLocale: Locales;

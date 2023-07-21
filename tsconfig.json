@@ -1,6 +1,6 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": ["src/**/*", "*.cjs", "*.ts", ".eslintrc.cjs"],
+  "include": ["src/**/*", "astro.config.ts"],
   "compilerOptions": {
     "module": "ES2022",
     "baseUrl": ".",
