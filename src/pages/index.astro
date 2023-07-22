@@ -1,6 +1,6 @@
 ---
-import { getUrl } from '~/utils/route';
+import { getPagePath } from '~/utils/route';
 import { siteConfig } from '~/config';
 ---
 
-<meta http-equiv="refresh" content={`0;url=${getUrl(siteConfig.site.defaultLocale)}`} />
+<meta http-equiv="refresh" content={`0;url=${getPagePath(siteConfig.site.defaultLocale)}`} />

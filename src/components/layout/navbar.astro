@@ -2,7 +2,7 @@
 import type { Locales } from '~/types';
 import { NavPopper } from '~/components/layout/nav-popper';
 import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
-import { getUrl } from '~/utils/route';
+import { getPagePath } from '~/utils/route';
 import { siteConfig, localeNames } from '~/config';
 import LanguageIcon from '~icons/octicon/globe-24';
 import MenuIcon from '~icons/octicon/three-bars-16';
@@ -23,11 +23,11 @@ function getLocaleItems() {
 
 const navItems = [
 	{
-		link: `${getUrl(locale, 'news')}`,
+		link: `${getPagePath(locale, 'news')}`,
 		text: t.navItems.news(),
 	},
 	{
-		link: `${getUrl(locale, 'docs')}`,
+		link: `${getPagePath(locale, 'docs')}`,
 		text: t.navItems.docs(),
 	},
 	{

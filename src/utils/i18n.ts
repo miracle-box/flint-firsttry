@@ -2,6 +2,7 @@ import type { Locales } from '~/i18n/i18n-types';
 import { locales } from '~/i18n/i18n-util';
 import { loadLocaleAsync } from '~/i18n/i18n-util.async';
 import { loadLocale as loadLocaleSync } from '~/i18n/i18n-util.sync';
+import { getPathname } from './route';
 import { siteConfig } from '~/config';
 
 export { locales, i18nObject } from '../i18n/i18n-util';
@@ -12,8 +13,7 @@ export { locales, i18nObject } from '../i18n/i18n-util';
  * @returns pathname without leading `BASE_URL`
  */
 function removeBase(pathname: string): string {
-	const baseUrl = import.meta.env.BASE_URL;
-	return pathname.slice(baseUrl.length);
+	return pathname.slice(getPathname().length);
 }
 
 /**
@@ -58,7 +58,7 @@ export function changePathLocale(pathname: string, locale: Locales): string {
 	const pagePath = removeBase(pathname);
 	const ogLocale = getLocaleFromUrl(pathname);
 
-	return import.meta.env.BASE_URL + pagePath.replace(ogLocale, locale);
+	return getPathname() + pagePath.replace(ogLocale, locale);
 }
 
 /**

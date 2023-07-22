@@ -1,4 +1,5 @@
 import type { Locales, SiteConfig } from './types';
+import { getPathname } from './utils/route';
 
 function defineConfig<T extends SiteConfig>(input: T) {
 	return input;
@@ -7,7 +8,7 @@ function defineConfig<T extends SiteConfig>(input: T) {
 export const siteConfig = defineConfig({
 	site: {
 		defaultLocale: 'zh',
-		logoImg: `${import.meta.env.BASE_URL}favicon.svg`,
+		logoImg: getPathname('favicon.svg'),
 		icpRecordText: '吉 ICP 备 2021002465 号',
 		icpRecordLink: 'https://beian.miit.gov.cn/',
 		secRecordText: '吉公网安备 22017202000263 号',

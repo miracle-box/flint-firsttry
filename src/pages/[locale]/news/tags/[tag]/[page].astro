@@ -6,6 +6,7 @@ import Pagination from '~/components/news/pagination.astro';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
+import { getPathname } from '~/utils/route';
 import { siteConfig } from '~/config';
 
 // Typings for the card data
@@ -78,8 +79,8 @@ const { tag } = Astro.props.pageProps;
 			<Pagination
 				firstUrl="../1/"
 				lastUrl={`../${page.lastPage}/`}
-				prevUrl={page.url.prev && `${import.meta.env.BASE_URL}${page.url.prev.slice(1)}`}
-				nextUrl={page.url.next && `${import.meta.env.BASE_URL}${page.url.next.slice(1)}`}
+				prevUrl={page.url.prev && getPathname(page.url.prev)}
+				nextUrl={page.url.next && getPathname(page.url.next)}
 				current={page.currentPage}
 				total={page.lastPage}
 			/>

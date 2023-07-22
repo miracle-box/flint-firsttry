@@ -1,6 +1,6 @@
 ---
 import { getLocaleFromUrl, locales } from '~/utils/i18n';
-import { getUrl } from '~/utils/route';
+import { getPagePath } from '~/utils/route';
 
 const locale = getLocaleFromUrl(Astro.url.pathname);
 
@@ -9,4 +9,4 @@ export function getStaticPaths() {
 }
 ---
 
-<meta http-equiv="refresh" content={`0;url=${getUrl(locale, 'docs', 'main')}`} />
+<meta http-equiv="refresh" content={`0;url=${getPagePath(locale, 'docs', 'main')}`} />

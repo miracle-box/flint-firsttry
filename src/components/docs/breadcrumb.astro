@@ -1,7 +1,7 @@
 ---
 import { fetchDocs } from '~/utils/docs';
 import { loadLocale, i18nObject, getLocaleFromUrl } from '~/utils/i18n';
-import { getUrl } from '~/utils/route';
+import { getPagePath } from '~/utils/route';
 import { siteConfig } from '~/config';
 
 type Props = {
@@ -39,12 +39,14 @@ const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index,
 				`(locale ${locale} and ${siteConfig.site.defaultLocale})`,
 		);
 
-	return { text: target.title, url: getUrl(locale, 'docs', target.slug) };
+	return { text: target.title, url: getPagePath(locale, 'docs', target.slug) };
 });
 ---
 
 <div>
-	<span class="text-sm text-gray-800"><a href={getUrl(locale, 'docs', 'main')}>{t.docs.breadcrumbBase()}</a></span>
+	<span class="text-sm text-gray-800"
+		><a href={getPagePath(locale, 'docs', 'main')}>{t.docs.breadcrumbBase()}</a></span
+	>
 	{
 		breadcrumb.map((item) => (
 			<>
