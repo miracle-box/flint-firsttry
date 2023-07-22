@@ -2,6 +2,7 @@
 import Footer from '~/components/layout/footer.astro';
 import Navbar from '~/components/layout/navbar.astro';
 import { loadLocale, i18nObject, getLocaleFromUrl } from '~/utils/i18n';
+import { siteConfig } from '~/config';
 import '~/styles/base.css';
 
 const { url } = Astro;
@@ -20,7 +21,7 @@ const t = i18nObject(locale);
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={siteConfig.site.logoImg} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{t.site.title()}</title>
 	</head>
