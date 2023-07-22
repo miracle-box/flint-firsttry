@@ -1,6 +1,7 @@
 ---
 import type { News } from '~/types';
 import { getLocaleFromUrl } from '~/utils/i18n';
+import { getUrl } from '~/utils/route';
 
 type Props = News;
 
@@ -9,14 +10,17 @@ const { slug, title, desc, author, image, date } = Astro.props;
 ---
 
 <article class="flex flex-col gap-3 border-t border-gray-200 pt-6 text-gray-800">
-	<a href={`/${locale}/news/${slug}/`} class="overflow-hidden rounded-lg border border-gray-200">
+	<a href={`${getUrl(locale, 'news', slug)}`} class="overflow-hidden rounded-lg border border-gray-200">
 		<img
 			src={image}
 			alt={title}
 			class="aspect-[800_/_425] w-full object-cover transition-transform duration-300 hover:scale-105"
 		/>
 	</a>
-	<a href={`/${locale}/news/${slug}/`} class="text-xl font-bold leading-6 hover:text-primary-600 hover:underline">
+	<a
+		href={`${getUrl(locale, 'news', slug)}`}
+		class="text-xl font-bold leading-6 hover:text-primary-600 hover:underline"
+	>
 		{title}
 	</a>
 	<span class="text-gray-600">{desc}</span>

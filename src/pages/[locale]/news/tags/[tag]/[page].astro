@@ -74,13 +74,14 @@ const { tag } = Astro.props.pageProps;
 		</div>
 
 		<div class="mx-auto mt-6">
+			{/* Prev and next page URLs does not include `BASE_URL` so this is a workaround */}
 			<Pagination
 				firstUrl="../1/"
 				lastUrl={`../${page.lastPage}/`}
-				prevUrl={page.url.prev}
-				nextUrl={page.url.next}
+				prevUrl={page.url.prev && `${import.meta.env.BASE_URL}${page.url.prev.slice(1)}`}
+				nextUrl={page.url.next && `${import.meta.env.BASE_URL}${page.url.next.slice(1)}`}
 				current={page.currentPage}
-				total={page.total}
+				total={page.lastPage}
 			/>
 		</div>
 	</main>

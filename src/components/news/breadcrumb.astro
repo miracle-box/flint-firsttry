@@ -1,5 +1,6 @@
 ---
 import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
+import { getUrl } from '~/utils/route';
 
 const locale = getLocaleFromUrl(Astro.url.pathname);
 await loadLocale(locale);
@@ -13,7 +14,7 @@ const { title } = Astro.props;
 ---
 
 <div>
-	<span class="text-sm text-gray-800"><a href={`/${locale}/news/`}>{t.news.breadcrumbBase()}</a></span>
+	<span class="text-sm text-gray-800"><a href={`${getUrl(locale, 'news')}`}>{t.news.breadcrumbBase()}</a></span>
 	<span class="text-sm text-gray-800">/</span>
 	<a class="text-sm text-gray-500" href=".">{title}</a>
 </div>

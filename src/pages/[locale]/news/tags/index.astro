@@ -17,7 +17,7 @@ export function getStaticPaths() {
 				Object.entries(siteConfig.news.tags).map(([tag, data]) => (
 					<a
 						class="flex flex-col gap-1 rounded-lg border border-gray-200 bg-gray-25 p-6 hover:border-gray-400 hover:bg-gray-100"
-						href={`${tag}/1/`}
+						href={`./${tag}/1/`}
 					>
 						<div class="text-dp-sm font-semibold">{data.name}</div>
 						<div class="text-gray-600">{data.desc}</div>

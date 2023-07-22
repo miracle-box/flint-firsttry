@@ -6,7 +6,7 @@ import { siteConfig } from '~/config';
 	class="mt-auto flex flex-col items-center justify-center gap-1 px-4 py-4 text-sm text-gray-500 sm:flex-row sm:gap-4"
 >
 	<div class="flex gap-1">
-		<img class="my-auto h-4 w-4 flex-grow-0" alt="" src="/images/sec-record.png" />
+		<img class="my-auto h-4 w-4 flex-grow-0" alt="" src={`${import.meta.env.BASE_URL}images/sec-record.png`} />
 		<a class="hover:text-gray-900" href={siteConfig.site.secRecordLink} rel="nofollow noopener"
 			>{siteConfig.site.secRecordText}</a
 		>
