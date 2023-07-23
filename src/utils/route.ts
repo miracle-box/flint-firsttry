@@ -2,6 +2,7 @@ import type { InjectedRoute } from 'astro';
 import type { Locales } from '~/types';
 import fs from 'node:fs';
 import path from 'node:path';
+import url from 'node:url';
 
 /**
  * Get pathname with `BASE_URL` prepended
@@ -54,7 +55,7 @@ function toUnixPath(p: string) {
  * @returns An array of objects for `injectRoute`
  */
 export function getModuleRoutes(module: 'docs' | 'news', basePath: string): InjectedRoute[] {
-	const moduleDir = path.join('src/routes', module);
+	const moduleDir = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../routes', module);
 	const patternBase = `[locale]/${basePath}/`;
 
 	const paths = fs
@@ -69,7 +70,7 @@ export function getModuleRoutes(module: 'docs' | 'news', basePath: string): Inje
 		.filter(Boolean) as string[];
 
 	return paths.map((p) => ({
-		entryPoint: './' + toUnixPath(path.join(moduleDir, p)),
+		entryPoint: toUnixPath(path.join(moduleDir, p)),
 		// Convert `xxx/index.astro` to `xxx`, `xxx/route.astro` to `xxx/route`
 		pattern: (patternBase + p).replace(/(.*)\/index|(.*)\.astro/g, '$1$2'),
 	}));
