@@ -38,7 +38,7 @@ function getSlugsFromToc(tree: TocItem[]): string[] {
 	return slugs;
 }
 
-export const TableOfContents: Component<TocProps> = (props: TocProps) => {
+const TableOfContents: Component<TocProps> = (props: TocProps) => {
 	const [activeId, setActiveId] = createSignal('');
 	const [activeIndex, setActiveIndex] = createSignal(0);
 
@@ -87,3 +87,5 @@ export const TableOfContents: Component<TocProps> = (props: TocProps) => {
 		</>
 	);
 };
+
+export default TableOfContents;

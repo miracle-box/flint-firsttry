@@ -9,7 +9,7 @@ type Props = {
 	children: JSX.Element[];
 };
 
-export const NavPopper: Component<Props> = (props: Props) => {
+const NavPopper: Component<Props> = (props: Props) => {
 	const [isOpen, setIsOpen] = createSignal(false);
 
 	function closeModal() {
@@ -65,3 +65,5 @@ export const NavPopper: Component<Props> = (props: Props) => {
 		</>
 	);
 };
+
+export default NavPopper;
