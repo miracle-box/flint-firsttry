@@ -1,4 +1,7 @@
+import type { InjectedRoute } from 'astro';
 import type { Locales } from '~/types';
+import fs from 'node:fs';
+import path from 'node:path';
 
 /**
  * Get pathname with `BASE_URL` prepended
@@ -33,4 +36,41 @@ export function getPagePath(locale: Locales, path?: string, page?: string): stri
 	else return url;
 
 	return url;
+}
+
+/**
+ * Normalize a path and replace back slashes with forward slashes
+ * @param p path to convert
+ * @returns path that matches Unix form
+ */
+function toUnixPath(p: string) {
+	return path.normalize(p).split('\\').join('/');
+}
+
+/**
+ * Get route entries of a module
+ * @param module module name (`docs` or `news`)
+ * @param basePath base route path (like /zh/`[xxx]`/)
+ * @returns An array of objects for `injectRoute`
+ */
+export function getModuleRoutes(module: 'docs' | 'news', basePath: string): InjectedRoute[] {
+	const moduleDir = path.join('src/routes', module);
+	const patternBase = `[locale]/${basePath}/`;
+
+	const paths = fs
+		// Get file list
+		.readdirSync(moduleDir, { recursive: true })
+		// Exclude directories
+		.map((p) => {
+			return fs.statSync(path.join(moduleDir, p.toString())).isFile()
+				? toUnixPath(p.toString())
+				: null;
+		})
+		.filter(Boolean) as string[];
+
+	return paths.map((p) => ({
+		entryPoint: './' + toUnixPath(path.join(moduleDir, p)),
+		// Convert `xxx/index.astro` to `xxx`, `xxx/route.astro` to `xxx/route`
+		pattern: (patternBase + p).replace(/(.*)\/index|(.*)\.astro/, '$1$2'),
+	}));
 }

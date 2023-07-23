@@ -1,6 +1,7 @@
 import type { FlintConfig, RawFlintConfig } from './types';
 import type { AstroIntegration, AstroUserConfig, ViteUserConfig } from 'astro';
 import { FlintConfigSchema } from './utils/config';
+import { getModuleRoutes } from './utils/route';
 
 export default function Flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
 	// Parse user config
@@ -14,12 +15,21 @@ export default function Flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 	const Flint: AstroIntegration = {
 		name: 'flint',
 		hooks: {
-			'astro:config:setup'({ updateConfig }) {
+			'astro:config:setup'({ updateConfig, injectRoute }) {
 				const newConfig: AstroUserConfig = {
 					vite: {
 						plugins: [vitePluginFlint(flintConfig)],
 					},
 				};
+
+				// Temp route, wait for refactor
+				for (const route of [
+					...getModuleRoutes('docs', 'docs'),
+					...getModuleRoutes('news', 'news'),
+				]) {
+					injectRoute(route);
+				}
+
 				updateConfig(newConfig);
 			},
 		},
