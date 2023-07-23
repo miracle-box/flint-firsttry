@@ -2,7 +2,7 @@
 /// <reference types="astro/client" />
 
 declare module 'virtual:flint/config' {
-	import type { FlintConfig } from './types';
+	import type { FlintConfig } from '~/types';
 
 	const Config: FlintConfig;
 	export default Config;

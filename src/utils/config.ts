@@ -11,26 +11,29 @@ const NewsTagsSchema = z.object({
 	desc: z.string(),
 });
 
-const ModuleRouteSchema = z.intersection(
-	z.object({
-		contentId: z.string(),
-	}),
-	z.union([
-		// Schema for docs
-		z.object({
-			type: z.literal('docs'),
-		}),
-		// Schema for news
-		z.object({
-			type: z.literal('news'),
-			tags: z.record(z.string(), NewsTagsSchema),
-		}),
-	]),
-);
+const ModuleRouteCommonSchema = z.object({
+	collectionId: z.string(),
+	// Allow numbers, alphabets, hyphens and underscores for module name
+	// Module names are also used for base path in routing
+	routeBasePath: z.string().regex(/^[\w-]+$/),
+});
+
+const ModuleRouteDocsSchema = ModuleRouteCommonSchema.extend({
+	type: z.literal('docs'),
+});
+
+const ModuleRouteNewsSchema = ModuleRouteCommonSchema.extend({
+	type: z.literal('news'),
+	tags: z.record(z.string(), NewsTagsSchema),
+});
+
+const ModuleRouteSchema = z.union([ModuleRouteDocsSchema, ModuleRouteNewsSchema]);
+
+export type ModuleRoute = typeof ModuleRouteSchema;
 
 const RawFlintConfigSchema = z.object({
 	locales: z.record(z.string(), LocaleSchema).transform((locales) => {
-		// Fill the `locale` field with key name when not specified
+		// Fill `locale` field with key name when not specified
 		for (const [key, localeConfig] of Object.entries(locales)) {
 			const realLocale = localeConfig.locale ?? key;
 			localeConfig.locale = realLocale;
@@ -39,9 +42,7 @@ const RawFlintConfigSchema = z.object({
 		return locales;
 	}),
 	defaultLocale: z.string(),
-	// Allow numbers, alphabets, hyphens and underscores for module name
-	// Module names are also used for base path in routing
-	modules: z.record(z.string().regex(/^[\w-]+$/), ModuleRouteSchema),
+	modules: z.array(ModuleRouteSchema),
 });
 
 export const FlintConfigSchema = RawFlintConfigSchema.strict().transform(

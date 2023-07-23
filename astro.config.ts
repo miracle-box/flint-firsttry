@@ -22,20 +22,22 @@ export default defineConfig({
 				},
 			},
 			defaultLocale: 'zh',
-			modules: {
-				news: {
+			modules: [
+				{
 					type: 'news',
-					contentId: 'news',
+					collectionId: 'news',
+					routeBasePath: 'news',
 					tags: {
 						updates: { name: 'Updates', desc: 'Update notes.' },
 						monthly: { name: 'Monthly', desc: 'Summary of every month.' },
 					},
 				},
-				docs: {
+				{
 					type: 'docs',
-					contentId: 'docs',
+					collectionId: 'docs',
+					routeBasePath: 'docs',
 				},
-			},
+			],
 		}),
 	],
 	markdown: {
