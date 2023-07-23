@@ -71,6 +71,6 @@ export function getModuleRoutes(module: 'docs' | 'news', basePath: string): Inje
 	return paths.map((p) => ({
 		entryPoint: './' + toUnixPath(path.join(moduleDir, p)),
 		// Convert `xxx/index.astro` to `xxx`, `xxx/route.astro` to `xxx/route`
-		pattern: (patternBase + p).replace(/(.*)\/index|(.*)\.astro/, '$1$2'),
+		pattern: (patternBase + p).replace(/(.*)\/index|(.*)\.astro/g, '$1$2'),
 	}));
 }
