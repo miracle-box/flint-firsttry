@@ -22,6 +22,20 @@ export default defineConfig({
 				},
 			},
 			defaultLocale: 'zh',
+			modules: {
+				news: {
+					type: 'news',
+					contentId: 'news',
+					tags: {
+						updates: { name: 'Updates', desc: 'Update notes.' },
+						monthly: { name: 'Monthly', desc: 'Summary of every month.' },
+					},
+				},
+				docs: {
+					type: 'docs',
+					contentId: 'docs',
+				},
+			},
 		}),
 	],
 	markdown: {
