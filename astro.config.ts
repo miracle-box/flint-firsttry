@@ -9,9 +9,6 @@ import Flint from './src';
 export default defineConfig({
 	trailingSlash: 'always',
 	integrations: [
-		mdx(),
-		tailwind({ applyBaseStyles: false }),
-		solidJs(),
 		Flint({
 			locales: {
 				zh: {
@@ -38,7 +35,18 @@ export default defineConfig({
 					routeBasePath: 'docs',
 				},
 			],
+			legacy: {
+				logoImg: '/favicon.svg',
+				icpRecordText: '吉 ICP 备 2021002465 号',
+				icpRecordLink: 'https://beian.miit.gov.cn/',
+				secRecordText: '吉公网安备 22017202000263 号',
+				secRecordLink:
+					'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263',
+			},
 		}),
+		mdx(),
+		tailwind({ applyBaseStyles: false }),
+		solidJs(),
 	],
 	markdown: {
 		shikiConfig: {

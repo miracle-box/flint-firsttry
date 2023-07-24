@@ -1,9 +1,9 @@
 ---
 import type { Locales, DocsPageProps as Props } from '~/types';
+import Config from 'virtual:flint/config';
 import Layout from '~/layouts/docs-content.astro';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '~/utils/docs';
 import { locales } from '~/utils/i18n';
-import { siteConfig } from '~/config';
 
 const { contentProps, pageProps } = Astro.props;
 
@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 
 	// Fallback pages
 	for (const locale of locales) {
-		if (locale === siteConfig.site.defaultLocale) continue;
+		if (locale === Config.defaultLocale) continue;
 
 		/* eslint-disable no-await-in-loop */
 		const localDocs = await getLocalDocs(locale);
@@ -59,7 +59,7 @@ export async function getStaticPaths() {
 
 	// Outdated pages
 	const outdatedDefaultLocalePages = paths.filter(
-		(page) => page.props.contentProps.locale === siteConfig.site.defaultLocale && page.props.contentProps.outdated,
+		(page) => page.props.contentProps.locale === Config.defaultLocale && page.props.contentProps.outdated,
 	);
 
 	for (const outdatedPage of outdatedDefaultLocalePages) {

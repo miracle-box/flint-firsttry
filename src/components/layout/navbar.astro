@@ -1,9 +1,9 @@
 ---
 import type { Locales } from '~/types';
+import Config from 'virtual:flint/config';
 import NavPopper from '~/components/layout/nav-popper';
 import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
 import { getPagePath } from '~/utils/route';
-import { siteConfig, localeNames } from '~/config';
 import LanguageIcon from '~icons/octicon/globe-24';
 import MenuIcon from '~icons/octicon/three-bars-16';
 
@@ -13,9 +13,9 @@ await loadLocale(locale);
 const t = i18nObject(locale);
 
 function getLocaleItems() {
-	return Object.entries(localeNames).map(([locale, locName]) => {
+	return Object.values(Config.locales).map(({ locale, label }) => {
 		return {
-			locName,
+			label,
 			link: changePathLocale(url.pathname, locale as Locales),
 		};
 	});
@@ -46,7 +46,7 @@ const navItems = [
 	<div class="flex items-center gap-4">
 		<!-- Logo -->
 		<a class="flex items-center gap-1 rounded outline-none ring-gray-200 focus:ring" href={`/${locale}/`}>
-			<img class="h-8 w-8" src={siteConfig.site.logoImg} alt={t.site.logoAlt()} />
+			<img class="h-8 w-8" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
 			<span>{t.site.logotype()}</span>
 		</a>
 		<!-- Links -->
@@ -68,9 +68,9 @@ const navItems = [
 			<div>
 				<div class="flex flex-col gap-2">
 					{
-						getLocaleItems().map(({ locName, link }) => (
+						getLocaleItems().map(({ label, link }) => (
 							<a class="nav-link" href={link}>
-								{locName}
+								{label}
 							</a>
 						))
 					}

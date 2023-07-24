@@ -1,8 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
 import type { Locales, Docs } from '~/types';
 import { getCollection } from 'astro:content';
+import Config from 'virtual:flint/config';
 import { isValidLocale } from '~/utils/i18n';
-import { siteConfig } from '~/config';
 
 /**
  * Remove the tailing country code (i.e. /something/nested[/zh]) from a slug
@@ -58,7 +58,7 @@ export async function getLocalDocs(locale: Locales): Promise<Docs[]> {
 }
 
 export async function getFallbackBySlugs(slugs: string[]): Promise<Docs[]> {
-	const defaultPages = await getLocalDocs(siteConfig.site.defaultLocale);
+	const defaultPages = await getLocalDocs(Config.defaultLocale);
 
 	// Filter by slugs
 	const filteredPages = defaultPages.filter((p) => !slugs.includes(p.slug));

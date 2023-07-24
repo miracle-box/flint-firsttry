@@ -43,6 +43,13 @@ const RawFlintConfigSchema = z.object({
 	}),
 	defaultLocale: z.string(),
 	modules: z.array(ModuleRouteSchema),
+	legacy: z.object({
+		logoImg: z.string(),
+		icpRecordText: z.string(),
+		icpRecordLink: z.string().url(),
+		secRecordText: z.string(),
+		secRecordLink: z.string().url(),
+	}),
 });
 
 export const FlintConfigSchema = RawFlintConfigSchema.strict().transform(
@@ -57,6 +64,8 @@ export const FlintConfigSchema = RawFlintConfigSchema.strict().transform(
 		}
 
 		return {
+			locales,
+			defaultLocale,
 			...config,
 		} as const;
 	},

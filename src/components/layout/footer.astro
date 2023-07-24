@@ -1,6 +1,6 @@
 ---
+import Config from 'virtual:flint/config';
 import { getPathname } from '~/utils/route';
-import { siteConfig } from '~/config';
 ---
 
 <footer
@@ -8,11 +8,11 @@ import { siteConfig } from '~/config';
 >
 	<div class="flex gap-1">
 		<img class="my-auto h-4 w-4 flex-grow-0" alt="" src={getPathname('images/sec-record.png')} />
-		<a class="hover:text-gray-900" href={siteConfig.site.secRecordLink} rel="nofollow noopener"
-			>{siteConfig.site.secRecordText}</a
+		<a class="hover:text-gray-900" href={Config.legacy.secRecordLink} rel="nofollow noopener"
+			>{Config.legacy.secRecordText}</a
 		>
 	</div>
-	<a class="hover:text-gray-900" href={siteConfig.site.icpRecordLink} rel="nofollow noopener"
-		>{siteConfig.site.icpRecordText}</a
+	<a class="hover:text-gray-900" href={Config.legacy.icpRecordLink} rel="nofollow noopener"
+		>{Config.legacy.icpRecordText}</a
 	>
 </footer>

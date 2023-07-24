@@ -1,6 +1,6 @@
 ---
+import Config from 'virtual:flint/config';
 import { getPagePath } from '~/utils/route';
-import { siteConfig } from '~/config';
 ---
 
-<meta http-equiv="refresh" content={`0;url=${getPagePath(siteConfig.site.defaultLocale)}`} />
+<meta http-equiv="refresh" content={`0;url=${getPagePath(Config.defaultLocale)}`} />

@@ -1,5 +1,6 @@
 ---
-import type { DocsPageProps as Props } from '~/types';
+import type { Locales, DocsPageProps as Props } from '~/types';
+import Config from 'virtual:flint/config';
 import Breadcrumb from '~/components/docs/breadcrumb.astro';
 import Fallback from '~/components/docs/fallback.astro';
 import OutdatedTranslation from '~/components/docs/outdated-translation.astro';
@@ -8,7 +9,6 @@ import TableOfContents from '~/components/docs/table-of-contents';
 import Layout from '~/layouts/base.astro';
 import { getTocTree } from '~/utils/generate-toc';
 import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
-import { siteConfig } from '~/config';
 
 const locale = getLocaleFromUrl(Astro.url.pathname);
 await loadLocale(locale);
@@ -41,7 +41,7 @@ const { contentProps, pageProps } = Astro.props;
 				{
 					contentProps.outdated_translation && (
 						<OutdatedTranslation
-							originalLocale={siteConfig.site.defaultLocale}
+							originalLocale={Config.defaultLocale}
 							sourceLink={contentProps.outdated_translation}
 						/>
 					)
