@@ -6,10 +6,12 @@ const LocaleSchema = z.object({
 	dir: z.enum(['rtl', 'ltr']).default('ltr').optional(),
 });
 
-const NewsTagsSchema = z.object({
+const NewsTagSchema = z.object({
 	name: z.string(),
 	desc: z.string(),
 });
+
+export type NewsTag = z.infer<typeof NewsTagSchema>;
 
 const ModuleRouteCommonSchema = z.object({
 	collectionId: z.string(),
@@ -24,12 +26,12 @@ const ModuleRouteDocsSchema = ModuleRouteCommonSchema.extend({
 
 const ModuleRouteNewsSchema = ModuleRouteCommonSchema.extend({
 	type: z.literal('news'),
-	tags: z.record(z.string(), NewsTagsSchema),
+	tags: z.record(z.string(), NewsTagSchema),
 });
 
 const ModuleRouteSchema = z.union([ModuleRouteDocsSchema, ModuleRouteNewsSchema]);
 
-export type ModuleRoute = typeof ModuleRouteSchema;
+export type ModuleRoute = z.infer<typeof ModuleRouteSchema>;
 
 const RawFlintConfigSchema = z.object({
 	locales: z.record(z.string(), LocaleSchema).transform((locales) => {

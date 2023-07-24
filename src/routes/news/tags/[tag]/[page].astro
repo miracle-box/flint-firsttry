@@ -17,14 +17,14 @@ type ContentProps = {
 // Typings for the listing page
 type PageProps = {
 	pageProps: {
-		tag: NewsTag;
+		tagData: NewsTag;
 	};
 };
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 type Params = {
 	locale: Locales;
-	tag: NewsTag;
+	tag: string;
 };
 type Path = {
 	params: Params;
@@ -45,14 +45,14 @@ export async function getStaticPaths({
 	// For each locale, do the paginating process
 	const result = locales.map((locale) => {
 		// Find the articles with each tag, then do the paginate function
-		return (Object.keys(Config.modules.news.tags) as NewsTag[]).map((tag) =>
+		return Object.entries(Config.modules.news.tags).map(([tag, tagData]) =>
 			paginate(
 				allPages
 					.filter((p) => p.tags.includes(tag))
 					// Content data (only requires pageProps)
 					.map((p): { props: ContentProps } => ({ props: { contentProps: p } })),
 				// Data used for the listing page (only requires pageProps)
-				{ params: { locale, tag }, props: { pageProps: { tag } }, pageSize: 12 },
+				{ params: { locale, tag }, props: { pageProps: { tagData } }, pageSize: 12 },
 			),
 		);
 	});
@@ -62,13 +62,13 @@ export async function getStaticPaths({
 }
 
 const { page } = Astro.props;
-const { tag } = Astro.props.pageProps;
+const { tagData } = Astro.props.pageProps;
 ---
 
 <Layout>
 	<main class="container order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
 		<header class="text-center text-dp-lg font-semibold">News</header>
-		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {Config.modules.news.tags[tag].name}</span>
+		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {tagData.name}</span>
 
 		<div class="grid gap-8 border-b border-gray-200 pb-6 md:grid-cols-2 lg:grid-cols-3">
 			{page.data.map((p) => <Card {...p.props.contentProps} />)}

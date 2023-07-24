@@ -19,8 +19,8 @@ export default defineConfig({
 				},
 			},
 			defaultLocale: 'zh',
-			modules: [
-				{
+			modules: {
+				news: {
 					type: 'news',
 					collectionId: 'news',
 					routeBasePath: 'news',
@@ -29,12 +29,12 @@ export default defineConfig({
 						monthly: { name: 'Monthly', desc: 'Summary of every month.' },
 					},
 				},
-				{
+				docs: {
 					type: 'docs',
 					collectionId: 'docs',
 					routeBasePath: 'docs',
 				},
-			],
+			},
 			legacy: {
 				logoImg: '/favicon.svg',
 				icpRecordText: '吉 ICP 备 2021002465 号',

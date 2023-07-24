@@ -1,11 +1,10 @@
 import type { Locales } from './i18n/i18n-types';
 import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import type { ComponentProps, JSX } from 'solid-js';
-import type { siteConfig } from '~/config';
 
 export type { Locales, Translations } from './i18n/i18n-types';
 
-export type { RawFlintConfig, FlintConfig } from './utils/config';
+export type { NewsTag, RawFlintConfig, FlintConfig } from './utils/config';
 
 export type SiteConfig = {
 	site: {
@@ -21,8 +20,6 @@ export type SiteConfig = {
 	};
 };
 
-export type NewsTag = keyof typeof siteConfig.news.tags;
-
 export type News = {
 	id: string;
 	slug: string;
@@ -33,7 +30,7 @@ export type News = {
 	author: string;
 	image: string;
 	date: Date;
-	tags: [NewsTag, ...NewsTag[]];
+	tags: string[];
 };
 
 export type NewsPageProps = {
