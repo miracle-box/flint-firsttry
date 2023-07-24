@@ -1,13 +1,13 @@
 ---
 import type { GetStaticPathsResult, Page } from 'astro';
 import type { Locales, News, NewsTag } from '~/types';
+import Config from 'virtual:flint/config';
 import Card from '~/components/news/card.astro';
 import Pagination from '~/components/news/pagination.astro';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
 import { fetchNews } from '~/utils/news';
 import { getPathname } from '~/utils/route';
-import { siteConfig } from '~/config';
 
 // Typings for the card data
 type ContentProps = {
@@ -45,7 +45,7 @@ export async function getStaticPaths({
 	// For each locale, do the paginating process
 	const result = locales.map((locale) => {
 		// Find the articles with each tag, then do the paginate function
-		return (Object.keys(siteConfig.news.tags) as NewsTag[]).map((tag) =>
+		return (Object.keys(Config.modules.news.tags) as NewsTag[]).map((tag) =>
 			paginate(
 				allPages
 					.filter((p) => p.tags.includes(tag))
@@ -68,7 +68,7 @@ const { tag } = Astro.props.pageProps;
 <Layout>
 	<main class="container order-2 mx-auto grid w-full gap-2 p-8 lg:px-16">
 		<header class="text-center text-dp-lg font-semibold">News</header>
-		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {siteConfig.news.tags[tag].name}</span>
+		<span class="mx-auto mb-6 text-sm text-gray-600">tag: {Config.modules.news.tags[tag].name}</span>
 
 		<div class="grid gap-8 border-b border-gray-200 pb-6 md:grid-cols-2 lg:grid-cols-3">
 			{page.data.map((p) => <Card {...p.props.contentProps} />)}

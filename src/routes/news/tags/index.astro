@@ -1,7 +1,7 @@
 ---
+import Config from 'virtual:flint/config';
 import Layout from '~/layouts/blank.astro';
 import { locales } from '~/utils/i18n';
-import { siteConfig } from '~/config';
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 
 		<section class="grid gap-4">
 			{
-				Object.entries(siteConfig.news.tags).map(([tag, data]) => (
+				Object.entries(Config.modules.news.tags).map(([tag, data]) => (
 					<a
 						class="flex flex-col gap-1 rounded-lg border border-gray-200 bg-gray-25 p-6 hover:border-gray-400 hover:bg-gray-100"
 						href={`./${tag}/1/`}

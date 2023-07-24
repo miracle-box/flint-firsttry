@@ -1,11 +1,11 @@
 ---
 import type { NewsTag } from '~/types';
+import Config from 'virtual:flint/config';
 import { locales } from '~/utils/i18n';
-import { siteConfig } from '~/config';
 
 export function getStaticPaths() {
 	return locales.map((locale) => {
-		return (Object.keys(siteConfig.news.tags) as NewsTag[]).map((tag) => ({ params: { locale, tag } }));
+		return (Object.keys(Config.modules.news.tags) as NewsTag[]).map((tag) => ({ params: { locale, tag } }));
 	});
 }
 ---

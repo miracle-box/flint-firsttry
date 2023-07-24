@@ -42,7 +42,11 @@ const RawFlintConfigSchema = z.object({
 		return locales;
 	}),
 	defaultLocale: z.string(),
-	modules: z.array(ModuleRouteSchema),
+	// This is just a workaround, will support multi-instance in the future.
+	modules: z.object({
+		news: ModuleRouteNewsSchema,
+		docs: ModuleRouteDocsSchema,
+	}),
 	legacy: z.object({
 		logoImg: z.string(),
 		icpRecordText: z.string(),
