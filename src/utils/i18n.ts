@@ -1,9 +1,9 @@
 import type { Locales } from '~/i18n/i18n-types';
+import Config from 'virtual:flint/config';
 import { locales } from '~/i18n/i18n-util';
 import { loadLocaleAsync } from '~/i18n/i18n-util.async';
 import { loadLocale as loadLocaleSync } from '~/i18n/i18n-util.sync';
 import { getPathname } from './route';
-import { siteConfig } from '~/config';
 
 export { locales, i18nObject } from '../i18n/i18n-util';
 
@@ -45,7 +45,7 @@ export function getLocaleFromUrl(pathname: string): Locales {
 	// Special workaround for main page. (`[locale]/index.astro`)
 	if (split.length === 2 && isValidLocale(split[0]!)) return split[0];
 
-	return siteConfig.site.defaultLocale;
+	return Config.defaultLocale;
 }
 
 /**

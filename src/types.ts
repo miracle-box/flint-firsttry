@@ -6,20 +6,6 @@ export type { Locales, Translations } from './i18n/i18n-types';
 
 export type { NewsTag, RawFlintConfig, FlintConfig } from './utils/config';
 
-export type SiteConfig = {
-	site: {
-		defaultLocale: Locales;
-		logoImg: string;
-		icpRecordText: string;
-		icpRecordLink: string;
-		secRecordText: string;
-		secRecordLink: string;
-	};
-	news: {
-		tags: Record<string, { name: string; desc: string }>;
-	};
-};
-
 export type News = {
 	id: string;
 	slug: string;
