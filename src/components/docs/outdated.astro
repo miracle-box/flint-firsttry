@@ -1,12 +1,10 @@
 ---
 import Callout from '@comp/callout.astro';
-import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
+import { useTranslation } from '~/utils/i18n-dict';
+import { getLocaleFromUrl } from '~/utils/i18n-path';
 
-const { pathname } = Astro.url;
-
-const locale = getLocaleFromUrl(pathname);
-await loadLocale(locale);
-const t = i18nObject(locale);
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 ---
 
 <Callout type="warning" title={false}>

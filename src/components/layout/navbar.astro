@@ -1,22 +1,21 @@
 ---
-import type { Locales } from '~/types';
 import Config from 'virtual:flint/config';
 import NavPopper from '~/components/layout/nav-popper';
-import { loadLocale, i18nObject, getLocaleFromUrl, changePathLocale } from '~/utils/i18n';
+import { useTranslation } from '~/utils/i18n-dict';
+import { getLocaleFromUrl, changePathLocale } from '~/utils/i18n-path';
 import { getPagePath } from '~/utils/route';
 import LanguageIcon from '~icons/octicon/globe-24';
 import MenuIcon from '~icons/octicon/three-bars-16';
 
 const { url } = Astro;
 const locale = getLocaleFromUrl(url.pathname);
-await loadLocale(locale);
-const t = i18nObject(locale);
+const t = useTranslation(locale);
 
 function getLocaleItems() {
 	return Object.values(Config.locales).map(({ locale, label }) => {
 		return {
 			label,
-			link: changePathLocale(url.pathname, locale as Locales),
+			link: changePathLocale(url.pathname, locale!),
 		};
 	});
 }
@@ -45,7 +44,7 @@ const navItems = [
 	<!-- Left -->
 	<div class="flex items-center gap-4">
 		<!-- Logo -->
-		<a class="flex items-center gap-1 rounded outline-none ring-gray-200 focus:ring" href={`/${locale}/`}>
+		<a class="flex items-center gap-1 rounded outline-none ring-gray-200 focus:ring" href={getPagePath(locale)}>
 			<img class="h-8 w-8" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
 			<span>{t.site.logotype()}</span>
 		</a>

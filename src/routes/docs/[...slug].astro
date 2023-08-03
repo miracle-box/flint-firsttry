@@ -3,7 +3,7 @@ import type { Locales, DocsPageProps as Props } from '~/types';
 import Config from 'virtual:flint/config';
 import Layout from '~/layouts/docs-content.astro';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '~/utils/docs';
-import { locales } from '~/utils/i18n';
+import { locales } from '~/utils/i18n-path';
 
 const { contentProps, pageProps } = Astro.props;
 

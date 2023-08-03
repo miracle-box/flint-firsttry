@@ -2,13 +2,12 @@
 import Config from 'virtual:flint/config';
 import Footer from '~/components/layout/footer.astro';
 import Navbar from '~/components/layout/navbar.astro';
-import { loadLocale, i18nObject, getLocaleFromUrl } from '~/utils/i18n';
+import { useTranslation } from '~/utils/i18n-dict';
+import { getLocaleFromUrl } from '~/utils/i18n-path';
 import '~/styles/base.css';
 
-const { url } = Astro;
-const locale = getLocaleFromUrl(url.pathname);
-await loadLocale(locale);
-const t = i18nObject(locale);
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 ---
 
 <!DOCTYPE html>

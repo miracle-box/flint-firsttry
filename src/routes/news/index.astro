@@ -1,6 +1,6 @@
 ---
 import Layout from '~/layouts/blank.astro';
-import { locales } from '~/utils/i18n';
+import { locales } from '~/utils/i18n-path';
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));

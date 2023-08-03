@@ -1,7 +1,8 @@
 ---
 import type { Locales } from '~/types';
 import Callout from '@comp/callout.astro';
-import { getLocaleFromUrl, i18nObject, loadLocale } from '~/utils/i18n';
+import { useTranslation } from '~/utils/i18n-dict';
+import { getLocaleFromUrl } from '~/utils/i18n-path';
 
 type Props = {
 	fallbackLocale: Locales;
@@ -10,8 +11,7 @@ type Props = {
 const { fallbackLocale } = Astro.props;
 
 const locale = getLocaleFromUrl(Astro.url.pathname);
-await loadLocale(locale);
-const t = i18nObject(locale);
+const t = useTranslation(locale);
 ---
 
 <Callout type="warning" title={false}>
