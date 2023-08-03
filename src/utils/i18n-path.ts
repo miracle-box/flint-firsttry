@@ -1,11 +1,8 @@
-import type { Locales } from '~/i18n/i18n-types';
+import type { Locales } from '~/types';
 import Config from 'virtual:flint/config';
-import { locales } from '~/i18n/i18n-util';
-import { loadLocaleAsync } from '~/i18n/i18n-util.async';
-import { loadLocale as loadLocaleSync } from '~/i18n/i18n-util.sync';
 import { getPathname } from './route';
 
-export { locales, i18nObject } from '../i18n/i18n-util';
+export const locales = Object.keys(Config.locales);
 
 /**
  * Remove `BASE_URL` from pathname (`/base/locale/path/page/` => `locale/path/page/`)
@@ -21,8 +18,8 @@ function removeBase(pathname: string): string {
  * @param locale Locale code to check
  * @returns whecher the locale code is valid
  */
-export function isValidLocale(locale: string): locale is Locales {
-	return locales.includes(locale as Locales);
+export function isValidLocale(locale: string): boolean {
+	return locales.includes(locale);
 }
 
 /**
@@ -36,14 +33,14 @@ export function getLocaleFromUrl(pathname: string): Locales {
 
 	// In a localized sub dir. (e.g. zh/xxx/)
 	if (split.length > 2) {
-		if (isValidLocale(split[0]!)) return split[0];
+		if (isValidLocale(split[0]!)) return split[0]!;
 
 		// Throws an error on invalid locales.
 		throw new Error(`Can't determine locale for ${pathname}. Did you have typos in filename?`);
 	}
 
 	// Special workaround for main page. (`[locale]/index.astro`)
-	if (split.length === 2 && isValidLocale(split[0]!)) return split[0];
+	if (split.length === 2 && isValidLocale(split[0]!)) return split[0]!;
 
 	return Config.defaultLocale;
 }
@@ -59,13 +56,4 @@ export function changePathLocale(pathname: string, locale: Locales): string {
 	const ogLocale = getLocaleFromUrl(pathname);
 
 	return getPathname() + pagePath.replace(ogLocale, locale);
-}
-
-/**
- * Load locale depending on the env type
- * @param locale locale code
- */
-export async function loadLocale(locale: Locales) {
-	if (import.meta.env.DEV) await loadLocaleAsync(locale);
-	else loadLocaleSync(locale);
 }

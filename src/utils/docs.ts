@@ -2,7 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { Locales, Docs } from '~/types';
 import { getCollection } from 'astro:content';
 import Config from 'virtual:flint/config';
-import { isValidLocale } from '~/utils/i18n';
+import { isValidLocale } from '~/utils/i18n-path';
 
 /**
  * Remove the tailing country code (i.e. /something/nested[/zh]) from a slug
@@ -16,7 +16,7 @@ function getLocaleFromSlug(slug: string): Locales {
 	const splitted = slug.split('/').reverse();
 
 	// Type guard here, throws an error when the locale is not valid.
-	if (isValidLocale(splitted[0]!)) return splitted[0];
+	if (isValidLocale(splitted[0]!)) return splitted[0]!;
 
 	throw new Error(`Unexpected locale found in docs:${slug}`);
 }

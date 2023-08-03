@@ -1,44 +1,47 @@
-import type { Translation } from '../i18n-types';
+import type { BuiltinDict } from '../schema';
+import { t } from '../schema';
+import { localeLabel } from '../translation-utils';
 
-const en: Translation = {
+const en: BuiltinDict = {
 	site: {
-		logotype: 'Losenone',
-		logoAlt: 'Logo',
-		title: 'Losenone',
+		logotype: t('Losenone'),
+		logoAlt: t('Logo'),
+		title: t('Losenone'),
 	},
 	navItems: {
-		news: 'News',
-		docs: 'Docs',
-		resources: 'Resolution',
-		guiluo: 'GuiLuoYuan',
+		news: t('News'),
+		docs: t('Docs'),
+		resources: t('Resolution'),
+		guiluo: t('GuiLuoYuan'),
 	},
 	hero: {
-		title: 'Losenone',
-		desc: 'Amazing description here.',
-		primaryButton: 'Primary',
-		secondaryButton: 'Secondary',
+		title: t('Losenone'),
+		desc: t('Amazing description here.'),
+		primaryButton: t('Primary'),
+		secondaryButton: t('Secondary'),
 	},
 	notfound: {
-		title: 'missing',
-		body: "Sorry, but the page you requested isn't here!",
-		button: 'Return',
+		title: t('missing'),
+		body: () => "Sorry, but the page you requested isn't here!",
+		button: t('Return'),
 	},
 	docs: {
-		breadcrumbBase: 'Docs',
-		fallbackTip:
-			'Requested page is not yet translated to the selected language ({0|localeName}), showing {1|localeName} version.',
-		outdatedTip:
+		breadcrumbBase: t('Docs'),
+		fallbackTip: (source: string, actual: string) =>
+			'Requested page is not yet translated to the selected language ' +
+			`(${localeLabel(source)}), showing ${localeLabel(actual)} version.`,
+		outdatedTip: () =>
 			'The content on this page is incomplete or outdated. If you are able to help out, please consider updating the article!',
 		outdatedTranslationTip: [
-			'This page contains an outdated translation of the original content. Please check the',
-			' {0|localeName} version ',
-			'for the most accurate information. ',
-			'(and consider updating the translation if you are able to help out!)',
+			t('This page contains an outdated translation of the original content. Please check the '),
+			(source: string) => `${localeLabel(source)} version`,
+			t('for the most accurate information. '),
+			t('(and consider updating the translation if you are able to help out!)'),
 		],
-		tocHeading: 'On this page',
+		tocHeading: t('On this page'),
 	},
 	news: {
-		breadcrumbBase: 'News',
+		breadcrumbBase: t('News'),
 	},
 };
 
