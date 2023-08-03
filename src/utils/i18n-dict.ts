@@ -13,6 +13,15 @@ const builtinDicts: Record<string, BuiltinDict> = {
 
 const defaults = extend(true, {}, builtinDicts.en, builtinDicts[Config.defaultLocale]);
 
-export function useTranslation(locale: string): BuiltinDict {
+function buildDict(locale: string): BuiltinDict {
 	return extend(true, {}, defaults, builtinDicts[locale]) as BuiltinDict;
+}
+
+// Prebuild all dicts in production env
+const store: Record<string, BuiltinDict> = {};
+for (const locale of Object.keys(Config.locales)) store[locale] = buildDict(locale);
+
+export function useTranslation(locale: string): BuiltinDict {
+	if (import.meta.env.DEV) return buildDict(locale);
+	return store[locale]!;
 }
