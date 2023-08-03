@@ -10,9 +10,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "run-p i18n:gen-types astro:dev",
-    "check": "npm-run-all --silent --parallel check:prettier astro:gen-types i18n:gen-types-ci --parallel check:astro check:tsc check:eslint",
-    "build": "run-s i18n:gen-types-ci astro:build",
+    "dev": "astro dev",
+    "check": "npm-run-all --silent --parallel check:prettier astro:gen-types --parallel check:astro check:tsc check:eslint",
+    "build": "astro build",
     "preview": "astro preview",
     "fix:prettier": "prettier . --write --ignore-path ./.gitignore --plugin-search-dir=.",
     "fix:eslint": "eslint . --fix --ignore-path ./.gitignore",
@@ -20,8 +20,6 @@
     "check:astro": "astro check",
     "check:tsc": "tsc --noEmit",
     "check:eslint": "eslint . --ignore-path ./.gitignore",
-    "i18n:gen-types": "typesafe-i18n",
-    "i18n:gen-types-ci": "typesafe-i18n --no-watch",
     "astro:dev": "astro dev",
     "astro:build": "astro build",
     "astro:gen-types": "astro sync"
@@ -40,7 +38,6 @@
     "solid-headless": "^0.13.1",
     "solid-js": "^1.7.7",
     "tailwindcss": "^3.3.2",
-    "typesafe-i18n": "^5.24.3",
     "unplugin-icons": "^0.16.3"
   },
   "devDependencies": {

@@ -1,7 +1,5 @@
 # astro typing cache
 .astro/
-# i18n typing cache
-src/i18n/i18n-*
 
 # build output
 dist/

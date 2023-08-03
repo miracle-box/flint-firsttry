@@ -1,8 +1,7 @@
-import type { Locales } from './i18n/i18n-types';
 import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import type { ComponentProps, JSX } from 'solid-js';
 
-export type { Locales, Translations } from './i18n/i18n-types';
+export type Locales = string;
 
 export type { NewsTag, RawFlintConfig, FlintConfig } from './utils/config';
 
