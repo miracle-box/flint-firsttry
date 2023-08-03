@@ -48,9 +48,6 @@ jobs:
       - name: Install Node.js dependencies
         run: pnpm install
 
-      - name: Generate i18n types
-        run: pnpm exec typesafe-i18n --no-watch
-
       - name: Run linters (Astro)
         run: pnpm exec astro check
 
