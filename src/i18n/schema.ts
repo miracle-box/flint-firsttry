@@ -39,8 +39,8 @@ export const BuiltinDictSchema = z.object({
 	}),
 });
 
-export function t(text: string) {
-	const tFunc = () => text;
+export function t(text: TemplateStringsArray) {
+	const tFunc = () => text.join('');
 	return tFunc;
 }
 
