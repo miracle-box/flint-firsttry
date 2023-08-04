@@ -4,7 +4,7 @@ function tFunc() {
 	return z.function().returns(z.string());
 }
 
-export const BuiltinDictSchema = z.object({
+export const FlintTranslationSchema = z.object({
 	site: z.object({
 		logotype: tFunc(),
 		logoAlt: tFunc(),
@@ -39,9 +39,12 @@ export const BuiltinDictSchema = z.object({
 	}),
 });
 
+export const FlintTranslationExtendSchema = FlintTranslationSchema.deepPartial();
+
 export function t(text: TemplateStringsArray) {
 	const tFunc = () => text.join('');
 	return tFunc;
 }
 
-export type BuiltinDict = z.infer<typeof BuiltinDictSchema>;
+export type FlintTranslation = z.infer<typeof FlintTranslationSchema>;
+export type FlintTranslationExtend = z.infer<typeof FlintTranslationExtendSchema>;

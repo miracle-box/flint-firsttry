@@ -1,8 +1,8 @@
-import type { BuiltinDict } from '../schema';
+import type { FlintTranslation } from '../schema';
 import { t } from '../schema';
 import { localeLabel } from '../translation-utils';
 
-const zh: BuiltinDict = {
+const zh: FlintTranslation = {
 	site: {
 		logotype: t`洛书南`,
 		logoAlt: t`图标`,

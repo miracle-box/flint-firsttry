@@ -1,8 +1,8 @@
-import type { BuiltinDict } from '../schema';
+import type { FlintTranslation } from '../schema';
 import { t } from '../schema';
 import { localeLabel } from '../translation-utils';
 
-const en: BuiltinDict = {
+const en: FlintTranslation = {
 	site: {
 		logotype: t`Losenone`,
 		logoAlt: t`Logo`,

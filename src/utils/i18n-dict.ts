@@ -1,27 +1,34 @@
-import type { BuiltinDict } from '~/i18n/schema';
+import type { FlintTranslation } from '~/i18n/schema';
 import extend from 'just-extend';
 import Config from 'virtual:flint/config';
-import { BuiltinDictSchema } from '~/i18n/schema';
-// eslint-disable-next-line import/order
-import en from '~/i18n/en';
-import zh from '~/i18n/zh';
+import { flintDicts } from '~/i18n';
+import { FlintTranslationSchema } from '~/i18n/schema';
 
-const builtinDicts: Record<string, BuiltinDict> = {
-	en: BuiltinDictSchema.parse(en),
-	zh: BuiltinDictSchema.parse(zh),
-};
-
-const defaults = extend(true, {}, builtinDicts.en, builtinDicts[Config.defaultLocale]);
-
-function buildDict(locale: string): BuiltinDict {
-	return extend(true, {}, defaults, builtinDicts[locale]) as BuiltinDict;
-}
+let defaults = buildDefaults();
 
 // Prebuild all dicts in production env
-const store: Record<string, BuiltinDict> = {};
-for (const locale of Object.keys(Config.locales)) store[locale] = buildDict(locale);
+const store: Record<string, FlintTranslation> = {};
+for (const locale of Object.keys(Config.locales)) {
+	store[locale] = buildDict(locale);
+}
 
-export function useTranslation(locale: string): BuiltinDict {
-	if (import.meta.env.DEV) return buildDict(locale);
+function parseFlintDict(dict: FlintTranslation) {
+	return FlintTranslationSchema.parse(dict);
+}
+
+function buildDefaults(): FlintTranslation {
+	return parseFlintDict(extend(true, {}, flintDicts.en, flintDicts[Config.defaultLocale]) as FlintTranslation);
+}
+
+function buildDict(locale: string): FlintTranslation {
+	return parseFlintDict(extend(true, {}, defaults, flintDicts[locale]) as FlintTranslation);
+}
+
+export function useTranslation(locale: string): FlintTranslation {
+	if (import.meta.env.DEV) {
+		defaults = buildDefaults();
+		return buildDict(locale);
+	}
+
 	return store[locale]!;
 }
