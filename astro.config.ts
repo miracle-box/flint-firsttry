@@ -19,6 +19,7 @@ export default defineConfig({
 				},
 			},
 			defaultLocale: 'zh',
+			flintTranslationsPath: './i18n/index',
 			modules: {
 				news: {
 					type: 'news',

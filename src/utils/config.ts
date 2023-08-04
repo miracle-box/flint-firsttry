@@ -44,6 +44,7 @@ const RawFlintConfigSchema = z.object({
 		return locales;
 	}),
 	defaultLocale: z.string(),
+	flintTranslationsPath: z.string(),
 	// This is just a workaround, will support multi-instance in the future.
 	modules: z.object({
 		news: ModuleRouteNewsSchema,

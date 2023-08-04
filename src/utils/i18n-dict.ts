@@ -1,6 +1,7 @@
 import type { FlintTranslation } from '~/i18n/schema';
 import extend from 'just-extend';
 import Config from 'virtual:flint/config';
+import ExtendedTranslations from 'virtual:flint/extended-translation';
 import { flintDicts } from '~/i18n';
 import { FlintTranslationSchema } from '~/i18n/schema';
 
@@ -17,11 +18,21 @@ function parseFlintDict(dict: FlintTranslation) {
 }
 
 function buildDefaults(): FlintTranslation {
-	return parseFlintDict(extend(true, {}, flintDicts.en, flintDicts[Config.defaultLocale]) as FlintTranslation);
+	return parseFlintDict(
+		extend(
+			true,
+			{},
+			flintDicts.en,
+			flintDicts[Config.defaultLocale],
+			ExtendedTranslations[Config.defaultLocale],
+		) as FlintTranslation,
+	);
 }
 
 function buildDict(locale: string): FlintTranslation {
-	return parseFlintDict(extend(true, {}, defaults, flintDicts[locale]) as FlintTranslation);
+	return parseFlintDict(
+		extend(true, {}, defaults, flintDicts[locale], ExtendedTranslations[locale]) as FlintTranslation,
+	);
 }
 
 export function useTranslation(locale: string): FlintTranslation {
