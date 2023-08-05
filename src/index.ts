@@ -2,10 +2,14 @@ import type { FlintConfig, RawFlintConfig } from './types';
 import type { AstroConfig, AstroIntegration, AstroUserConfig, ViteUserConfig } from 'astro';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import mdx from '@astrojs/mdx';
+import solidJs from '@astrojs/solid-js';
+import tailwind from '@astrojs/tailwind';
+import icons from 'unplugin-icons/vite';
 import { FlintConfigSchema } from './utils/config';
 import { getModuleRoutes } from './utils/route';
 
-export default function Flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
+export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
 	// Parse user config
 	const parsedFlintConfig = FlintConfigSchema.safeParse(rawFlintConfig);
 	if (!parsedFlintConfig.success)
@@ -14,13 +18,24 @@ export default function Flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 	const flintConfig = parsedFlintConfig.data;
 
 	// Astro integration
-	const Flint: AstroIntegration = {
+	const flint: AstroIntegration = {
 		name: 'flint',
 		hooks: {
 			'astro:config:setup'({ config, updateConfig, injectRoute }) {
 				const newConfig: AstroUserConfig = {
+					trailingSlash: 'always',
+					markdown: {
+						shikiConfig: {
+							theme: 'github-light',
+						},
+					},
 					vite: {
-						plugins: [vitePluginFlint(config, flintConfig)],
+						plugins: [
+							icons({
+								compiler: 'solid',
+							}),
+							vitePluginFlint(config, flintConfig),
+						],
 					},
 				};
 
@@ -37,7 +52,7 @@ export default function Flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 		},
 	};
 
-	return [Flint];
+	return [flint, mdx(), tailwind({ applyBaseStyles: false }), solidJs()];
 }
 
 function vitePluginFlint(

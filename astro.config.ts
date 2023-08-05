@@ -1,15 +1,9 @@
-/* eslint-disable new-cap */
-import mdx from '@astrojs/mdx';
-import solidJs from '@astrojs/solid-js';
-import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
-import icons from 'unplugin-icons/vite';
-import Flint from './src';
+import flint from './src';
 
 export default defineConfig({
-	trailingSlash: 'always',
 	integrations: [
-		Flint({
+		flint({
 			locales: {
 				zh: {
 					label: '中文',
@@ -45,20 +39,5 @@ export default defineConfig({
 					'https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=22017202000263',
 			},
 		}),
-		mdx(),
-		tailwind({ applyBaseStyles: false }),
-		solidJs(),
 	],
-	markdown: {
-		shikiConfig: {
-			theme: 'github-light',
-		},
-	},
-	vite: {
-		plugins: [
-			icons({
-				compiler: 'solid',
-			}),
-		],
-	},
 });
