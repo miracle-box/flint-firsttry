@@ -1,4 +1,4 @@
-import type { FlintTranslationExtend } from '~/i18n/schema';
+import type { FlintTranslationExtend } from '~/schemas/i18n';
 
 const extendedTranslations: Record<string, FlintTranslationExtend> = {};
 

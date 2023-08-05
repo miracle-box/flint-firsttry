@@ -1,6 +1,7 @@
 ---
 import type { GetStaticPathsResult, Page } from 'astro';
-import type { Locales, News, NewsTag } from '~/types';
+import type { News } from '~/schemas/news';
+import type { NewsTag } from '~/types';
 import Config from 'virtual:flint/config';
 import Card from '~/components/news/card.astro';
 import Pagination from '~/components/news/pagination.astro';
@@ -23,7 +24,7 @@ type PageProps = {
 
 // eslint-disable-next-line unicorn/prevent-abbreviations
 type Params = {
-	locale: Locales;
+	locale: string;
 	tag: string;
 };
 type Path = {

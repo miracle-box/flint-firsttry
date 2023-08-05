@@ -1,5 +1,5 @@
 ---
-import type { Locales, NewsPageProps, NewsPageProps as Props } from '~/types';
+import type { NewsPageProps, NewsPageProps as Props } from '~/types';
 import Layout from '~/layouts/news-content.astro';
 import { locales } from '~/utils/i18n-path';
 import { fetchNews } from '~/utils/news';
@@ -8,7 +8,7 @@ const { contentProps, pageProps } = Astro.props;
 
 type Path = {
 	params: {
-		locale: Locales;
+		locale: string;
 		slug: string;
 	};
 	props: NewsPageProps;

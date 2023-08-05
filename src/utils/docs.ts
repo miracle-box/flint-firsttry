@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { Locales, Docs } from '~/types';
+import type { Docs } from '~/schemas/docs';
 import { getCollection } from 'astro:content';
 import Config from 'virtual:flint/config';
 import { isValidLocale } from '~/utils/i18n-path';
@@ -12,7 +12,7 @@ function getSlug(ogSlug: string) {
 	return ogSlug.split('/').slice(0, -1).join('/');
 }
 
-function getLocaleFromSlug(slug: string): Locales {
+function getLocaleFromSlug(slug: string): string {
 	const splitted = slug.split('/').reverse();
 
 	// Type guard here, throws an error when the locale is not valid.
@@ -52,7 +52,7 @@ export async function fetchDocs(): Promise<Docs[]> {
 	return _pages;
 }
 
-export async function getLocalDocs(locale: Locales): Promise<Docs[]> {
+export async function getLocalDocs(locale: string): Promise<Docs[]> {
 	const pages = await fetchDocs();
 	return pages.filter((p) => p.locale === locale);
 }

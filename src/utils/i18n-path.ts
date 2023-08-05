@@ -1,4 +1,3 @@
-import type { Locales } from '~/types';
 import Config from 'virtual:flint/config';
 import { getPathname } from './route';
 
@@ -28,7 +27,7 @@ export function isValidLocale(locale: string): boolean {
  * @param pathname pathname (`/base/locale/(path)/(page)/`)
  * @returns locale code
  */
-export function getLocaleFromUrl(pathname: string): Locales {
+export function getLocaleFromUrl(pathname: string): string {
 	const split = removeBase(pathname).split('/');
 
 	// In a localized sub dir. (e.g. zh/xxx/)
@@ -51,7 +50,7 @@ export function getLocaleFromUrl(pathname: string): Locales {
  * @param locale target locale
  * @returns pathname with different locale
  */
-export function changePathLocale(pathname: string, locale: Locales): string {
+export function changePathLocale(pathname: string, locale: string): string {
 	const pagePath = removeBase(pathname);
 	const ogLocale = getLocaleFromUrl(pathname);
 

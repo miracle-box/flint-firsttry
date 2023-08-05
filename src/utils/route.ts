@@ -1,5 +1,4 @@
 import type { InjectedRoute } from 'astro';
-import type { Locales } from '~/types';
 import fs from 'node:fs';
 import path from 'node:path';
 import url from 'node:url';
@@ -21,7 +20,7 @@ export function getPathname(path = ''): string {
  * @param page name (slug) of the page
  * @returns pathname of the page
  */
-export function getPagePath(locale: Locales, path?: string, page?: string): string {
+export function getPagePath(locale: string, path?: string, page?: string): string {
 	let url = import.meta.env.BASE_URL;
 
 	// Locale

@@ -1,11 +1,10 @@
 ---
-import type { Locales } from '~/types';
 import Callout from '@comp/callout.astro';
 import { useTranslation } from '~/utils/i18n-dict';
 import { getLocaleFromUrl } from '~/utils/i18n-path';
 
 type Props = {
-	fallbackLocale: Locales;
+	fallbackLocale: string;
 };
 
 const { fallbackLocale } = Astro.props;

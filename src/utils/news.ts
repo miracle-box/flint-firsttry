@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { News } from '~/types';
+import type { News } from '~/schemas/news';
 import { getCollection } from 'astro:content';
 
 /**

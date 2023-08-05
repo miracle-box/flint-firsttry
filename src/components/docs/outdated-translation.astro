@@ -1,11 +1,10 @@
 ---
-import type { Locales } from '~/types';
 import Callout from '@comp/callout.astro';
 import { useTranslation } from '~/utils/i18n-dict';
 import { getLocaleFromUrl, changePathLocale } from '~/utils/i18n-path';
 
 type Props = {
-	originalLocale: Locales;
+	originalLocale: string;
 	sourceLink: string;
 };
 

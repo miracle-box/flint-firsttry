@@ -1,6 +1,5 @@
-import type { FlintTranslation } from '../schema';
-import { t } from '../schema';
-import { localeLabel } from '../translation-utils';
+import type { FlintTranslation } from '~/schemas/i18n';
+import { t, localeLabel } from '~/utils/i18n-translation';
 
 const zh: FlintTranslation = {
 	site: {

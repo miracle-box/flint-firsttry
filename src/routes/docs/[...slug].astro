@@ -1,5 +1,5 @@
 ---
-import type { Locales, DocsPageProps as Props } from '~/types';
+import type { DocsPageProps as Props } from '~/types';
 import Config from 'virtual:flint/config';
 import Layout from '~/layouts/docs-content.astro';
 import { fetchDocs, getFallbackBySlugs, getLocalDocs } from '~/utils/docs';
@@ -9,7 +9,7 @@ const { contentProps, pageProps } = Astro.props;
 
 type Path = {
 	params: {
-		locale: Locales;
+		locale: string;
 		slug: string;
 	};
 	props: {

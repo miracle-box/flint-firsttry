@@ -1,9 +1,9 @@
-import type { FlintTranslation } from '~/i18n/schema';
+import type { FlintTranslation } from '~/schemas/i18n';
 import extend from 'just-extend';
 import Config from 'virtual:flint/config';
 import ExtendedTranslations from 'virtual:flint/extended-translation';
 import { flintDicts } from '~/i18n';
-import { FlintTranslationSchema } from '~/i18n/schema';
+import { FlintTranslationSchema } from '~/schemas/i18n';
 
 let defaults = buildDefaults();
 
