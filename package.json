@@ -1,28 +1,17 @@
 {
-  "name": "@miracle-box/flint",
-  "author": {
-    "name": "The Miracle Box",
-    "email": "contact@sagirii.me",
-    "url": "https://sagirii.me"
-  },
+  "name": "flint",
   "license": "Apache-2.0",
-  "version": "0.1.3",
+  "version": "0.0.1",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@8.6.10",
   "scripts": {
-    "dev": "astro dev",
-    "check": "npm-run-all --silent --parallel check:prettier astro:gen-types --parallel check:astro check:tsc check:eslint",
-    "build": "astro build",
-    "preview": "astro preview",
+    "check": "npm-run-all --silent check:prettier --parallel check:tsc check:eslint",
     "fix:prettier": "prettier . --write --ignore-path ./.gitignore --plugin-search-dir=.",
     "fix:eslint": "eslint . --fix --ignore-path ./.gitignore",
     "check:prettier": "prettier . --check --loglevel warn --ignore-path ./.gitignore --plugin-search-dir=.",
-    "check:astro": "astro check",
     "check:tsc": "tsc --noEmit",
-    "check:eslint": "eslint . --ignore-path ./.gitignore",
-    "astro:dev": "astro dev",
-    "astro:build": "astro build",
-    "astro:gen-types": "astro sync"
+    "check:eslint": "eslint . --ignore-path ./.gitignore"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",

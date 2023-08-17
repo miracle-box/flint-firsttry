@@ -1,0 +1,12 @@
+---
+import Config from 'virtual:flint/config';
+import { locales } from '../../../../utils/i18n-path';
+
+export function getStaticPaths() {
+	return locales.map((locale) => {
+		return Object.keys(Config.modules.news.tags).map((tag) => ({ params: { locale, tag } }));
+	});
+}
+---
+
+<meta http-equiv="refresh" content={`0;url="./1/"`} />

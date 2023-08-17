@@ -1,0 +1,18 @@
+---
+import { useTranslation } from '../../utils/i18n-dict';
+import { getLocaleFromUrl } from '../../utils/i18n-path';
+import Callout from '../content/callout.astro';
+
+type Props = {
+	fallbackLocale: string;
+};
+
+const { fallbackLocale } = Astro.props;
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
+---
+
+<Callout type="warning" title={false}>
+	{t.docs.fallbackTip(locale, fallbackLocale)}
+</Callout>

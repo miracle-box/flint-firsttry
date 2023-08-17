@@ -1,0 +1,33 @@
+---
+import type { News } from '../../schemas/news';
+import { getLocaleFromUrl } from '../../utils/i18n-path';
+import { getPagePath } from '../../utils/route';
+
+type Props = News;
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const { slug, title, desc, author, image, date } = Astro.props;
+---
+
+<article class="flex flex-col gap-3 border-t border-gray-200 pt-6 text-gray-800">
+	<a href={`${getPagePath(locale, 'news', slug)}`} class="overflow-hidden rounded-lg border border-gray-200">
+		<img
+			src={image}
+			alt={title}
+			class="aspect-[800_/_425] w-full object-cover transition-transform duration-300 hover:scale-105"
+		/>
+	</a>
+	<a
+		href={`${getPagePath(locale, 'news', slug)}`}
+		class="hover:text-primary-600 text-xl font-bold leading-6 hover:underline"
+	>
+		{title}
+	</a>
+	<span class="text-gray-600">{desc}</span>
+	<div class="flex items-baseline gap-2">
+		<span class="font-semibold">{author}</span>
+		<span class="text-sm text-gray-600">
+			{date.toLocaleDateString(locale, { dateStyle: 'long' })}
+		</span>
+	</div>
+</article>

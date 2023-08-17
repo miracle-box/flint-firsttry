@@ -1,0 +1,33 @@
+---
+import type { News } from '../../schemas/news';
+
+type Props = {
+	nextPost: News | undefined;
+	prevPost: News | undefined;
+};
+
+const { nextPost, prevPost } = Astro.props;
+---
+
+<div>
+	{
+		nextPost && (
+			<a href={`${nextPost.slug}/`}>
+				<div class="my-3 flex flex-col rounded-lg border border-gray-200 bg-gray-50 bg-cover px-3 py-2 hover:border-gray-400 hover:bg-gray-100">
+					<span class="font-semibold">Next</span>
+					<span class="line-clamp-1 text-sm">{nextPost.title}</span>
+				</div>
+			</a>
+		)
+	}
+	{
+		prevPost && (
+			<a href={`${prevPost.slug}/`}>
+				<div class="my-3 flex flex-col rounded-lg border border-gray-200 bg-gray-50 bg-cover px-3 py-2 hover:border-gray-400 hover:bg-gray-100">
+					<span class="font-semibold">Prev</span>
+					<span class="line-clamp-1 text-sm">{prevPost.title}</span>
+				</div>
+			</a>
+		)
+	}
+</div>

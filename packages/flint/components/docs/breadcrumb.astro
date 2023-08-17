@@ -1,0 +1,58 @@
+---
+import Config from 'virtual:flint/config';
+import { fetchDocs } from '../../utils/docs';
+import { useTranslation } from '../../utils/i18n-dict';
+import { getLocaleFromUrl } from '../../utils/i18n-path';
+import { getPagePath } from '../../utils/route';
+
+type Props = {
+	filePath: string;
+};
+
+const { filePath } = Astro.props;
+
+// Load i18n
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
+
+// Grab info for each level in breadcrumb.
+const allPages = await fetchDocs();
+const fileDir = filePath.split('/').slice(0, -1);
+
+const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index, dirs) => {
+	const path = dirs.slice(0, index + 1).join('/');
+
+	// Find the localized page first.
+	// if there is no localized page, use the one under default locale.
+	const target =
+		allPages.find((p) => p.id === `${path}/${locale}.mdx` || p.id === `${path}/${locale}.md`) ??
+		allPages.find(
+			(p) => p.id === `${path}/${Config.defaultLocale}.mdx` || p.id === `${path}/${Config.defaultLocale}.md`,
+		);
+
+	// Ensure the target is not undefined.
+	if (!target)
+		throw new Error(
+			`Failed to generate breadcrumb: file for docs page ${path} was not found. ` +
+				`(locale ${locale} and ${Config.defaultLocale})`,
+		);
+
+	return { text: target.title, url: getPagePath(locale, 'docs', target.slug) };
+});
+---
+
+<div>
+	<span class="text-sm text-gray-800"
+		><a href={getPagePath(locale, 'docs', 'main')}>{t.docs.breadcrumbBase()}</a></span
+	>
+	{
+		breadcrumb.map((item) => (
+			<>
+				<span class="text-sm text-gray-800">/</span>
+				<a class="text-sm text-gray-500" href={item.url}>
+					{item.text}
+				</a>
+			</>
+		))
+	}
+</div>

@@ -1,0 +1,23 @@
+---
+import { useTranslation } from '../../utils/i18n-dict';
+import { getLocaleFromUrl, changePathLocale } from '../../utils/i18n-path';
+import Callout from '../content/callout.astro';
+
+type Props = {
+	originalLocale: string;
+	sourceLink: string;
+};
+
+const { originalLocale, sourceLink } = Astro.props;
+const { pathname } = Astro.url;
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
+---
+
+<Callout type="warning" title={false}>
+	{t.docs.outdatedTranslationTip[0]()}
+	<a href={changePathLocale(pathname, originalLocale)}>{t.docs.outdatedTranslationTip[1](originalLocale)}</a>
+	{t.docs.outdatedTranslationTip[2]()}
+	<a href={sourceLink}>{t.docs.outdatedTranslationTip[3]()}</a>
+</Callout>

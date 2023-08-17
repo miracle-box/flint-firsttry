@@ -18,8 +18,8 @@ const RULES = {
 				'unknown',
 			],
 			pathGroups: [
-				{ pattern: '~/config', group: 'object', position: 'after' },
-				{ pattern: '**/*.css', group: 'object', position: 'after' },
+				{ pattern: 'virtual:*', group: 'object', position: 'after' },
+				{ pattern: '*.css', group: 'object', position: 'after' },
 			],
 			alphabetize: {
 				order: 'asc',
@@ -46,7 +46,6 @@ const TS_RULES = {
 
 module.exports = {
 	root: true,
-	ignorePatterns: ['src/i18n/i18n-*.ts'],
 	env: {
 		node: true,
 		es2022: true,
