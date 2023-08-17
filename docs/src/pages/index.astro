@@ -1,6 +1,6 @@
 ---
+import { getPagePath } from '@miracle-box/flint/utils';
 import Config from 'virtual:flint/config';
-import { getPagePath } from '~/utils/route';
 ---
 
 <meta http-equiv="refresh" content={`0;url=${getPagePath(Config.defaultLocale)}`} />

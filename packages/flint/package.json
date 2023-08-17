@@ -11,7 +11,11 @@
   "exports": {
     ".": "./index.ts",
     "./schema": "./schema.ts",
-    "./components": "./components.ts"
+    "./components": "./components.ts",
+    "./utils": "./utils.ts",
+    "./layouts/blank.astro": "./layouts/blank.astro",
+    "./components/landing/hero.astro": "./components/landing/hero.astro",
+    "./styles/404.css": "./styles/404.css"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.7",

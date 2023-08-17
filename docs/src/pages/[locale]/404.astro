@@ -1,9 +1,7 @@
 ---
-import Layout from '~/layouts/blank.astro';
-import { useTranslation } from '~/utils/i18n-dict';
-import { locales, getLocaleFromUrl } from '~/utils/i18n-path';
-import { getPathname } from '~/utils/route';
-import '~/styles/404.css';
+import Layout from '@miracle-box/flint/layouts/blank.astro';
+import '@miracle-box/flint/styles/404.css';
+import { getPathname, useTranslation, locales, getLocaleFromUrl } from '@miracle-box/flint/utils';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 
