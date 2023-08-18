@@ -1,7 +1,9 @@
 ---
-import Layout from '@miracle-box/flint/layouts/blank.astro';
-import '@miracle-box/flint/styles/404.css';
-import { getPathname, useTranslation, locales, getLocaleFromUrl } from '@miracle-box/flint/utils';
+import Layout from '../../../layouts/blank.astro';
+import '../../../styles/404.css';
+import { useTranslation } from '../../../utils/i18n-dict';
+import { locales, getLocaleFromUrl } from '../../../utils/i18n-path';
+import { getPathname } from '../../../utils/route';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 
@@ -21,8 +23,8 @@ const t = useTranslation(locale);
 		</div>
 		<div class="black text-center">
 			<button onclick="
-			window.history.go(-1);
-			">{t.notfound.button()}</button>
+      window.history.go(-1);
+      ">{t.notfound.button()}</button>
 		</div>
 	</div>
 </Layout>

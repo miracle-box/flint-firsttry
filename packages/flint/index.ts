@@ -6,8 +6,10 @@ import mdx from '@astrojs/mdx';
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import icons from 'unplugin-icons/vite';
+import { baseRoutes } from './routes/base';
+import { docsRoutes } from './routes/docs';
+import { newsRoutes } from './routes/news';
 import { FlintConfigSchema } from './utils/config';
-import { getModuleRoutes } from './utils/route';
 
 export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
 	// Parse user config
@@ -40,10 +42,7 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 				};
 
 				// Temp route, wait for refactor
-				for (const route of [
-					...getModuleRoutes('docs', 'docs'),
-					...getModuleRoutes('news', 'news'),
-				]) {
+				for (const route of [...docsRoutes('docs'), ...newsRoutes('news'), ...baseRoutes()]) {
 					injectRoute(route);
 				}
 
