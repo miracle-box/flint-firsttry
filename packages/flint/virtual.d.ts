@@ -1,8 +1,4 @@
-/// <reference path="../../.astro/types.d.ts" />
-/// <reference types="astro/client" />
-/// <reference types="./types" />
-
-import type { FlintTranslationExtend } from './i18n/schema';
+import type { FlintTranslationExtend } from './schemas/i18n';
 import type { FlintConfig } from './types';
 
 declare module 'virtual:flint/config' {

@@ -1,8 +1,9 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": ["docs/**/*", "packages/**/*"],
   "compilerOptions": {
-    "module": "ES2022",
-    "jsx": "preserve"
+    "types": ["unplugin-icons/types/solid"],
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "plugins": [{ "name": "@astrojs/ts-plugin" }]
   }
 }
