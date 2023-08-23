@@ -1,0 +1,30 @@
+---
+import Layout from '../../../layouts/blank.astro';
+import '../../../styles/404.css';
+import { useTranslation } from '../../../utils/i18n-dict';
+import { locales, getLocaleFromUrl } from '../../../utils/i18n-path';
+import { getPathname } from '../../../utils/route';
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
+---
+
+<Layout>
+	<div class="bg-clip-padding">
+		<div class="bg-clip-padding text-center">
+			<h1 class="text-dp-2xl m-10 leading-relaxed">
+				{t.notfound.title()}
+			</h1>
+			<img src={getPathname('404.png')} alt="" class="m-auto max-h-48" />
+			<p class="m-12 leading-relaxed">{t.notfound.body()}</p>
+			<div class="p-0"></div>
+		</div>
+		<div class="black text-center">
+			<button onclick="
+      window.history.go(-1);
+      ">{t.notfound.button()}</button>
+		</div>
+	</div>
+</Layout>

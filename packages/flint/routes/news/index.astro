@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/blank.astro';
+import { locales } from '../../utils/i18n-path';
+
+export function getStaticPaths() {
+	return locales.map((locale) => ({ params: { locale } }));
+}
+---
+
+<Layout>
+	<div class="flex h-[calc(100vh-52px-65px)] flex-col items-center justify-center gap-2">
+		<span class="font-semibold text-gray-600">this page is under construction, come back later!</span>
+		<a class="text-primary-500 underline" href="./tags/">Tags</a>
+	</div>
+</Layout>

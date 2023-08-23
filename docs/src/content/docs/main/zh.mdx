@@ -1,0 +1,55 @@
+---
+title: 首页
+desc: 在这里寻找你所想要了解的一切
+---
+
+import { IntroPane } from '@miracle-box/flint/components';
+import { IntroHeader } from '@miracle-box/flint/components';
+import { IntroCard } from '@miracle-box/flint/components';
+
+<IntroPane>
+	<IntroHeader>
+	这里是各个测试页面.
+	</IntroHeader>
+
+    <IntroCard fullWidth={true}>
+    ## 语言回退
+
+    测试在无翻译版本时是否能正确回退到原始版本
+
+    -   [Link](../test-fallback-locale/)
+    </IntroCard>
+
+    <IntroCard>
+    ## 过期文档
+
+    测试文档过期流程是否正常工作。
+
+    -   [Link](../test-outdated/)
+    </IntroCard>
+
+    <IntroCard>
+    ## 长文章
+
+    包括 Markdown 中常用的样式，用以测试排版效果
+
+    -   [Link](../test-long/)
+      </IntroCard>
+
+    <IntroCard>
+    ## 短文章
+
+    检查正文高度小于 100vh 时布局是否正确
+
+    -   [Link](../test-short/)
+    </IntroCard>
+
+    <IntroCard>
+    ## 嵌套路由
+
+    测试路由生成是否正确
+
+    -   [Link](../test-nested/)
+    </IntroCard>
+
+</IntroPane>

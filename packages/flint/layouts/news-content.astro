@@ -1,0 +1,27 @@
+---
+import type { NewsPageProps as Props } from '../types';
+import Breadcrumb from '../components/news/breadcrumb.astro';
+import RecentPost from '../components/news/recent-post.astro';
+import Layout from './base.astro';
+
+const { contentProps, pageProps } = Astro.props;
+---
+
+<Layout>
+	<main class="grid w-full grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr]">
+		<aside class="order-1 hidden lg:block"></aside>
+		<aside class="order-3 hidden lg:block"></aside>
+
+		<main
+			class="order-2 col-span-3 mx-2 mt-8 rounded-2xl border px-6 py-12 shadow-2xl sm:px-8 md:px-12 lg:col-span-1 lg:mx-0 lg:px-16"
+		>
+			<Breadcrumb title={contentProps.title} />
+
+			<article class="markdown-body my-6">
+				<slot />
+			</article>
+
+			<RecentPost nextPost={pageProps.nextPost} prevPost={pageProps.prevPost} />
+		</main>
+	</main>
+</Layout>

@@ -1,0 +1,21 @@
+{
+  "name": "flint-docs",
+  "license": "Apache-2.0",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@miracle-box/flint": "workspace:*",
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/solid-js": "^2.2.1",
+    "@astrojs/tailwind": "^4.0.0",
+    "astro": "^2.10.12",
+    "solid-headless": "^0.13.1",
+    "solid-js": "^1.7.11"
+  }
+}

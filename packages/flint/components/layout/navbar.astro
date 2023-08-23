@@ -1,0 +1,105 @@
+---
+import Config from 'virtual:flint/config';
+import { useTranslation } from '../../utils/i18n-dict';
+import { getLocaleFromUrl, changePathLocale } from '../../utils/i18n-path';
+import { getPagePath } from '../../utils/route';
+import NavPopper from './nav-popper';
+import LanguageIcon from '~icons/octicon/globe-24';
+import MenuIcon from '~icons/octicon/three-bars-16';
+
+const { url } = Astro;
+const locale = getLocaleFromUrl(url.pathname);
+const t = useTranslation(locale);
+
+function getLocaleItems() {
+	return Object.values(Config.locales).map(({ locale, label }) => {
+		return {
+			label,
+			link: changePathLocale(url.pathname, locale!),
+		};
+	});
+}
+
+const navItems = [
+	{
+		link: `${getPagePath(locale, 'news')}`,
+		text: t.navItems.news(),
+	},
+	{
+		link: `${getPagePath(locale, 'docs')}`,
+		text: t.navItems.docs(),
+	},
+	{
+		link: '#',
+		text: t.navItems.resources(),
+	},
+	{
+		link: 'https://spark.yaasasi.cn/',
+		text: t.navItems.guiluo(),
+	},
+];
+---
+
+<nav class="text-md container top-0 mx-auto flex items-center justify-between px-4 py-3 font-semibold">
+	<!-- Left -->
+	<div class="flex items-center gap-4">
+		<!-- Logo -->
+		<a class="flex items-center gap-1 rounded outline-none ring-gray-200 focus:ring" href={getPagePath(locale)}>
+			<img class="h-8 w-8" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
+			<span>{t.site.logotype()}</span>
+		</a>
+		<!-- Links -->
+		<div class="hidden gap-1 md:flex">
+			{
+				navItems.map(({ text, link }) => (
+					<a class="nav-link" href={link}>
+						{text}
+					</a>
+				))
+			}
+		</div>
+	</div>
+	<!-- Right -->
+	<div class="flex items-center">
+		<!-- Language Selector -->
+		<NavPopper class:list="ml-4" client:load>
+			<LanguageIcon slot="icon" />
+			<div>
+				<div class="flex flex-col gap-2">
+					{
+						getLocaleItems().map(({ label, link }) => (
+							<a class="nav-link" href={link}>
+								{label}
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</NavPopper>
+		<!-- Mobile Nav -->
+		<div class="ml-4 md:hidden">
+			<NavPopper client:load>
+				<MenuIcon slot="icon" />
+				<div>
+					<div class="flex flex-col gap-2">
+						{
+							navItems.map(({ text, link }) => (
+								<a class="nav-link" href={link}>
+									{text}
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</NavPopper>
+		</div>
+	</div>
+</nav>
+
+<style>
+	.nav-link {
+		@apply rounded px-3 py-2 transition-colors;
+		@apply text-gray-600 hover:bg-gray-100 hover:text-gray-900;
+		@apply outline-none ring-gray-200 focus:ring;
+	}
+</style>

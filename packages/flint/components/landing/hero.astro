@@ -1,0 +1,30 @@
+---
+import { useTranslation } from '../../utils/i18n-dict';
+import { getLocaleFromUrl } from '../../utils/i18n-path';
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
+---
+
+<header class="flex flex-col gap-4 px-8 py-24 md:gap-8 lg:gap-12">
+	<div class="flex flex-col items-center justify-center gap-3 md:gap-6">
+		<h1 class="text-dp-md sm:text-dp-lg md:text-dp-xl lg:text-dp-2xl font-semibold">
+			{t.hero.title()}
+		</h1>
+		<p class="text-md lg:text-dp-sm font-medium sm:text-lg md:text-xl">
+			{t.hero.desc()}
+		</p>
+	</div>
+	<div class="flex items-center justify-center gap-3 sm:flex-row">
+		<a
+			href=""
+			class="bg-primary-600 text-md ring-primary-200 hover:bg-primary-700 rounded-lg px-6 py-2 text-center font-semibold text-white outline-none transition-colors focus:ring sm:text-lg md:py-3 lg:px-8 lg:py-4"
+			>{t.hero.primaryButton()}</a
+		>
+		<a
+			href=""
+			class="text-md shadow-xs rounded-lg border border-gray-300 bg-white px-6 py-2 text-center font-semibold text-gray-700 outline-none ring-gray-200 transition-colors hover:bg-gray-100 hover:text-gray-800 focus:ring sm:text-lg md:py-3 lg:px-8 lg:py-4"
+			>{t.hero.secondaryButton()}</a
+		>
+	</div>
+</header>
