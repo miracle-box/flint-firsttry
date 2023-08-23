@@ -76,6 +76,15 @@ importers:
 
   docs:
     dependencies:
+      '@astrojs/mdx':
+        specifier: ^0.19.7
+        version: 0.19.7(astro@2.10.12)
+      '@astrojs/solid-js':
+        specifier: ^2.2.1
+        version: 2.2.1(@babel/core@7.22.10)(solid-js@1.7.11)
+      '@astrojs/tailwind':
+        specifier: ^4.0.0
+        version: 4.0.0(astro@2.10.12)(tailwindcss@3.3.3)
       '@miracle-box/flint':
         specifier: workspace:*
         version: link:../packages/flint
