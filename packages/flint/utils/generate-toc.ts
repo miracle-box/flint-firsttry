@@ -25,9 +25,9 @@ export function getTocTree(headings: MarkdownHeading[]): TocItem[] {
 	for (const heading of headings) {
 		const node: TocItem = { ...heading, children: [] };
 
-		while (stack.length > 0 && stack[stack.length - 1]!.depth >= heading.depth) stack.pop();
+		while (stack.length > 0 && stack.at(-1)!.depth >= heading.depth) stack.pop();
 
-		if (stack.length > 0) stack[stack.length - 1]!.children.push(node);
+		if (stack.length > 0) stack.at(-1)!.children.push(node);
 		else root.push(node);
 
 		stack.push(node);

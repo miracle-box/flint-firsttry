@@ -4,6 +4,7 @@
     "types": ["unplugin-icons/types/solid"],
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "plugins": [{ "name": "@astrojs/ts-plugin" }]
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "verbatimModuleSyntax": true
   }
 }

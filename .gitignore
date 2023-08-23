@@ -1,5 +1,6 @@
 # astro typing cache
 .astro/
+**/src/env.d.ts
 
 # build output
 dist/

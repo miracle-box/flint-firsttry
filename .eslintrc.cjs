@@ -3,6 +3,7 @@ const RULES = {
 	'n/file-extension-in-import': 'off',
 	'import/extensions': ['error', 'never', { pattern: { astro: 'always', css: 'always' } }],
 	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+	'import/no-duplicates': ['error', { 'prefer-inline': false }],
 	'import/order': [
 		'error',
 		{
@@ -65,7 +66,6 @@ module.exports = {
 		'import/extensions': ['.js', '.cjs', '.mjs', '.jsx', '.ts', '.tsx'],
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx'],
-			'astro-eslint-parser': ['.astro'],
 		},
 	},
 

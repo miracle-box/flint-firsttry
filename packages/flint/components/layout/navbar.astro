@@ -15,7 +15,7 @@ function getLocaleItems() {
 	return Object.values(Config.locales).map(({ locale, label }) => {
 		return {
 			label,
-			link: changePathLocale(url.pathname, locale),
+			link: changePathLocale(url.pathname, locale!),
 		};
 	});
 }
