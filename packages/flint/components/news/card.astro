@@ -1,11 +1,10 @@
 ---
 import type { News } from '../../schemas/news';
-import { getLocaleFromUrl } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
 
 type Props = News;
 
-const locale = getLocaleFromUrl(Astro.url.pathname);
+const { locale } = Astro.locals;
 const { slug, title, desc, author, image, date } = Astro.props;
 ---
 

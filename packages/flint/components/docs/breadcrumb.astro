@@ -2,7 +2,6 @@
 import Config from 'virtual:flint/config';
 import { fetchDocs } from '../../utils/docs';
 import { useTranslation } from '../../utils/i18n-dict';
-import { getLocaleFromUrl } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 const { filePath } = Astro.props;
 
 // Load i18n
-const locale = getLocaleFromUrl(Astro.url.pathname);
+const { locale } = Astro.locals;
 const t = useTranslation(locale);
 
 // Grab info for each level in breadcrumb.

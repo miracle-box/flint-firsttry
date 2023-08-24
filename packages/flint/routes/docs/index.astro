@@ -1,8 +1,8 @@
 ---
-import { getLocaleFromUrl, locales } from '../../utils/i18n-path';
+import { locales } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
 
-const locale = getLocaleFromUrl(Astro.url.pathname);
+const { locale } = Astro.locals;
 
 export function getStaticPaths() {
 	return locales.map((locale) => ({ params: { locale } }));

@@ -4,9 +4,8 @@ import Footer from '../components/layout/footer.astro';
 import Navbar from '../components/layout/navbar.astro';
 import '../styles/base.css';
 import { useTranslation } from '../utils/i18n-dict';
-import { getLocaleFromUrl } from '../utils/i18n-path';
 
-const locale = getLocaleFromUrl(Astro.url.pathname);
+const { locale } = Astro.locals;
 const t = useTranslation(locale);
 ---
 

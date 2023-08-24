@@ -1,6 +1,6 @@
 ---
 import { useTranslation } from '../../utils/i18n-dict';
-import { getLocaleFromUrl, changePathLocale } from '../../utils/i18n-path';
+import { changePathLocale } from '../../utils/i18n-path';
 import Callout from '../content/callout.astro';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 const { originalLocale, sourceLink } = Astro.props;
 const { pathname } = Astro.url;
 
-const locale = getLocaleFromUrl(Astro.url.pathname);
+const { locale } = Astro.locals;
 const t = useTranslation(locale);
 ---
 
