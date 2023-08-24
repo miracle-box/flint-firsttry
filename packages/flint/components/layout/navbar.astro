@@ -1,14 +1,14 @@
 ---
 import Config from 'virtual:flint/config';
 import { useTranslation } from '../../utils/i18n-dict';
-import { getLocaleFromUrl, changePathLocale } from '../../utils/i18n-path';
+import { changePathLocale } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
 import NavPopper from './nav-popper';
 import LanguageIcon from '~icons/octicon/globe-24';
 import MenuIcon from '~icons/octicon/three-bars-16';
 
 const { url } = Astro;
-const locale = getLocaleFromUrl(url.pathname);
+const { locale } = Astro.locals;
 const t = useTranslation(locale);
 
 function getLocaleItems() {

@@ -11,7 +11,8 @@
   "exports": {
     ".": "./index.ts",
     "./schema": "./schema.ts",
-    "./components": "./components.ts"
+    "./components": "./components.ts",
+    "./middleware": "./middleware.ts"
   },
   "peerDependencies": {
     "astro": "^2.10.12"
