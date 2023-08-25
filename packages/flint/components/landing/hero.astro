@@ -1,8 +1,5 @@
 ---
-import { useTranslation } from '../../utils/i18n-dict';
-
-const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 ---
 
 <header class="flex flex-col gap-4 px-8 py-24 md:gap-8 lg:gap-12">

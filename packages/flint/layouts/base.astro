@@ -3,10 +3,9 @@ import Config from 'virtual:flint/config';
 import Footer from '../components/layout/footer.astro';
 import Navbar from '../components/layout/navbar.astro';
 import '../styles/base.css';
-import { useTranslation } from '../utils/i18n-dict';
 
 const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 ---
 
 <!doctype html>

@@ -1,14 +1,12 @@
 ---
 import Layout from '../../../layouts/blank.astro';
 import '../../../styles/404.css';
-import { useTranslation } from '../../../utils/i18n-dict';
 import { locales } from '../../../utils/i18n-path';
 import { getPathname } from '../../../utils/route';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 
-const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 ---
 
 <Layout>

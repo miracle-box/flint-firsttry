@@ -1,9 +1,8 @@
 ---
-import { useTranslation } from '../../utils/i18n-dict';
 import { getPagePath } from '../../utils/route';
 
 const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 
 type Props = {
 	title: string;
