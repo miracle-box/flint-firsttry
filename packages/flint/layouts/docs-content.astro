@@ -7,11 +7,9 @@ import OutdatedTranslation from '../components/docs/outdated-translation.astro';
 import Outdated from '../components/docs/outdated.astro';
 import TableOfContents from '../components/docs/table-of-contents';
 import { getTocTree } from '../utils/generate-toc';
-import { useTranslation } from '../utils/i18n-dict';
 import Layout from './base.astro';
 
-const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 const { contentProps, pageProps } = Astro.props;
 ---
 

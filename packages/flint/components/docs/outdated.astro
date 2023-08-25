@@ -1,9 +1,7 @@
 ---
-import { useTranslation } from '../../utils/i18n-dict';
 import Callout from '../content/callout.astro';
 
-const { locale } = Astro.locals;
-const t = useTranslation(locale);
+const t = Astro.locals.translations;
 ---
 
 <Callout type="warning" title={false}>

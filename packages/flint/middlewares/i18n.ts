@@ -1,8 +1,11 @@
 import { defineMiddleware } from 'astro/middleware';
-import { getLocaleFromUrl } from '../utils';
+import { getLocaleFromUrl, useTranslation } from '../utils';
 
 export const flintI18nMiddleware = defineMiddleware(async (ctx, next) => {
-	ctx.locals.locale = getLocaleFromUrl(ctx.url.pathname);
+	const locale = getLocaleFromUrl(ctx.url.pathname);
+	ctx.locals.locale = locale;
+	ctx.locals.translations = useTranslation(locale);
+
 	const response = await next();
 	return response;
 });
