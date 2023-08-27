@@ -12,7 +12,8 @@
     ".": "./index.ts",
     "./schema": "./schema.ts",
     "./components": "./components.ts",
-    "./middleware": "./middleware.ts"
+    "./middleware": "./middleware.ts",
+    "./i18n-utils": "./i18n-utils.ts"
   },
   "peerDependencies": {
     "astro": "^2.10.12"
