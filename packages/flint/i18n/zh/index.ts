@@ -1,7 +1,7 @@
-import type { FlintTranslation } from '../../schemas/i18n';
+import type { FlintInternalTranslation } from '../../schemas/i18n';
 import { t, localeLabel } from '../../utils/i18n-translation';
 
-const zh: FlintTranslation = {
+const zh: FlintInternalTranslation = {
 	site: {
 		logotype: t`洛书南`,
 		logoAlt: t`图标`,

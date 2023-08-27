@@ -1,5 +1,8 @@
-import type { FlintTranslationExtend } from '@miracle-box/flint/schema';
+import type { FlintExtendedDictionary } from '@miracle-box/flint/i18n-utils';
+import { t } from '@miracle-box/flint/i18n-utils';
 
-const extendedTranslations: Record<string, FlintTranslationExtend> = {};
+const extendedTranslations: FlintExtendedDictionary = {
+	zh: {},
+};
 
 export default extendedTranslations;

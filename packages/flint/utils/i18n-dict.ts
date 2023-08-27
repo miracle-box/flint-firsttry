@@ -21,7 +21,8 @@ function buildDefaults(): FlintTranslation {
 	return parseFlintDict(
 		extend(
 			true,
-			{},
+			// Fallback here.
+			{ custom: {} },
 			flintDicts.en,
 			flintDicts[Config.defaultLocale],
 			ExtendedTranslations[Config.defaultLocale],

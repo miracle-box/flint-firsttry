@@ -6,6 +6,6 @@ declare module 'virtual:flint/config' {
 }
 
 declare module 'virtual:flint/extended-translation' {
-	const ExtendedTranslations: Record<string, import('./schema').FlintTranslationExtend>;
+	const ExtendedTranslations: Record<string, import('./i18n-utils').FlintExtendedDictionary>;
 	export default ExtendedTranslations;
 }
