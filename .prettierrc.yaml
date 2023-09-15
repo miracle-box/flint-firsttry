@@ -7,7 +7,6 @@ tabWidth: 4
 printWidth: 80
 plugins:
   - 'prettier-plugin-astro'
-  - 'prettier-plugin-tailwindcss'
 overrides:
   - files: ['*.js', '*.ts', '*.cjs', '*.mjs']
     options:

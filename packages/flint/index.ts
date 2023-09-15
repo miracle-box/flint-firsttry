@@ -4,7 +4,6 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import mdx from '@astrojs/mdx';
 import solidJs from '@astrojs/solid-js';
-import tailwind from '@astrojs/tailwind';
 import icons from 'unplugin-icons/vite';
 import { baseRoutes } from './routes/base';
 import { docsRoutes } from './routes/docs';
@@ -51,7 +50,7 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 		},
 	};
 
-	return [tailwind({ applyBaseStyles: false }), solidJs(), mdx(), flint];
+	return [solidJs(), mdx(), flint];
 }
 
 function vitePluginFlint(
