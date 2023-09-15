@@ -1,7 +1,7 @@
 import { z } from 'astro/zod';
 import { tSchema } from '../utils/i18n-translation';
 
-export const FlintInternalTranslationSchema = z.object({
+const FlintInternalTranslationSchema = z.object({
 	site: z.object({
 		logotype: tSchema(),
 		logoAlt: tSchema(),
