@@ -1,3 +1,6 @@
+/* Base markdown style */
+@import 'github-markdown-css/github-markdown-light.css';
+
 .markdown-body {
 	ul {
 		@apply list-disc pl-8;

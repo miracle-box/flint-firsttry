@@ -24,12 +24,15 @@
     "@iconify-json/octicon": "^1.1.47",
     "github-markdown-css": "^5.2.0",
     "just-extend": "^6.2.0",
-    "solid-headless": "^0.13.1",
+    "modern-normalize": "^2.0.0",
     "solid-js": "^1.7.11",
     "unplugin-icons": "^0.16.5"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^2.1.0",
     "@types/node": "^20.5.3",
-    "astro": "^2.10.12"
+    "astro": "^2.10.12",
+    "postcss-custom-media": "^10.0.2",
+    "postcss-nesting": "^12.0.1"
   }
 }

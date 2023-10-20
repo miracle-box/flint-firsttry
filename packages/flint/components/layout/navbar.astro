@@ -2,7 +2,6 @@
 import Config from 'virtual:flint/config';
 import { changePathLocale } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
-import NavPopper from './nav-popper';
 import LanguageIcon from '~icons/octicon/globe-24';
 import MenuIcon from '~icons/octicon/three-bars-16';
 
@@ -39,19 +38,19 @@ const navItems = [
 ];
 ---
 
-<nav class="text-md container top-0 mx-auto flex items-center justify-between px-4 py-3 font-semibold">
+<nav class="navbar">
 	<!-- Left -->
-	<div class="flex items-center gap-4">
+	<div class="__group">
 		<!-- Logo -->
-		<a class="flex items-center gap-1 rounded outline-none ring-gray-200 focus:ring" href={getPagePath(locale)}>
-			<img class="h-8 w-8" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
+		<a class="__logo" href={getPagePath(locale)}>
+			<img class="__logo-img" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
 			<span>{t.site.logotype()}</span>
 		</a>
 		<!-- Links -->
-		<div class="hidden gap-1 md:flex">
+		<div class="__links-desktop">
 			{
 				navItems.map(({ text, link }) => (
-					<a class="nav-link" href={link}>
+					<a class="__link" href={link}>
 						{text}
 					</a>
 				))
@@ -59,46 +58,78 @@ const navItems = [
 		</div>
 	</div>
 	<!-- Right -->
-	<div class="flex items-center">
+	<div class="__group">
 		<!-- Language Selector -->
-		<NavPopper class:list="ml-4" client:load>
-			<LanguageIcon slot="icon" />
-			<div>
-				<div class="flex flex-col gap-2">
-					{
-						getLocaleItems().map(({ label, link }) => (
-							<a class="nav-link" href={link}>
-								{label}
-							</a>
-						))
-					}
-				</div>
-			</div>
-		</NavPopper>
 		<!-- Mobile Nav -->
-		<div class="ml-4 md:hidden">
-			<NavPopper client:load>
-				<MenuIcon slot="icon" />
-				<div>
-					<div class="flex flex-col gap-2">
-						{
-							navItems.map(({ text, link }) => (
-								<a class="nav-link" href={link}>
-									{text}
-								</a>
-							))
-						}
-					</div>
-				</div>
-			</NavPopper>
-		</div>
 	</div>
 </nav>
 
 <style>
-	.nav-link {
-		@apply rounded px-3 py-2 transition-colors;
-		@apply text-gray-600 hover:bg-gray-100 hover:text-gray-900;
-		@apply outline-none ring-gray-200 focus:ring;
+	.navbar {
+		font-size: var(--font-md-size);
+		line-height: var(--font-md-line-height);
+		top: 0;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 1rem;
+		font-weight: var(--font-semibold);
+
+		.__group {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.__logo {
+			padding: 0.25rem 0.25rem;
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			border-radius: var(--rounded-md);
+			outline: none;
+			color: var(--color-gray-900);
+			text-decoration: none;
+
+			&:hover {
+				background-color: var(--color-gray-100);
+			}
+
+			&:focus {
+				box-shadow: 0 0 0 calc(4px + 0px) var(--color-gray-200);
+			}
+		}
+
+		.__logo-img {
+			height: 2rem;
+		}
+
+		.__links-desktop {
+			display: none;
+			gap: 0.5rem;
+
+			@media (--size-md) {
+				display: flex;
+			}
+		}
+
+		.__link {
+			padding: 0.5rem 0.75rem;
+			border-radius: var(--rounded-md);
+			transition: all, 0.3s;
+			color: var(--color-gray-600);
+			outline: none;
+			text-decoration: none;
+
+			&:hover {
+				background-color: var(--color-gray-100);
+				color: var(--color-gray-900);
+			}
+
+			&:focus {
+				box-shadow: 0 0 0 calc(4px + 0px) var(--color-gray-200);
+			}
+		}
 	}
 </style>

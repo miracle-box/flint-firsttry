@@ -3,16 +3,51 @@ import Config from 'virtual:flint/config';
 import { getPathname } from '../../utils/route';
 ---
 
-<footer
-	class="mt-auto flex flex-col items-center justify-center gap-1 px-4 py-4 text-sm text-gray-500 sm:flex-row sm:gap-4"
->
-	<div class="flex gap-1">
-		<img class="my-auto h-4 w-4 flex-grow-0" alt="" src={getPathname('images/sec-record.png')} />
-		<a class="hover:text-gray-900" href={Config.legacy.secRecordLink} rel="nofollow noopener"
-			>{Config.legacy.secRecordText}</a
-		>
+<footer class="footer">
+	<div class="__group">
+		<img class="__icon" alt="" src={getPathname('images/sec-record.png')} />
+		<a class="__link" href={Config.legacy.secRecordLink} rel="nofollow noopener">{Config.legacy.secRecordText}</a>
 	</div>
-	<a class="hover:text-gray-900" href={Config.legacy.icpRecordLink} rel="nofollow noopener"
-		>{Config.legacy.icpRecordText}</a
-	>
+	<a class="__link" href={Config.legacy.icpRecordLink} rel="nofollow noopener">{Config.legacy.icpRecordText}</a>
 </footer>
+
+<style>
+	.footer {
+		margin-top: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		padding: 1rem 1rem;
+		font-size: var(--font-sm-size);
+		line-height: var(--font-sm-line-height);
+		color: var(--color-gray-500);
+
+		@media (--size-sm) {
+			flex-direction: row;
+			gap: 1rem;
+		}
+
+		.__group {
+			display: flex;
+			gap: 0.25rem;
+		}
+
+		.__icon {
+			margin: auto 0;
+			height: 1rem;
+			width: 1rem;
+			flex-grow: 0;
+		}
+
+		.__link {
+			color: var(--color-gray-500);
+			text-decoration: none;
+
+			&:hover {
+				color: var(--color-gray-900);
+			}
+		}
+	}
+</style>
