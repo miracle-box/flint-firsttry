@@ -1,6 +1,7 @@
 import type { TocItem } from '../../types';
 import type { Component } from 'solid-js';
 import { For, Show, createSignal, createEffect } from 'solid-js';
+import styles from '../../styles/components/table-of-contents.module.css';
 
 type TocProps = {
 	tocTree: TocItem[];
@@ -11,11 +12,15 @@ type TocItemProps = TocProps & {
 };
 
 const TableOfContentsItem: Component<TocItemProps> = (props: TocItemProps) => (
-	<ul class="ml-4">
+	<ul class={styles.__list}>
 		<For each={props.tocTree}>
 			{({ slug, text, children }) => (
-				<li class="text-md w-full overflow-hidden text-ellipsis whitespace-nowrap break-all">
-					<a href={`#${slug}`} class="leading-7" classList={{ 'text-primary-600': props.activeId === slug }}>
+				<li class={styles.__item}>
+					<a
+						href={`#${slug}`}
+						class={styles.__link}
+						classList={{ [styles['--active']!]: props.activeId === slug }}
+					>
 						{text}
 					</a>
 					<Show when={children.length > 0}>
@@ -72,19 +77,19 @@ const TableOfContents: Component<TocProps> = (props: TocProps) => {
 
 	const marker = (
 		<div
-			class="absolute transition"
+			class={styles['__marker-box']}
 			// Currently, the height of each entry in TOC is 28px.
 			style={{ transform: `translateY(${activeIndex() * 28}px)` }}
 		>
-			<div class="bg-primary-500 absolute mt-[4px] h-5 w-[4px] rounded" />
+			<div class={styles.__marker} />
 		</div>
 	);
 
 	return (
-		<>
+		<div class={styles['table-of-contents']}>
 			{marker}
 			<TableOfContentsItem tocTree={props.tocTree} activeId={activeId()} />
-		</>
+		</div>
 	);
 };
 

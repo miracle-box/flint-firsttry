@@ -2,25 +2,155 @@
 const t = Astro.locals.translations;
 ---
 
-<header class="flex flex-col gap-4 px-8 py-24 md:gap-8 lg:gap-12">
-	<div class="flex flex-col items-center justify-center gap-3 md:gap-6">
-		<h1 class="text-dp-md sm:text-dp-lg md:text-dp-xl lg:text-dp-2xl font-semibold">
+<header class="hero">
+	<div class="__text-container">
+		<h1 class="__title">
 			{t.hero.title()}
 		</h1>
-		<p class="text-md lg:text-dp-sm font-medium sm:text-lg md:text-xl">
+		<p class="__desc">
 			{t.hero.desc()}
 		</p>
 	</div>
-	<div class="flex items-center justify-center gap-3 sm:flex-row">
-		<a
-			href=""
-			class="bg-primary-600 text-md ring-primary-200 hover:bg-primary-700 rounded-lg px-6 py-2 text-center font-semibold text-white outline-none transition-colors focus:ring sm:text-lg md:py-3 lg:px-8 lg:py-4"
-			>{t.hero.primaryButton()}</a
-		>
-		<a
-			href=""
-			class="text-md shadow-xs rounded-lg border border-gray-300 bg-white px-6 py-2 text-center font-semibold text-gray-700 outline-none ring-gray-200 transition-colors hover:bg-gray-100 hover:text-gray-800 focus:ring sm:text-lg md:py-3 lg:px-8 lg:py-4"
-			>{t.hero.secondaryButton()}</a
-		>
+	<div class="__buttons-box">
+		<a href="" class="__button --primary">{t.hero.primaryButton()}</a>
+		<a href="" class="__button --secondary">{t.hero.secondaryButton()}</a>
 	</div>
 </header>
+
+<style>
+	.hero {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 6rem 2rem;
+
+		@media (--size-md) {
+			gap: 2rem;
+		}
+
+		@media (--size-lg) {
+			gap: 3rem;
+		}
+
+		.__text-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.75rem;
+
+			@media (--size-md) {
+				gap: 1.5rem;
+			}
+		}
+
+		.__title {
+			font-size: var(--font-dp-md-size);
+			line-height: var(--font-dp-md-line-height);
+			font-weight: var(--font-semibold);
+
+			@media (--size-sm) {
+				font-size: var(--font-dp-lg-size);
+				line-height: var(--font-dp-lg-line-height);
+			}
+
+			@media (--size-md) {
+				font-size: var(--font-dp-xl-size);
+				line-height: var(--font-dp-xl-line-height);
+			}
+
+			@media (--size-lg) {
+				font-size: var(--font-dp-2xl-size);
+				line-height: var(--font-dp-2xl-line-height);
+			}
+		}
+
+		.__desc {
+			font-size: var(--font-md-size);
+			line-height: var(--font-md-line-height);
+			font-weight: var(--font-medium);
+
+			@media (--size-sm) {
+				font-size: var(--font-lg-size);
+				line-height: var(--font-lg-line-height);
+			}
+
+			@media (--size-md) {
+				font-size: var(--font-xl-size);
+				line-height: var(--font-xl-line-height);
+			}
+
+			@media (--size-lg) {
+				font-size: var(--font-dp-sm-size);
+				line-height: var(--font-dp-sm-line-height);
+			}
+		}
+
+		.__buttons-box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.75rem;
+
+			@media (--size-sm) {
+				flex-direction: row;
+			}
+		}
+
+		.__button {
+			padding: 0.5rem 1.5rem;
+			outline: none;
+			text-align: center;
+			border-radius: var(--rounded-lg);
+			font-size: var(--font-md-size);
+			line-height: var(--font-md-line-height);
+			font-weight: var(--font-semibold);
+			text-decoration: none;
+			transition: all 0.3s;
+
+			@media (--size-sm) {
+				font-size: var(--font-lg-size);
+				line-height: var(--font-lg-line-height);
+			}
+
+			@media (--size-md) {
+				padding: 0.75rem 1.5rem;
+			}
+
+			@media (--size-lg) {
+				padding: 1rem 2rem;
+			}
+
+			&.--primary {
+				background-color: var(--color-primary-600);
+				color: var(--color-white);
+
+				&:hover {
+					background-color: var(--color-primary-700);
+				}
+
+				&:focus {
+					box-shadow:
+						0 0 0 4px var(--color-white),
+						0 0 0 calc(4px + 4px) var(--color-primary-200);
+				}
+			}
+			&.--secondary {
+				box-shadow: var(--box-shadow-xs);
+				border: 1px solid var(--color-gray-300);
+				background-color: var(--color-white);
+				color: var(--color-gray-700);
+
+				&:hover {
+					background-color: var(--color-gray-100);
+					color: var(--color-gray-800);
+				}
+
+				&:focus {
+					box-shadow:
+						0 0 0 4px var(--color-white),
+						0 0 0 calc(4px + 4px) var(--color-gray-200);
+				}
+			}
+		}
+	}
+</style>

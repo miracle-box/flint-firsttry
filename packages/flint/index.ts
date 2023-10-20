@@ -4,11 +4,16 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import mdx from '@astrojs/mdx';
 import solidJs from '@astrojs/solid-js';
+import postcssGlobalData from '@csstools/postcss-global-data';
+import postcssCustomMedia from 'postcss-custom-media';
+import postcssNesting from 'postcss-nesting';
 import icons from 'unplugin-icons/vite';
 import { baseRoutes } from './routes/base';
 import { docsRoutes } from './routes/docs';
 import { newsRoutes } from './routes/news';
 import { FlintConfigSchema } from './utils/config';
+
+const packageRoot = fileURLToPath(new URL('.', import.meta.url));
 
 export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
 	// Parse user config
@@ -37,6 +42,20 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 							}),
 							vitePluginFlint(config, flintConfig),
 						],
+						css: {
+							postcss: {
+								plugins: [
+									postcssGlobalData({
+										files: [
+											'node_modules:modern-normalize/modern-normalize.css',
+											resolve(packageRoot, 'styles/variables.css'),
+										],
+									}),
+									postcssCustomMedia(),
+									postcssNesting(),
+								],
+							},
+						},
 					},
 				};
 
@@ -75,9 +94,7 @@ function vitePluginFlint(
 			if (id in virtualModules) return resolveVirtualModuleId(id);
 		},
 		load(id): string | void {
-			return Object.entries(virtualModules).find(
-				([origId]) => id === resolveVirtualModuleId(origId),
-			)?.[1];
+			return Object.entries(virtualModules).find(([origId]) => id === resolveVirtualModuleId(origId))?.[1];
 		},
 	};
 }

@@ -23,3 +23,7 @@ overrides:
     options:
       parser: astro
       printWidth: 120
+  # Special rules
+  - files: './packages/flint/index.ts'
+    options:
+      tabWidth: 4

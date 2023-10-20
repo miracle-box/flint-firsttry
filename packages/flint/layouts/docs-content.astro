@@ -6,6 +6,7 @@ import Fallback from '../components/docs/fallback.astro';
 import OutdatedTranslation from '../components/docs/outdated-translation.astro';
 import Outdated from '../components/docs/outdated.astro';
 import TableOfContents from '../components/docs/table-of-contents';
+import '../styles/markdown.css';
 import { getTocTree } from '../utils/generate-toc';
 import Layout from './base.astro';
 
@@ -15,25 +16,22 @@ const { contentProps, pageProps } = Astro.props;
 
 <Layout>
 	<!-- TODO: remove this magic value sometime later -->
-	<div class="mx-auto grid w-full grid-cols-[minmax(14em,1fr)_minmax(0,49em)_1fr] gap-8">
-		<aside class="order-1 hidden lg:block"></aside>
+	<div class="container">
+		<aside class="left-sidebar"></aside>
 		<!-- Table of Contents -->
-		<aside class="order-3 hidden pr-4 lg:block">
-			<!-- Max height: 100vh - navHeight - topMargin - bottomMargin), Top offset: navHeight + topMargin -->
-			<nav class="sticky top-[112px] flex max-h-[calc(100vh-64px-48px-48px)] flex-col gap-2">
-				<div class="text-sm font-bold">
+		<aside class="right-sidebar">
+			<nav class="__toc">
+				<div class="__toc-heading">
 					{t.docs.tocHeading()}
 				</div>
-				<div class="relative overflow-auto">
+				<div class="__toc-wrapper">
 					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
 				</div>
 			</nav>
 		</aside>
-		<main
-			class="order-2 col-span-3 mx-2 mt-8 rounded-2xl border px-6 py-12 shadow-2xl sm:px-8 md:px-12 lg:col-span-1 lg:mx-0 lg:px-16"
-		>
+		<main class="main">
 			<Breadcrumb filePath={contentProps.id} />
-			<article class="markdown-body mt-6">
+			<article class="__content markdown-body">
 				<h1>{contentProps.title}</h1>
 				{
 					contentProps.outdated_translation && (
@@ -53,3 +51,86 @@ const { contentProps, pageProps } = Astro.props;
 		</main>
 	</div>
 </Layout>
+
+<style>
+	.container {
+		display: grid;
+		grid-template-columns: minmax(14em, 1fr) minmax(0, 49em) 1fr;
+		margin: 0 auto;
+		width: 100%;
+		gap: 2rem;
+	}
+
+	.left-sidebar {
+		order: 1;
+		display: none;
+
+		@media (--size-lg) {
+			display: block;
+		}
+	}
+
+	.right-sidebar {
+		order: 3;
+		display: none;
+		padding-right: 1rem;
+
+		@media (--size-lg) {
+			display: block;
+		}
+
+		.__toc {
+			position: sticky;
+			/* [TODO) Remove this magic value sometime later */
+			top: 112px;
+			display: flex;
+			/* Max height: 100vh - navHeight - topMargin - bottomMargin), Top offset: navHeight + topMargin */
+			max-height: calc(100vh - 64px - 48px - 48px);
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.__toc-heading {
+			font-size: var(--font-sm-size);
+			line-height: var(--font-sm-line-height);
+			font-weight: var(--font-bold);
+		}
+
+		.__toc-wrapper {
+			position: relative;
+			overflow: auto;
+		}
+	}
+
+	.main {
+		order: 2;
+		grid-column: span 3 / span 3;
+		margin: 2rem 0.5rem 0 0.5rem;
+		padding: 3rem 1.5rem;
+		border-radius: var(--rounded-2xl);
+		border: 1px solid var(--color-gray-200);
+		box-shadow: var(--box-shadow-2xl);
+
+		@media (--size-sm) {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+
+		@media (--size-md) {
+			padding-left: 3rem;
+			padding-right: 3rem;
+		}
+
+		@media (--size-lg) {
+			grid-column: span 1 / span 1;
+			padding-left: 4rem;
+			padding-right: 4rem;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.__content {
+			margin-top: 1.5rem;
+		}
+	}
+</style>

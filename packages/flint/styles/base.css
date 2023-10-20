@@ -1,5 +1,0 @@
-/* Base markdown style */
-@import 'github-markdown-css/github-markdown-light.css';
-
-/* Markdown style fixes */
-@import url('markdown.css');

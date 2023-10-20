@@ -14,7 +14,6 @@
     "@astrojs/solid-js": "^2.2.1",
     "@miracle-box/flint": "workspace:*",
     "astro": "^2.10.12",
-    "solid-headless": "^0.13.1",
     "solid-js": "^1.7.11"
   }
 }
