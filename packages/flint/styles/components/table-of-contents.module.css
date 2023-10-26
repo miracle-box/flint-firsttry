@@ -22,7 +22,7 @@
 		}
 	}
 
-	.__marker-box {
+	.__marker-container {
 		position: absolute;
 		transition: transform 0.3s;
 		transform: translateY(0);

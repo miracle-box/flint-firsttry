@@ -1,7 +1,7 @@
 import type { TocItem } from '../../types';
 import type { Component } from 'solid-js';
 import { For, Show, createSignal, createEffect } from 'solid-js';
-import styles from '../../styles/components/table-of-contents.module.css';
+import S from '../../styles/components/table-of-contents.module.css';
 
 type TocProps = {
 	tocTree: TocItem[];
@@ -12,15 +12,11 @@ type TocItemProps = TocProps & {
 };
 
 const TableOfContentsItem: Component<TocItemProps> = (props: TocItemProps) => (
-	<ul class={styles.__list}>
+	<ul class={S.__list}>
 		<For each={props.tocTree}>
 			{({ slug, text, children }) => (
-				<li class={styles.__item}>
-					<a
-						href={`#${slug}`}
-						class={styles.__link}
-						classList={{ [styles['--active']!]: props.activeId === slug }}
-					>
+				<li class={S.__item}>
+					<a href={`#${slug}`} class={S.__link} classList={{ [S['--active']!]: props.activeId === slug }}>
 						{text}
 					</a>
 					<Show when={children.length > 0}>
@@ -77,16 +73,16 @@ const TableOfContents: Component<TocProps> = (props: TocProps) => {
 
 	const marker = (
 		<div
-			class={styles['__marker-box']}
+			class={S['__marker-container']}
 			// Currently, the height of each entry in TOC is 28px.
 			style={{ transform: `translateY(${activeIndex() * 28}px)` }}
 		>
-			<div class={styles.__marker} />
+			<div class={S.__marker} />
 		</div>
 	);
 
 	return (
-		<div class={styles['table-of-contents']}>
+		<div class={S['table-of-contents']}>
 			{marker}
 			<TableOfContentsItem tocTree={props.tocTree} activeId={activeId()} />
 		</div>
