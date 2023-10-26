@@ -1,21 +1,24 @@
 ---
+import type { LocaleItem } from './locale-selector';
 import Config from 'virtual:flint/config';
 import { changePathLocale } from '../../utils/i18n-path';
 import { getPagePath } from '../../utils/route';
-import LanguageIcon from '~icons/octicon/globe-24';
-import MenuIcon from '~icons/octicon/three-bars-16';
+import { LocaleSelector } from './locale-selector';
 
 const { url } = Astro;
 const { locale } = Astro.locals;
 const t = Astro.locals.translations;
 
-function getLocaleItems() {
-	return Object.values(Config.locales).map(({ locale, label }) => {
-		return {
-			label,
-			link: changePathLocale(url.pathname, locale!),
-		};
-	});
+function getLocaleItems(): Record<string, LocaleItem> {
+	return Object.fromEntries(
+		Object.entries(Config.locales).map(([locale, options]) => [
+			locale,
+			{
+				label: options.label,
+				link: changePathLocale(url.pathname, locale),
+			},
+		]),
+	);
 }
 
 const navItems = [
@@ -59,8 +62,7 @@ const navItems = [
 	</div>
 	<!-- Right -->
 	<div class="__group">
-		<!-- Language Selector -->
-		<!-- Mobile Nav -->
+		<LocaleSelector locales={getLocaleItems()} currentLocale={locale} client:idle />
 	</div>
 </nav>
 
@@ -75,6 +77,7 @@ const navItems = [
 		justify-content: space-between;
 		padding: 0.75rem 1rem;
 		font-weight: var(--font-semibold);
+		overflow: auto;
 
 		.__group {
 			display: flex;
@@ -91,6 +94,7 @@ const navItems = [
 			outline: none;
 			color: var(--color-gray-900);
 			text-decoration: none;
+			text-wrap: nowrap;
 
 			&:hover {
 				background-color: var(--color-gray-100);
@@ -106,7 +110,8 @@ const navItems = [
 		}
 
 		.__links-desktop {
-			display: none;
+			display: flex;
+			text-wrap: nowrap;
 			gap: 0.5rem;
 
 			@media (--size-md) {
