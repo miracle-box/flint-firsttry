@@ -1,10 +1,5 @@
-import { docsSchema, newsSchema } from '@miracle-box/flint/schema';
+import { docsSchema } from '@miracle-box/flint/schema';
 import { defineCollection } from 'astro:content';
-
-const news = defineCollection({
-	type: 'content',
-	schema: newsSchema,
-});
 
 const docs = defineCollection({
 	type: 'content',
@@ -12,6 +7,5 @@ const docs = defineCollection({
 });
 
 export const collections = {
-	news,
 	docs,
 };

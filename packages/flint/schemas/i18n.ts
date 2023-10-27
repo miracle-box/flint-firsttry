@@ -8,7 +8,6 @@ const FlintInternalTranslationSchema = z.object({
 		title: tSchema(),
 	}),
 	navItems: z.object({
-		news: tSchema(),
 		docs: tSchema(),
 		resources: tSchema(),
 		guiluo: tSchema(),
@@ -30,9 +29,6 @@ const FlintInternalTranslationSchema = z.object({
 		outdatedTip: tSchema(),
 		outdatedTranslationTip: z.tuple([tSchema(), tSchema().args(z.string()), tSchema(), tSchema()]),
 		tocHeading: tSchema(),
-	}),
-	news: z.object({
-		breadcrumbBase: tSchema(),
 	}),
 });
 export type FlintInternalTranslation = z.infer<typeof FlintInternalTranslationSchema>;

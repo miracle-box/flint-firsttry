@@ -23,10 +23,6 @@ function getLocaleItems(): Record<string, LocaleItem> {
 
 const navItems = [
 	{
-		link: `${getPagePath(locale, 'news')}`,
-		text: t.navItems.news(),
-	},
-	{
 		link: `${getPagePath(locale, 'docs')}`,
 		text: t.navItems.docs(),
 	},
@@ -122,7 +118,6 @@ const navItems = [
 		.__link {
 			padding: 0.5rem 0.75rem;
 			border-radius: var(--rounded-md);
-			transition: all, 0.3s;
 			color: var(--color-gray-600);
 			outline: none;
 			text-decoration: none;

@@ -8,7 +8,6 @@ const zh: FlintInternalTranslation = {
 		title: t`洛书南`,
 	},
 	navItems: {
-		news: t`新闻`,
 		docs: t`文档`,
 		resources: t`资源`,
 		guiluo: t`归落原`,
@@ -37,9 +36,6 @@ const zh: FlintInternalTranslation = {
 			t`（欢迎你来帮助更新翻译）！`,
 		],
 		tocHeading: t`在本页上`,
-	},
-	news: {
-		breadcrumbBase: t`新闻`,
 	},
 };
 

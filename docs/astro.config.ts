@@ -14,15 +14,6 @@ const flintConfig: RawFlintConfig = {
 	defaultLocale: 'zh',
 	flintTranslationsPath: './i18n/index',
 	modules: {
-		news: {
-			type: 'news',
-			collectionId: 'news',
-			routeBasePath: 'news',
-			tags: {
-				updates: { name: 'Updates', desc: 'Update notes.' },
-				monthly: { name: 'Monthly', desc: 'Summary of every month.' },
-			},
-		},
 		docs: {
 			type: 'docs',
 			collectionId: 'docs',

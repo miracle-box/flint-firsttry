@@ -6,13 +6,6 @@ const LocaleSchema = z.object({
 	dir: z.enum(['rtl', 'ltr']).default('ltr').optional(),
 });
 
-const NewsTagSchema = z.object({
-	name: z.string(),
-	desc: z.string(),
-});
-
-export type NewsTag = z.infer<typeof NewsTagSchema>;
-
 const ModuleRouteCommonSchema = z.object({
 	collectionId: z.string(),
 	// Allow numbers, alphabets, hyphens and underscores for module name
@@ -23,15 +16,6 @@ const ModuleRouteCommonSchema = z.object({
 const ModuleRouteDocsSchema = ModuleRouteCommonSchema.extend({
 	type: z.literal('docs'),
 });
-
-const ModuleRouteNewsSchema = ModuleRouteCommonSchema.extend({
-	type: z.literal('news'),
-	tags: z.record(z.string(), NewsTagSchema),
-});
-
-const ModuleRouteSchema = z.union([ModuleRouteDocsSchema, ModuleRouteNewsSchema]);
-
-export type ModuleRoute = z.infer<typeof ModuleRouteSchema>;
 
 const RawFlintConfigSchema = z.object({
 	locales: z.record(z.string(), LocaleSchema).transform((locales) => {
@@ -47,7 +31,6 @@ const RawFlintConfigSchema = z.object({
 	flintTranslationsPath: z.string(),
 	// This is just a workaround, will support multi-instance in the future.
 	modules: z.object({
-		news: ModuleRouteNewsSchema,
 		docs: ModuleRouteDocsSchema,
 	}),
 	legacy: z.object({

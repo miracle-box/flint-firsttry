@@ -10,7 +10,6 @@ import postcssNesting from 'postcss-nesting';
 import icons from 'unplugin-icons/vite';
 import { baseRoutes } from './routes/base';
 import { docsRoutes } from './routes/docs';
-import { newsRoutes } from './routes/news';
 import { FlintConfigSchema } from './utils/config';
 
 const packageRoot = fileURLToPath(new URL('.', import.meta.url));
@@ -60,7 +59,7 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 				};
 
 				// Temp route, wait for refactor
-				for (const route of [...docsRoutes('docs'), ...newsRoutes('news'), ...baseRoutes()]) {
+				for (const route of [...docsRoutes('docs'), ...baseRoutes()]) {
 					injectRoute(route);
 				}
 

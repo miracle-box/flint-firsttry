@@ -8,7 +8,6 @@ const en: FlintInternalTranslation = {
 		title: t`Losenone`,
 	},
 	navItems: {
-		news: t`News`,
 		docs: t`Docs`,
 		resources: t`Resolution`,
 		guiluo: t`GuiLuoYuan`,
@@ -37,9 +36,6 @@ const en: FlintInternalTranslation = {
 			t`(and consider updating the translation if you are able to help out!)`,
 		],
 		tocHeading: t`On this page`,
-	},
-	news: {
-		breadcrumbBase: t`News`,
 	},
 };
 
