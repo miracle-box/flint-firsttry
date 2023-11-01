@@ -6,17 +6,6 @@ const LocaleSchema = z.object({
 	dir: z.enum(['rtl', 'ltr']).default('ltr').optional(),
 });
 
-const ModuleRouteCommonSchema = z.object({
-	collectionId: z.string(),
-	// Allow numbers, alphabets, hyphens and underscores for module name
-	// Module names are also used for base path in routing
-	routeBasePath: z.string().regex(/^[\w-]+$/),
-});
-
-const ModuleRouteDocsSchema = ModuleRouteCommonSchema.extend({
-	type: z.literal('docs'),
-});
-
 const RawFlintConfigSchema = z.object({
 	locales: z.record(z.string(), LocaleSchema).transform((locales) => {
 		// Fill `locale` field with key name when not specified
@@ -29,10 +18,7 @@ const RawFlintConfigSchema = z.object({
 	}),
 	defaultLocale: z.string(),
 	flintTranslationsPath: z.string(),
-	// This is just a workaround, will support multi-instance in the future.
-	modules: z.object({
-		docs: ModuleRouteDocsSchema,
-	}),
+	redirects: z.record(z.string()).optional().default({}),
 	legacy: z.object({
 		logoImg: z.string(),
 		icpRecordText: z.string(),

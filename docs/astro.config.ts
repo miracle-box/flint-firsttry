@@ -13,12 +13,9 @@ const flintConfig: RawFlintConfig = {
 	},
 	defaultLocale: 'zh',
 	flintTranslationsPath: './i18n/index',
-	modules: {
-		docs: {
-			type: 'docs',
-			collectionId: 'docs',
-			routeBasePath: 'docs',
-		},
+	redirects: {
+		'/': '/zh/main/',
+		'/[locale]/': '/[locale]/main/',
 	},
 	legacy: {
 		logoImg: '/favicon.svg',

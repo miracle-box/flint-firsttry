@@ -8,11 +8,23 @@ import postcssGlobalData from '@csstools/postcss-global-data';
 import postcssCustomMedia from 'postcss-custom-media';
 import postcssNesting from 'postcss-nesting';
 import icons from 'unplugin-icons/vite';
-import { baseRoutes } from './routes/base';
-import { docsRoutes } from './routes/docs';
 import { FlintConfigSchema } from './utils/config';
 
 const packageRoot = fileURLToPath(new URL('.', import.meta.url));
+const viteCssConfig = {
+	postcss: {
+		plugins: [
+			postcssGlobalData({
+				files: [
+					'node_modules:modern-normalize/modern-normalize.css',
+					resolve(packageRoot, 'styles/variables.css'),
+				],
+			}),
+			postcssCustomMedia(),
+			postcssNesting(),
+		],
+	},
+};
 
 export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[] {
 	// Parse user config
@@ -24,11 +36,12 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 
 	// Astro integration
 	const flint: AstroIntegration = {
-		name: 'flint',
+		name: '@miracle-box/flint',
 		hooks: {
 			'astro:config:setup'({ config, updateConfig, injectRoute }) {
 				const newConfig: AstroUserConfig = {
 					trailingSlash: 'always',
+					redirects: flintConfig.redirects,
 					markdown: {
 						shikiConfig: {
 							theme: 'github-light',
@@ -41,27 +54,18 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 							}),
 							vitePluginFlint(config, flintConfig),
 						],
-						css: {
-							postcss: {
-								plugins: [
-									postcssGlobalData({
-										files: [
-											'node_modules:modern-normalize/modern-normalize.css',
-											resolve(packageRoot, 'styles/variables.css'),
-										],
-									}),
-									postcssCustomMedia(),
-									postcssNesting(),
-								],
-							},
-						},
+						css: viteCssConfig,
 					},
 				};
 
-				// Temp route, wait for refactor
-				for (const route of [...docsRoutes('docs'), ...baseRoutes()]) {
-					injectRoute(route);
-				}
+				injectRoute({
+					pattern: `404`,
+					entryPoint: '@miracle-box/flint/404.astro',
+				});
+				injectRoute({
+					pattern: `[locale]/[...slug]`,
+					entryPoint: '@miracle-box/flint/page.astro',
+				});
 
 				updateConfig(newConfig);
 			},
@@ -82,9 +86,8 @@ function vitePluginFlint(
 		// Export flint config as a virtual module (like the way Starlight did)
 		'virtual:flint/config': `export default ${JSON.stringify(flintConfig)}`,
 		// Import i18n dicts from root directory.
-		'virtual:flint/extended-translation': `export { default } from ${resolvePath(
-			flintConfig.flintTranslationsPath,
-		)}`,
+		'virtual:flint/extended-translation':
+			'export { default } from ' + resolvePath(flintConfig.flintTranslationsPath),
 	};
 
 	return {

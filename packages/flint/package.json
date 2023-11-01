@@ -10,6 +10,8 @@
   },
   "exports": {
     ".": "./index.ts",
+    "./page.astro": "./page.astro",
+    "./404.astro": "./404.astro",
     "./schema": "./schema.ts",
     "./components": "./components.ts",
     "./middleware": "./middleware.ts",
