@@ -10,12 +10,14 @@
   },
   "exports": {
     ".": "./index.ts",
-    "./page.astro": "./page.astro",
     "./404.astro": "./404.astro",
+    "./page.astro": "./page.astro",
+    "./layouts/base.astro": "./layouts/base.astro",
     "./schema": "./schema.ts",
     "./components": "./components.ts",
     "./middleware": "./middleware.ts",
-    "./i18n-utils": "./i18n-utils.ts"
+    "./i18n-utils": "./i18n-utils.ts",
+    "./utils": "./utils"
   },
   "peerDependencies": {
     "astro": "^2.10.12"

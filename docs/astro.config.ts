@@ -14,8 +14,10 @@ const flintConfig: RawFlintConfig = {
 	defaultLocale: 'zh',
 	flintTranslationsPath: './i18n/index',
 	redirects: {
-		'/': '/zh/main/',
-		'/[locale]/': '/[locale]/main/',
+		'/': {
+			destination: '/zh/',
+			status: 302,
+		},
 	},
 	legacy: {
 		logoImg: '/favicon.svg',

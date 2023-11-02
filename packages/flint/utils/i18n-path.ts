@@ -56,3 +56,13 @@ export function changePathLocale(pathname: string, locale: string): string {
 
 	return getPathname() + pagePath.replace(ogLocale, locale);
 }
+
+/**
+ * Generate `getStaticPaths` entries for each locale
+ * @returns path entries for `getStaticPaths`
+ */
+export function staticPathForEachLocale(): Array<{ params: { locale: string } }> {
+	return locales.map((locale) => ({
+		params: { locale },
+	}));
+}
