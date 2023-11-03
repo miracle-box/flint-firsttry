@@ -1,7 +1,7 @@
 import { z } from 'astro/zod';
 import { tSchema } from '../utils/i18n-translation';
 
-const FlintInternalTranslationSchema = z.object({
+export const FlintTranslationSchema = z.object({
 	site: z.object({
 		logotype: tSchema(),
 		logoAlt: tSchema(),
@@ -31,12 +31,7 @@ const FlintInternalTranslationSchema = z.object({
 		tocHeading: tSchema(),
 	}),
 });
-export type FlintInternalTranslation = z.infer<typeof FlintInternalTranslationSchema>;
-
-export const FlintTranslationSchema = FlintInternalTranslationSchema.extend({
-	custom: z.record(z.function().returns(z.string())),
-});
 export type FlintTranslation = z.infer<typeof FlintTranslationSchema>;
 
-const FlintExtendedTranslationSchema = FlintTranslationSchema.deepPartial();
-export type FlintExtendedDictionary = Record<string, z.infer<typeof FlintExtendedTranslationSchema>>;
+const FlintUserTranslationSchema = FlintTranslationSchema.deepPartial();
+export type FlintUserDictionary = Record<string, z.infer<typeof FlintUserTranslationSchema>>;

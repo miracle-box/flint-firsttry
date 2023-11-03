@@ -1,5 +1,5 @@
-import type { FlintInternalTranslation } from '../schemas/i18n';
+import type { FlintTranslation } from '../schemas/i18n';
 import en from './en';
 import zh from './zh';
 
-export const flintDicts: Record<string, FlintInternalTranslation> = { en, zh };
+export const flintDict: Record<string, FlintTranslation> = { en, zh };

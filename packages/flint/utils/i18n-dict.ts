@@ -1,8 +1,8 @@
 import type { FlintTranslation } from '../schemas/i18n';
 import extend from 'just-extend';
 import Config from 'virtual:flint/config';
-import ExtendedTranslations from 'virtual:flint/extended-translation';
-import { flintDicts } from '../i18n';
+import { flintUserDict } from 'virtual:flint/user-translation';
+import { flintDict } from '../i18n';
 import { FlintTranslationSchema } from '../schemas/i18n';
 
 let defaults = buildDefaults();
@@ -21,19 +21,16 @@ function buildDefaults(): FlintTranslation {
 	return parseFlintDict(
 		extend(
 			true,
-			// Fallback here.
-			{ custom: {} },
-			flintDicts.en,
-			flintDicts[Config.defaultLocale],
-			ExtendedTranslations[Config.defaultLocale],
+			{},
+			flintDict.en,
+			flintDict[Config.defaultLocale],
+			flintUserDict[Config.defaultLocale],
 		) as FlintTranslation,
 	);
 }
 
 function buildDict(locale: string): FlintTranslation {
-	return parseFlintDict(
-		extend(true, {}, defaults, flintDicts[locale], ExtendedTranslations[locale]) as FlintTranslation,
-	);
+	return parseFlintDict(extend(true, {}, defaults, flintDict[locale], flintUserDict[locale]) as FlintTranslation);
 }
 
 export function useTranslation(locale: string): FlintTranslation {

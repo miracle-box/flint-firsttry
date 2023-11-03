@@ -86,8 +86,8 @@ function vitePluginFlint(
 		// Export flint config as a virtual module (like the way Starlight did)
 		'virtual:flint/config': `export default ${JSON.stringify(flintConfig)}`,
 		// Import i18n dicts from root directory.
-		'virtual:flint/extended-translation':
-			'export { default } from ' + resolvePath(flintConfig.flintTranslationsPath),
+		'virtual:flint/user-translation':
+			'export { flintUserDict, customSchema, customDict } from ' + resolvePath(flintConfig.flintTranslationsPath),
 	};
 
 	return {

@@ -5,7 +5,7 @@ declare module 'virtual:flint/config' {
 	export default Config;
 }
 
-declare module 'virtual:flint/extended-translation' {
-	const ExtendedTranslations: Record<string, import('./i18n-utils').FlintExtendedDictionary>;
-	export default ExtendedTranslations;
+declare module 'virtual:flint/user-translation' {
+	export const customSchema: import('astro/zod').AnyZodObject;
+	export const flintUserDict: Record<string, import('./i18n-utils').FlintUserDictionary>;
 }

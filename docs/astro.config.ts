@@ -12,7 +12,7 @@ const flintConfig: RawFlintConfig = {
 		},
 	},
 	defaultLocale: 'zh',
-	flintTranslationsPath: './i18n/index',
+	flintTranslationsPath: './src/i18n/index',
 	redirects: {
 		'/': {
 			destination: '/zh/',

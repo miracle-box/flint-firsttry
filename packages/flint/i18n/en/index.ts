@@ -1,7 +1,7 @@
-import type { FlintInternalTranslation } from '../../schemas/i18n';
+import type { FlintTranslation } from '../../schemas/i18n';
 import { t, localeLabel } from '../../utils/i18n-translation';
 
-const en: FlintInternalTranslation = {
+const en: FlintTranslation = {
 	site: {
 		logotype: t`Losenone`,
 		logoAlt: t`Logo`,
