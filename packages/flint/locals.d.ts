@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
 declare namespace App {
-	// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-	interface Locals {
+	export interface Locals {
 		locale: string;
 		translations: import('./schemas/i18n').FlintTranslation;
+		customTranslations: import('./schemas/i18n').CustomTranslation;
 	}
 }

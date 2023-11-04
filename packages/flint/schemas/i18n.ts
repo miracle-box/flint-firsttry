@@ -1,3 +1,4 @@
+import type { customSchema } from 'virtual:flint/user-translation';
 import { z } from 'astro/zod';
 import { tSchema } from '../utils/i18n-translation';
 
@@ -31,7 +32,9 @@ export const FlintTranslationSchema = z.object({
 		tocHeading: tSchema(),
 	}),
 });
+
 export type FlintTranslation = z.infer<typeof FlintTranslationSchema>;
+export type CustomTranslation = z.infer<typeof customSchema>;
 
 const FlintUserTranslationSchema = FlintTranslationSchema.deepPartial();
 export type FlintUserDictionary = Record<string, z.infer<typeof FlintUserTranslationSchema>>;
