@@ -1,0 +1,42 @@
+.locale-selector {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	border-radius: var(--rounded-md);
+	width: 16ch;
+	background-color: var(--color-gray-50);
+	border: 1px solid var(--color-gray-200);
+
+	&:hover,
+	&:focus {
+		border-color: var(--color-gray-400);
+		background-color: var(--color-gray-100);
+	}
+
+	.__icon {
+		position: absolute;
+		pointer-events: none;
+		inset-inline-start: 0.5rem;
+		color: var(--color-gray-600);
+	}
+
+	.__down {
+		position: absolute;
+		pointer-events: none;
+		inset-inline-end: 0.5rem;
+		color: var(--color-gray-400);
+	}
+
+	.__selector {
+		flex-grow: 1;
+		width: 100%;
+		appearance: none;
+		outline: none;
+		border: none;
+		background-color: transparent;
+		padding: calc(0.5rem - 1px) 1.75rem calc(0.5rem - 1px) 2rem;
+		text-overflow: ellipsis;
+		color: var(--color-gray-600);
+	}
+}

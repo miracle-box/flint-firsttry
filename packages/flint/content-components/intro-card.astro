@@ -1,0 +1,54 @@
+---
+type Props = {
+	fullWidth?: boolean;
+};
+
+const fullWidth = Astro.props.fullWidth ?? false;
+---
+
+<div class="intro-card" class:list={fullWidth ? '--full-width' : ''}>
+	<slot />
+</div>
+
+<style>
+	.intro-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: var(--rounded-lg);
+		border: 1px, solid, var(--color-gray-200);
+		padding: 0.5rem;
+		text-align: center;
+		grid-column: span 1 / span 1;
+
+		&.--full-width {
+			grid-column: 1 / -1;
+		}
+	}
+</style>
+
+<style is:inline>
+	.intro-card h2 {
+		font-weight: 500;
+		border-bottom: 0;
+	}
+
+	.intro-card p {
+		/* font-size: ; */
+	}
+
+	.intro-card ul {
+		padding: 0;
+	}
+
+	.intro-card ul > li {
+		display: inline;
+		font-size: 14px;
+	}
+
+	.intro-card ul > li:not(:last-child)::after {
+		content: ' • ';
+		padding-left: 4px;
+		padding-right: 4px;
+	}
+</style>

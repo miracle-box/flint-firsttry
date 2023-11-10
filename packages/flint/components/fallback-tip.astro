@@ -1,0 +1,16 @@
+---
+import Callout from '../content-components/callout.astro';
+
+type Props = {
+	fallbackLocale: string;
+};
+
+const { fallbackLocale } = Astro.props;
+
+const { locale } = Astro.locals;
+const t = Astro.locals.translations;
+---
+
+<Callout type="warning" title={false}>
+	{t.docs.fallbackTip(locale, fallbackLocale)}
+</Callout>

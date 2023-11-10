@@ -3,6 +3,7 @@ const RULES = {
 	'n/file-extension-in-import': 'off',
 	'import/extensions': ['error', 'never', { pattern: { astro: 'always', css: 'always' } }],
 	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+	'import/no-duplicates': ['error', { 'prefer-inline': false }],
 	'import/order': [
 		'error',
 		{
@@ -18,8 +19,8 @@ const RULES = {
 				'unknown',
 			],
 			pathGroups: [
-				{ pattern: '~/config', group: 'object', position: 'after' },
-				{ pattern: '**/*.css', group: 'object', position: 'after' },
+				{ pattern: 'virtual:*', group: 'object', position: 'after' },
+				{ pattern: '*.css', group: 'object', position: 'after' },
 			],
 			alphabetize: {
 				order: 'asc',
@@ -46,7 +47,6 @@ const TS_RULES = {
 
 module.exports = {
 	root: true,
-	ignorePatterns: ['src/i18n/i18n-*.ts'],
 	env: {
 		node: true,
 		es2022: true,
@@ -66,7 +66,6 @@ module.exports = {
 		'import/extensions': ['.js', '.cjs', '.mjs', '.jsx', '.ts', '.tsx'],
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.ts', '.tsx'],
-			'astro-eslint-parser': ['.astro'],
 		},
 	},
 

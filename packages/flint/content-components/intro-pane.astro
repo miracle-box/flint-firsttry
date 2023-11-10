@@ -1,0 +1,15 @@
+<div class="intro-pane">
+	<slot />
+</div>
+
+<style>
+	.intro-pane {
+		display: grid;
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+		gap: 0.5rem;
+
+		@media (--size-lg) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

@@ -1,6 +1,9 @@
 {
   "npm.packageManager": "pnpm",
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[astro]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -14,6 +17,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

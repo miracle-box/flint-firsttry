@@ -1,0 +1,83 @@
+---
+import type { LocaleItem } from './locale-selector';
+import Config from 'virtual:flint/config';
+import { changePathLocale } from '../utils/i18n-path';
+import { getPagePath } from '../utils/route';
+import { LocaleSelector } from './locale-selector';
+
+const { url } = Astro;
+const { locale } = Astro.locals;
+const t = Astro.locals.translations;
+
+function getLocaleItems(): Record<string, LocaleItem> {
+	return Object.fromEntries(
+		Object.entries(Config.locales).map(([locale, options]) => [
+			locale,
+			{
+				label: options.label,
+				link: changePathLocale(url.pathname, locale),
+			},
+		]),
+	);
+}
+---
+
+<nav class="navbar">
+	<!-- Left -->
+	<div class="__group">
+		<!-- Logo -->
+		<a class="__logo" href={getPagePath(locale)}>
+			<img class="__logo-img" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
+			<span>{t.site.logotype()}</span>
+		</a>
+	</div>
+	<!-- Right -->
+	<div class="__group">
+		<LocaleSelector locales={getLocaleItems()} currentLocale={locale} client:idle />
+	</div>
+</nav>
+
+<style>
+	.navbar {
+		font-size: var(--font-md-size);
+		line-height: var(--font-md-line-height);
+		top: 0;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.75rem 1rem;
+		font-weight: var(--font-semibold);
+		overflow: auto;
+
+		.__group {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.__logo {
+			padding: 0.25rem 0.25rem;
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			border-radius: var(--rounded-md);
+			outline: none;
+			color: var(--color-gray-900);
+			text-decoration: none;
+			text-wrap: nowrap;
+
+			&:hover {
+				background-color: var(--color-gray-100);
+			}
+
+			&:focus {
+				box-shadow: 0 0 0 calc(4px + 0px) var(--color-gray-200);
+			}
+		}
+
+		.__logo-img {
+			height: 2rem;
+		}
+	}
+</style>

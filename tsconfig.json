@@ -1,15 +1,10 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": ["src/**/*", "*.cjs", "*.ts", ".eslintrc.cjs"],
   "compilerOptions": {
-    "module": "ES2022",
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/*"],
-      "@comp/*": ["src/components/content/*"]
-    },
+    "types": ["unplugin-icons/types/solid"],
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["unplugin-icons/types/solid"]
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "verbatimModuleSyntax": true
   }
 }

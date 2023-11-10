@@ -1,0 +1,15 @@
+/* Base markdown style */
+@import 'github-markdown-css/github-markdown-light.css';
+
+.markdown-body {
+	ul {
+		@apply list-disc pl-8;
+	}
+	ol {
+		@apply list-decimal pl-8;
+	}
+
+	pre {
+		@apply border border-gray-200;
+	}
+}

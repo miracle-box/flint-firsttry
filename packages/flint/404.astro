@@ -1,0 +1,61 @@
+---
+import Layout from './content-components/blank-page.astro';
+import { locales } from './utils/i18n-path';
+
+export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
+
+const t = Astro.locals.translations;
+---
+
+<Layout>
+	<div class="notfound">
+		<h1 class="__title">{t.notfound.title()}</h1>
+		<p class="__desc">{t.notfound.body()}</p>
+		<button class="__button" onclick="window.history.go(-1);">{t.notfound.button()}</button>
+	</div>
+</Layout>
+
+<style>
+	.notfound {
+		display: flex;
+		flex-direction: column;
+		margin: 4rem 0;
+		align-items: center;
+
+		.__title {
+			font-size: var(--font-dp-2xl-size);
+			line-height: var(--font-dp-2xl-line-height);
+			font-weight: var(--font-regular);
+			margin: 2.5rem;
+		}
+
+		.__desc {
+			margin: 3rem;
+		}
+
+		.__button {
+			padding: 0.5rem 1.5rem;
+			outline: none;
+			text-align: center;
+			border: 0;
+			border-radius: var(--rounded-lg);
+			font-size: var(--font-md-size);
+			line-height: var(--font-md-line-height);
+			font-weight: var(--font-semibold);
+			text-decoration: none;
+			transition: all 0.3s;
+			background-color: var(--color-primary-600);
+			color: var(--color-white);
+
+			&:hover {
+				background-color: var(--color-primary-700);
+			}
+
+			&:focus {
+				box-shadow:
+					0 0 0 4px var(--color-white),
+					0 0 0 calc(4px + 4px) var(--color-primary-200);
+			}
+		}
+	}
+</style>
