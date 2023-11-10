@@ -20,21 +20,6 @@ function getLocaleItems(): Record<string, LocaleItem> {
 		]),
 	);
 }
-
-const navItems = [
-	{
-		link: `${getPagePath(locale, 'docs')}`,
-		text: t.navItems.docs(),
-	},
-	{
-		link: '#',
-		text: t.navItems.resources(),
-	},
-	{
-		link: 'https://spark.yaasasi.cn/',
-		text: t.navItems.guiluo(),
-	},
-];
 ---
 
 <nav class="navbar">
@@ -45,16 +30,6 @@ const navItems = [
 			<img class="__logo-img" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
 			<span>{t.site.logotype()}</span>
 		</a>
-		<!-- Links -->
-		<div class="__links-desktop">
-			{
-				navItems.map(({ text, link }) => (
-					<a class="__link" href={link}>
-						{text}
-					</a>
-				))
-			}
-		</div>
 	</div>
 	<!-- Right -->
 	<div class="__group">
@@ -103,33 +78,6 @@ const navItems = [
 
 		.__logo-img {
 			height: 2rem;
-		}
-
-		.__links-desktop {
-			display: flex;
-			text-wrap: nowrap;
-			gap: 0.5rem;
-
-			@media (--size-md) {
-				display: flex;
-			}
-		}
-
-		.__link {
-			padding: 0.5rem 0.75rem;
-			border-radius: var(--rounded-md);
-			color: var(--color-gray-600);
-			outline: none;
-			text-decoration: none;
-
-			&:hover {
-				background-color: var(--color-gray-100);
-				color: var(--color-gray-900);
-			}
-
-			&:focus {
-				box-shadow: 0 0 0 calc(4px + 0px) var(--color-gray-200);
-			}
 		}
 	}
 </style>

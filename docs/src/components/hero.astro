@@ -1,5 +1,5 @@
 ---
-const t = Astro.locals.translations;
+const t = Astro.locals.customTranslations;
 ---
 
 <header class="hero">
@@ -12,8 +12,8 @@ const t = Astro.locals.translations;
 		</p>
 	</div>
 	<div class="__buttons-box">
-		<a href="" class="__button --primary">{t.hero.primaryButton()}</a>
-		<a href="" class="__button --secondary">{t.hero.secondaryButton()}</a>
+		<a href="./get-started/" class="__button --primary">{t.hero.primaryButton()}</a>
+		<a href="./main/" class="__button --secondary">{t.hero.secondaryButton()}</a>
 	</div>
 </header>
 

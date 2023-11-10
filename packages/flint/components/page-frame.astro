@@ -2,7 +2,6 @@
 import 'modern-normalize/modern-normalize.css';
 import Config from 'virtual:flint/config';
 import '../styles/variables.css';
-import Footer from './footer.astro';
 import Navbar from './navbar.astro';
 
 const { locale } = Astro.locals;
@@ -24,8 +23,6 @@ const t = Astro.locals.translations;
 		</header>
 
 		<slot />
-
-		<Footer />
 	</body>
 </html>
 

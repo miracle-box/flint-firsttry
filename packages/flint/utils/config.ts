@@ -41,10 +41,6 @@ const RawFlintConfigSchema = z.object({
 		.default({}),
 	legacy: z.object({
 		logoImg: z.string(),
-		icpRecordText: z.string(),
-		icpRecordLink: z.string().url(),
-		secRecordText: z.string(),
-		secRecordLink: z.string().url(),
 	}),
 });
 

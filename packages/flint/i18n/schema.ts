@@ -11,17 +11,6 @@ export const FlintTranslationSchema = z.object({
 		logoAlt: tSchema(),
 		title: tSchema(),
 	}),
-	navItems: z.object({
-		docs: tSchema(),
-		resources: tSchema(),
-		guiluo: tSchema(),
-	}),
-	hero: z.object({
-		title: tSchema(),
-		desc: tSchema(),
-		primaryButton: tSchema(),
-		secondaryButton: tSchema(),
-	}),
 	notfound: z.object({
 		title: tSchema(),
 		body: tSchema(),

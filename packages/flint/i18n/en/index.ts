@@ -3,20 +3,9 @@ import { t, localeLabel } from '../translation';
 
 const en: FlintTranslation = {
 	site: {
-		logotype: t`Losenone`,
-		logoAlt: t`Logo`,
-		title: t`Losenone`,
-	},
-	navItems: {
-		docs: t`Docs`,
-		resources: t`Resolution`,
-		guiluo: t`GuiLuoYuan`,
-	},
-	hero: {
-		title: t`Losenone`,
-		desc: t`Amazing description here.`,
-		primaryButton: t`Primary`,
-		secondaryButton: t`Secondary`,
+		logotype: t`Flint`,
+		logoAlt: t`Flint logo`,
+		title: t`Flint`,
 	},
 	notfound: {
 		title: t`missing`,

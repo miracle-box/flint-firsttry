@@ -3,20 +3,9 @@ import { t, localeLabel } from '../translation';
 
 const zh: FlintTranslation = {
 	site: {
-		logotype: t`洛书南`,
-		logoAlt: t`图标`,
-		title: t`洛书南`,
-	},
-	navItems: {
-		docs: t`文档`,
-		resources: t`资源`,
-		guiluo: t`归落原`,
-	},
-	hero: {
-		title: t`洛书南`,
-		desc: t`一段美妙的介绍。`,
-		primaryButton: t`主要按钮`,
-		secondaryButton: t`次要按钮`,
+		logotype: t`Flint`,
+		logoAlt: t`Flint 图标`,
+		title: t`Flint`,
 	},
 	notfound: {
 		title: t`页面不存在`,
