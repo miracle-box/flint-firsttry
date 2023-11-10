@@ -1,13 +1,13 @@
 {
   "name": "@miracle-box/flint",
-  "license": "Apache-2.0",
   "version": "0.1.3",
-  "type": "module",
+  "license": "Apache-2.0",
   "author": {
     "name": "The Miracle Box",
     "email": "contact@sagirii.me",
     "url": "https://sagirii.me"
   },
+  "type": "module",
   "exports": {
     ".": "./index.ts",
     "./404.astro": "./404.astro",
@@ -19,24 +19,23 @@
     "./middlewares": "./middlewares/index.ts",
     "./components": "./components.ts"
   },
-  "peerDependencies": {
-    "astro": "^2.10.12"
-  },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/solid-js": "^2.2.1",
+    "@csstools/postcss-global-data": "^2.1.0",
     "@iconify-json/octicon": "^1.1.47",
     "github-markdown-css": "^5.2.0",
     "just-extend": "^6.2.0",
     "modern-normalize": "^2.0.0",
-    "solid-js": "^1.7.11",
+    "postcss-custom-media": "^10.0.2",
+    "postcss-nesting": "^12.0.1",
     "unplugin-icons": "^0.16.5"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^2.1.0",
-    "@types/node": "^20.5.3",
+    "@types/node": "^20.5.3"
+  },
+  "peerDependencies": {
+    "@astrojs/mdx": "^0.19.7",
+    "@astrojs/solid-js": "^2.2.1",
     "astro": "^2.10.12",
-    "postcss-custom-media": "^10.0.2",
-    "postcss-nesting": "^12.0.1"
+    "solid-js": "^1.7.11"
   }
 }

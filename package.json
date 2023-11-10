@@ -1,9 +1,8 @@
 {
   "name": "flint",
-  "license": "Apache-2.0",
   "version": "0.0.1",
   "private": true,
-  "packageManager": "pnpm@8.6.10",
+  "license": "Apache-2.0",
   "scripts": {
     "format": "prettier . --write --plugin=prettier-plugin-astro",
     "fix": "eslint . --fix --ignore-path ./.gitignore",
@@ -13,7 +12,6 @@
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.1.1",
-    "@iconify-json/octicon": "^1.1.47",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "astro": "^2.10.12",
@@ -32,5 +30,6 @@
     "typescript": "^5.1.6",
     "unplugin-icons": "^0.16.5",
     "xo": "^0.56.0"
-  }
+  },
+  "packageManager": "pnpm@8.6.10"
 }

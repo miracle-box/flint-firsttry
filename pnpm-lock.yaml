@@ -10,9 +10,6 @@ importers:
       '@astrojs/ts-plugin':
         specifier: ^1.1.1
         version: 1.1.1
-      '@iconify-json/octicon':
-        specifier: ^1.1.47
-        version: 1.1.47
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.4.1
         version: 6.4.1(@typescript-eslint/parser@6.4.1)(eslint@8.47.0)(typescript@5.1.6)
@@ -81,7 +78,7 @@ importers:
         version: link:../packages/flint
       astro:
         specifier: ^2.10.12
-        version: 2.10.12
+        version: 2.10.12(@types/node@20.5.3)
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
@@ -94,9 +91,15 @@ importers:
       '@astrojs/solid-js':
         specifier: ^2.2.1
         version: 2.2.1(@babel/core@7.22.10)(solid-js@1.7.11)
+      '@csstools/postcss-global-data':
+        specifier: ^2.1.0
+        version: 2.1.0(postcss@8.4.28)
       '@iconify-json/octicon':
         specifier: ^1.1.47
         version: 1.1.47
+      astro:
+        specifier: ^2.10.12
+        version: 2.10.12(@types/node@20.5.3)
       github-markdown-css:
         specifier: ^5.2.0
         version: 5.2.0
@@ -106,6 +109,12 @@ importers:
       modern-normalize:
         specifier: ^2.0.0
         version: 2.0.0
+      postcss-custom-media:
+        specifier: ^10.0.2
+        version: 10.0.2(postcss@8.4.28)
+      postcss-nesting:
+        specifier: ^12.0.1
+        version: 12.0.1(postcss@8.4.28)
       solid-js:
         specifier: ^1.7.11
         version: 1.7.11
@@ -113,21 +122,9 @@ importers:
         specifier: ^0.16.5
         version: 0.16.5
     devDependencies:
-      '@csstools/postcss-global-data':
-        specifier: ^2.1.0
-        version: 2.1.0(postcss@8.4.28)
       '@types/node':
         specifier: ^20.5.3
         version: 20.5.3
-      astro:
-        specifier: ^2.10.12
-        version: 2.10.12(@types/node@20.5.3)
-      postcss-custom-media:
-        specifier: ^10.0.2
-        version: 10.0.2(postcss@8.4.28)
-      postcss-nesting:
-        specifier: ^12.0.1
-        version: 12.0.1(postcss@8.4.28)
 
 packages:
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -219,7 +216,7 @@ packages:
       astro: ^2.5.0
     dependencies:
       '@astrojs/prism': 2.1.2
-      astro: 2.10.12
+      astro: 2.10.12(@types/node@20.5.3)
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
@@ -629,7 +626,7 @@ packages:
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
-    dev: true
+    dev: false
 
   /@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1):
     resolution:
@@ -641,7 +638,7 @@ packages:
       '@csstools/css-tokenizer': ^2.2.1
     dependencies:
       '@csstools/css-tokenizer': 2.2.1
-    dev: true
+    dev: false
 
   /@csstools/css-tokenizer@2.2.1:
     resolution:
@@ -649,7 +646,7 @@ packages:
         integrity: sha512-Zmsf2f/CaEPWEVgw29odOj+WEVoiJy9s9NOv5GgNY9mZ1CZ7394By6wONrONrTsnNDv6F9hR02nvFihrGVGHBg==,
       }
     engines: { node: ^14 || ^16 || >=18 }
-    dev: true
+    dev: false
 
   /@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
     resolution:
@@ -663,7 +660,7 @@ packages:
     dependencies:
       '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
       '@csstools/css-tokenizer': 2.2.1
-    dev: true
+    dev: false
 
   /@csstools/postcss-global-data@2.1.0(postcss@8.4.28):
     resolution:
@@ -675,7 +672,7 @@ packages:
       postcss: ^8.4
     dependencies:
       postcss: 8.4.28
-    dev: true
+    dev: false
 
   /@csstools/selector-specificity@3.0.0(postcss-selector-parser@6.0.13):
     resolution:
@@ -687,7 +684,7 @@ packages:
       postcss-selector-parser: ^6.0.13
     dependencies:
       postcss-selector-parser: 6.0.13
-    dev: true
+    dev: false
 
   /@emmetio/abbreviation@2.3.3:
     resolution:
@@ -1280,6 +1277,7 @@ packages:
       }
     dependencies:
       '@iconify/types': 2.0.0
+    dev: false
 
   /@iconify/types@2.0.0:
     resolution:
@@ -1577,7 +1575,6 @@ packages:
       {
         integrity: sha512-ITI7rbWczR8a/S6qjAW7DMqxqFMjjTo61qZVWJ1ubPvbIQsL5D/TvwjYEalM8Kthpe3hTzOGrF2TGbAu2uyqeA==,
       }
-    dev: true
 
   /@types/normalize-package-data@2.4.1:
     resolution:
@@ -2291,87 +2288,6 @@ packages:
       - supports-color
     dev: true
 
-  /astro@2.10.12:
-    resolution:
-      {
-        integrity: sha512-JbD+hLCbXhpDofuzWQxojmjXwoqD0bR2BGqIByZ7B5Cj6dKQXHIr1HsrDdWcmjM+O4NXKV2TCfeXv1ZTtjqX3Q==,
-      }
-    engines: { node: '>=16.12.0', npm: '>=6.14.0' }
-    hasBin: true
-    peerDependencies:
-      sharp: '>=0.31.0'
-    peerDependenciesMeta:
-      sharp:
-        optional: true
-    dependencies:
-      '@astrojs/compiler': 1.8.2
-      '@astrojs/internal-helpers': 0.1.2
-      '@astrojs/language-server': 1.0.8
-      '@astrojs/markdown-remark': 2.2.1(astro@2.10.12)
-      '@astrojs/telemetry': 2.1.1
-      '@astrojs/webapi': 2.2.0
-      '@babel/core': 7.22.10
-      '@babel/generator': 7.22.10
-      '@babel/parser': 7.22.10
-      '@babel/plugin-transform-react-jsx': 7.22.5(@babel/core@7.22.10)
-      '@babel/traverse': 7.22.10
-      '@babel/types': 7.22.10
-      '@types/babel__core': 7.20.1
-      '@types/dom-view-transitions': 1.0.1
-      '@types/yargs-parser': 21.0.0
-      acorn: 8.10.0
-      boxen: 6.2.1
-      chokidar: 3.5.3
-      ci-info: 3.8.0
-      common-ancestor-path: 1.0.1
-      cookie: 0.5.0
-      debug: 4.3.4
-      devalue: 4.3.2
-      diff: 5.1.0
-      es-module-lexer: 1.3.0
-      esbuild: 0.17.19
-      estree-walker: 3.0.0
-      execa: 6.1.0
-      fast-glob: 3.3.1
-      github-slugger: 2.0.0
-      gray-matter: 4.0.3
-      html-escaper: 3.0.3
-      http-cache-semantics: 4.1.1
-      js-yaml: 4.1.0
-      kleur: 4.1.5
-      magic-string: 0.30.3
-      mime: 3.0.0
-      network-information-types: 0.1.1(typescript@5.1.6)
-      ora: 6.3.1
-      p-limit: 4.0.0
-      path-to-regexp: 6.2.1
-      preferred-pm: 3.0.3
-      prompts: 2.4.2
-      rehype: 12.0.1
-      semver: 7.5.4
-      server-destroy: 1.0.1
-      shiki: 0.14.3
-      string-width: 5.1.2
-      strip-ansi: 7.1.0
-      tsconfig-resolver: 3.0.1
-      typescript: 5.1.6
-      unist-util-visit: 4.1.2
-      vfile: 5.3.7
-      vite: 4.4.9
-      vitefu: 0.2.4(vite@4.4.9)
-      which-pm: 2.0.0
-      yargs-parser: 21.1.1
-      zod: 3.22.2
-    transitivePeerDependencies:
-      - '@types/node'
-      - less
-      - lightningcss
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-
   /astro@2.10.12(@types/node@20.5.3):
     resolution:
       {
@@ -2452,7 +2368,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
 
   /astrojs-compiler-sync@0.3.3(@astrojs/compiler@2.0.0):
     resolution:
@@ -2943,7 +2858,6 @@ packages:
       }
     engines: { node: '>=4' }
     hasBin: true
-    dev: true
 
   /csstype@3.1.2:
     resolution:
@@ -7132,7 +7046,7 @@ packages:
       '@csstools/css-tokenizer': 2.2.1
       '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
       postcss: 8.4.28
-    dev: true
+    dev: false
 
   /postcss-nesting@12.0.1(postcss@8.4.28):
     resolution:
@@ -7146,7 +7060,7 @@ packages:
       '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
       postcss: 8.4.28
       postcss-selector-parser: 6.0.13
-    dev: true
+    dev: false
 
   /postcss-selector-parser@6.0.13:
     resolution:
@@ -7157,7 +7071,6 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-    dev: true
 
   /postcss@8.4.28:
     resolution:
@@ -8749,43 +8662,6 @@ packages:
       unist-util-stringify-position: 3.0.3
       vfile-message: 3.1.4
 
-  /vite@4.4.9:
-    resolution:
-      {
-        integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==,
-      }
-    engines: { node: ^14.18.0 || >=16.0.0 }
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      lightningcss: ^1.21.0
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      esbuild: 0.18.20
-      postcss: 8.4.28
-      rollup: 3.28.1
-    optionalDependencies:
-      fsevents: 2.3.3
-
   /vite@4.4.9(@types/node@20.5.3):
     resolution:
       {
@@ -8823,7 +8699,6 @@ packages:
       rollup: 3.28.1
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /vitefu@0.2.4(vite@4.4.9):
     resolution:
@@ -8836,7 +8711,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.4.9
+      vite: 4.4.9(@types/node@20.5.3)
 
   /vscode-css-languageservice@6.2.6:
     resolution:
