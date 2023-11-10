@@ -1,7 +1,7 @@
-import type { TocItem } from '../../types';
+import type { TocItem } from '../types';
 import type { Component } from 'solid-js';
 import { For, Show, createSignal, createEffect } from 'solid-js';
-import S from '../../styles/components/table-of-contents.module.css';
+import S from '../styles/components/table-of-contents.module.css';
 
 type TocProps = {
 	tocTree: TocItem[];

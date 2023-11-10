@@ -1,14 +1,14 @@
 ---
 import type { DocsPageProps as Props } from '../types';
 import Config from 'virtual:flint/config';
-import Breadcrumb from '../components/docs/breadcrumb.astro';
-import Fallback from '../components/docs/fallback.astro';
-import OutdatedTranslation from '../components/docs/outdated-translation.astro';
-import Outdated from '../components/docs/outdated.astro';
-import TableOfContents from '../components/docs/table-of-contents';
 import '../styles/markdown.css';
 import { getTocTree } from '../utils/generate-toc';
-import Layout from './base.astro';
+import Breadcrumb from './breadcrumb.astro';
+import FallbackTip from './fallback-tip.astro';
+import OutdatedPageTip from './outdated-page-tip.astro';
+import OutdatedTranslationTip from './outdated-translation-tip.astro';
+import Layout from './page-frame.astro';
+import TableOfContents from './table-of-contents';
 
 const t = Astro.locals.translations;
 const { contentProps, pageProps } = Astro.props;
@@ -35,14 +35,14 @@ const { contentProps, pageProps } = Astro.props;
 				<h1>{contentProps.title}</h1>
 				{
 					contentProps.outdated_translation && (
-						<OutdatedTranslation
+						<OutdatedTranslationTip
 							originalLocale={Config.defaultLocale}
 							sourceLink={contentProps.outdated_translation}
 						/>
 					)
 				}
-				{pageProps.outdated && <Outdated />}
-				{pageProps.fallback && <Fallback fallbackLocale={contentProps.locale} />}
+				{pageProps.outdated && <OutdatedPageTip />}
+				{pageProps.fallback && <FallbackTip fallbackLocale={contentProps.locale} />}
 
 				<div>
 					<slot />

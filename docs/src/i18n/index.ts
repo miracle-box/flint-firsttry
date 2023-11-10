@@ -1,5 +1,5 @@
-import type { FlintUserDictionary } from '@miracle-box/flint/i18n-utils';
-import { t, tSchema } from '@miracle-box/flint/i18n-utils';
+import type { FlintUserDictionary } from '@miracle-box/flint/i18n';
+import { t, tSchema } from '@miracle-box/flint/i18n';
 import { z } from 'astro/zod';
 
 export const flintUserDict: FlintUserDictionary = {};

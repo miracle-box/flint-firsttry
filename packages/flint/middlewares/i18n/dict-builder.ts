@@ -1,9 +1,8 @@
-import type { CustomTranslation, FlintTranslation } from '../schemas/i18n';
+import type { CustomTranslation, FlintTranslation } from '../../i18n/schema';
 import extend from 'just-extend';
 import Config from 'virtual:flint/config';
 import { customSchema, customDict, flintUserDict } from 'virtual:flint/user-translation';
-import { flintDict } from '../i18n';
-import { FlintTranslationSchema } from '../schemas/i18n';
+import { FlintTranslationSchema, flintDict } from '../../i18n';
 
 export class FlintDict {
 	private defaults: FlintTranslation;

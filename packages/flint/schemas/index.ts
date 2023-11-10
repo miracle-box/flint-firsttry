@@ -1,0 +1,1 @@
+export { docsSchema } from './docs';

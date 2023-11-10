@@ -4,7 +4,7 @@
 declare namespace App {
 	export interface Locals {
 		locale: string;
-		translations: import('./schemas/i18n').FlintTranslation;
-		customTranslations: import('./schemas/i18n').CustomTranslation;
+		translations: import('./i18n/schema').FlintTranslation;
+		customTranslations: import('./i18n/schema').CustomTranslation;
 	}
 }

@@ -1,6 +1,9 @@
 import type { customSchema } from 'virtual:flint/user-translation';
 import { z } from 'astro/zod';
-import { tSchema } from '../utils/i18n-translation';
+
+export function tSchema() {
+	return z.function().returns(z.string());
+}
 
 export const FlintTranslationSchema = z.object({
 	site: z.object({

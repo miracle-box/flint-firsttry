@@ -12,12 +12,12 @@
     ".": "./index.ts",
     "./404.astro": "./404.astro",
     "./page.astro": "./page.astro",
-    "./layouts/base.astro": "./layouts/base.astro",
-    "./schema": "./schema.ts",
-    "./components": "./components.ts",
-    "./middleware": "./middleware.ts",
-    "./i18n-utils": "./i18n-utils.ts",
-    "./utils": "./utils"
+    "./locals": "./locals.d.ts",
+    "./utils": "./utils.ts",
+    "./i18n": "./i18n/index.ts",
+    "./schemas": "./schemas/index.ts",
+    "./middlewares": "./middlewares/index.ts",
+    "./components": "./components.ts"
   },
   "peerDependencies": {
     "astro": "^2.10.12"

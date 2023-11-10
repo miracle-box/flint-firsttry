@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
 import { For } from 'solid-js';
-import S from '../../styles/components/locale-selector.module.css';
+import S from '../styles/components/locale-selector.module.css';
 import DownIcon from '~icons/octicon/chevron-down-16';
 import LanguageIcon from '~icons/octicon/globe-24';
 

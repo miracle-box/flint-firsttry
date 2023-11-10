@@ -1,4 +1,4 @@
-import type { RawFlintConfig } from '@miracle-box/flint/utils/config';
+import type { RawFlintConfig } from '@miracle-box/flint/utils';
 import flint from '@miracle-box/flint';
 import { defineConfig } from 'astro/config';
 
