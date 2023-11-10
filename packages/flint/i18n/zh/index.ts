@@ -1,23 +1,11 @@
-import type { FlintInternalTranslation } from '../../schemas/i18n';
-import { t, localeLabel } from '../../utils/i18n-translation';
+import type { FlintTranslation } from '../schema';
+import { t, localeLabel } from '../translation';
 
-const zh: FlintInternalTranslation = {
+const zh: FlintTranslation = {
 	site: {
-		logotype: t`洛书南`,
-		logoAlt: t`图标`,
-		title: t`洛书南`,
-	},
-	navItems: {
-		news: t`新闻`,
-		docs: t`文档`,
-		resources: t`资源`,
-		guiluo: t`归落原`,
-	},
-	hero: {
-		title: t`洛书南`,
-		desc: t`一段美妙的介绍。`,
-		primaryButton: t`主要按钮`,
-		secondaryButton: t`次要按钮`,
+		logotype: t`Flint`,
+		logoAlt: t`Flint 图标`,
+		title: t`Flint`,
 	},
 	notfound: {
 		title: t`页面不存在`,
@@ -37,9 +25,6 @@ const zh: FlintInternalTranslation = {
 			t`（欢迎你来帮助更新翻译）！`,
 		],
 		tocHeading: t`在本页上`,
-	},
-	news: {
-		breadcrumbBase: t`新闻`,
 	},
 };
 

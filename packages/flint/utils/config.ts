@@ -6,33 +6,6 @@ const LocaleSchema = z.object({
 	dir: z.enum(['rtl', 'ltr']).default('ltr').optional(),
 });
 
-const NewsTagSchema = z.object({
-	name: z.string(),
-	desc: z.string(),
-});
-
-export type NewsTag = z.infer<typeof NewsTagSchema>;
-
-const ModuleRouteCommonSchema = z.object({
-	collectionId: z.string(),
-	// Allow numbers, alphabets, hyphens and underscores for module name
-	// Module names are also used for base path in routing
-	routeBasePath: z.string().regex(/^[\w-]+$/),
-});
-
-const ModuleRouteDocsSchema = ModuleRouteCommonSchema.extend({
-	type: z.literal('docs'),
-});
-
-const ModuleRouteNewsSchema = ModuleRouteCommonSchema.extend({
-	type: z.literal('news'),
-	tags: z.record(z.string(), NewsTagSchema),
-});
-
-const ModuleRouteSchema = z.union([ModuleRouteDocsSchema, ModuleRouteNewsSchema]);
-
-export type ModuleRoute = z.infer<typeof ModuleRouteSchema>;
-
 const RawFlintConfigSchema = z.object({
 	locales: z.record(z.string(), LocaleSchema).transform((locales) => {
 		// Fill `locale` field with key name when not specified
@@ -45,17 +18,29 @@ const RawFlintConfigSchema = z.object({
 	}),
 	defaultLocale: z.string(),
 	flintTranslationsPath: z.string(),
-	// This is just a workaround, will support multi-instance in the future.
-	modules: z.object({
-		news: ModuleRouteNewsSchema,
-		docs: ModuleRouteDocsSchema,
-	}),
+	// Taken from AstroConfigSchema: https://github.com/withastro/astro/blob/ab7e745cc9abd592aa631bffb35880221e7ac89c/packages/astro/src/core/config/schema.ts#L174
+	redirects: z
+		.record(
+			z.string(),
+			z.union([
+				z.string(),
+				z.object({
+					status: z.union([
+						z.literal(300),
+						z.literal(301),
+						z.literal(302),
+						z.literal(303),
+						z.literal(304),
+						z.literal(307),
+						z.literal(308),
+					]),
+					destination: z.string(),
+				}),
+			]),
+		)
+		.default({}),
 	legacy: z.object({
 		logoImg: z.string(),
-		icpRecordText: z.string(),
-		icpRecordLink: z.string().url(),
-		secRecordText: z.string(),
-		secRecordLink: z.string().url(),
 	}),
 });
 

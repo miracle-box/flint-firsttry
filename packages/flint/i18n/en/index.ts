@@ -1,23 +1,11 @@
-import type { FlintInternalTranslation } from '../../schemas/i18n';
-import { t, localeLabel } from '../../utils/i18n-translation';
+import type { FlintTranslation } from '../schema';
+import { t, localeLabel } from '../translation';
 
-const en: FlintInternalTranslation = {
+const en: FlintTranslation = {
 	site: {
-		logotype: t`Losenone`,
-		logoAlt: t`Logo`,
-		title: t`Losenone`,
-	},
-	navItems: {
-		news: t`News`,
-		docs: t`Docs`,
-		resources: t`Resolution`,
-		guiluo: t`GuiLuoYuan`,
-	},
-	hero: {
-		title: t`Losenone`,
-		desc: t`Amazing description here.`,
-		primaryButton: t`Primary`,
-		secondaryButton: t`Secondary`,
+		logotype: t`Flint`,
+		logoAlt: t`Flint logo`,
+		title: t`Flint`,
 	},
 	notfound: {
 		title: t`missing`,
@@ -37,9 +25,6 @@ const en: FlintInternalTranslation = {
 			t`(and consider updating the translation if you are able to help out!)`,
 		],
 		tocHeading: t`On this page`,
-	},
-	news: {
-		breadcrumbBase: t`News`,
 	},
 };
 

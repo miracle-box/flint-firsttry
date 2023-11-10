@@ -1,38 +1,41 @@
 {
   "name": "@miracle-box/flint",
-  "license": "Apache-2.0",
   "version": "0.1.3",
-  "type": "module",
+  "license": "Apache-2.0",
   "author": {
     "name": "The Miracle Box",
     "email": "contact@sagirii.me",
     "url": "https://sagirii.me"
   },
+  "type": "module",
   "exports": {
     ".": "./index.ts",
-    "./schema": "./schema.ts",
-    "./components": "./components.ts",
-    "./middleware": "./middleware.ts",
-    "./i18n-utils": "./i18n-utils.ts"
-  },
-  "peerDependencies": {
-    "astro": "^2.10.12"
+    "./404.astro": "./404.astro",
+    "./page.astro": "./page.astro",
+    "./locals": "./locals.d.ts",
+    "./utils": "./utils.ts",
+    "./i18n": "./i18n/index.ts",
+    "./schemas": "./schemas/index.ts",
+    "./middlewares": "./middlewares/index.ts",
+    "./components": "./components.ts"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/solid-js": "^2.2.1",
-    "@iconify-json/octicon": "^1.1.47",
-    "github-markdown-css": "^5.2.0",
+    "@csstools/postcss-global-data": "^2.1.0",
+    "@iconify-json/octicon": "^1.1.49",
+    "github-markdown-css": "^5.4.0",
     "just-extend": "^6.2.0",
     "modern-normalize": "^2.0.0",
-    "solid-js": "^1.7.11",
-    "unplugin-icons": "^0.16.5"
+    "postcss-custom-media": "^10.0.2",
+    "postcss-nesting": "^12.0.1",
+    "unplugin-icons": "^0.17.3"
   },
   "devDependencies": {
-    "@csstools/postcss-global-data": "^2.1.0",
-    "@types/node": "^20.5.3",
-    "astro": "^2.10.12",
-    "postcss-custom-media": "^10.0.2",
-    "postcss-nesting": "^12.0.1"
+    "@types/node": "^20.9.0"
+  },
+  "peerDependencies": {
+    "@astrojs/mdx": "^1.1.4",
+    "@astrojs/solid-js": "^3.0.2",
+    "astro": "^3.5.1",
+    "solid-js": "^1.8.5"
   }
 }
