@@ -1,7 +1,7 @@
 const RULES = {
 	'unicorn/no-process-exit': 'off',
 	'n/file-extension-in-import': 'off',
-	'import/extensions': ['error', 'never', { pattern: { astro: 'always', css: 'always' } }],
+	'import/extensions': ['error', 'never', { pattern: { astro: 'always', css: 'always', json: 'always' } }],
 	'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
 	'import/no-duplicates': ['error', { 'prefer-inline': false }],
 	'import/order': [

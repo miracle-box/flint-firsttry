@@ -2,10 +2,12 @@
 import 'modern-normalize/modern-normalize.css';
 import Config from 'virtual:flint/config';
 import '../styles/variables.css';
+import { getLocaleFromUrl } from '../utils';
+import { useTranslation } from '../utils/dicts';
 import Navbar from './navbar.astro';
 
-const { locale } = Astro.locals;
-const t = Astro.locals.translations;
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 ---
 
 <!doctype html>
@@ -15,7 +17,7 @@ const t = Astro.locals.translations;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={Config.legacy.logoImg} />
 		<meta name="generator" content={Astro.generator} />
-		<title>{t.site.title()}</title>
+		<title>{t.site.title}</title>
 	</head>
 	<body class="body">
 		<header class="header">

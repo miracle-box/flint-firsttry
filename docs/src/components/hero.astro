@@ -1,19 +1,22 @@
 ---
-const t = Astro.locals.customTranslations;
+import { getLocaleFromUrl, useTranslation } from '@miracle-box/flint/utils';
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale).custom;
 ---
 
 <header class="hero">
 	<div class="__text-container">
 		<h1 class="__title">
-			{t.hero.title()}
+			{t.hero.title}
 		</h1>
 		<p class="__desc">
-			{t.hero.desc()}
+			{t.hero.desc}
 		</p>
 	</div>
 	<div class="__buttons-box">
-		<a href="./get-started/" class="__button --primary">{t.hero.primaryButton()}</a>
-		<a href="./main/" class="__button --secondary">{t.hero.secondaryButton()}</a>
+		<a href="./get-started/" class="__button --primary">{t.hero.primaryButton}</a>
+		<a href="./main/" class="__button --secondary">{t.hero.secondaryButton}</a>
 	</div>
 </header>
 

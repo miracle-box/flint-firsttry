@@ -1,12 +1,13 @@
 import type { MarkdownHeading, MarkdownInstance } from 'astro';
 import { z } from 'astro/zod';
 
-export const docsSchema = z.object({
-	title: z.string(),
-	desc: z.string(),
-	outdated: z.boolean().default(false).optional(),
-	outdated_translation: z.union([z.string().url(), z.literal(false)]).optional(),
-});
+export const docsSchema = () =>
+	z.object({
+		title: z.string(),
+		desc: z.string(),
+		outdated: z.boolean().default(false).optional(),
+		outdated_translation: z.union([z.string().url(), z.literal(false)]).optional(),
+	});
 
 export type Docs = {
 	id: string;

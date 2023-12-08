@@ -1,6 +1,6 @@
 {
   "name": "@miracle-box/flint",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "Apache-2.0",
   "author": {
     "name": "The Miracle Box",
@@ -12,11 +12,9 @@
     ".": "./index.ts",
     "./404.astro": "./404.astro",
     "./page.astro": "./page.astro",
-    "./locals": "./locals.d.ts",
     "./utils": "./utils.ts",
     "./i18n": "./i18n/index.ts",
     "./schemas": "./schemas/index.ts",
-    "./middlewares": "./middlewares/index.ts",
     "./components": "./components.ts"
   },
   "dependencies": {

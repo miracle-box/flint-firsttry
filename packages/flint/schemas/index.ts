@@ -1,1 +1,2 @@
-export { docsSchema } from './docs';
+export * from './docs';
+export * from './i18n';

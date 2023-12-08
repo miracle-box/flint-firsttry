@@ -1,17 +1,19 @@
 ---
 import Layout from './content-components/blank-page.astro';
-import { locales } from './utils/i18n-path';
+import { useTranslation } from './utils/dicts';
+import { getLocaleFromUrl, locales } from './utils/i18n-path';
 
 export const getStaticPaths = () => locales.map((locale) => ({ params: { locale } }));
 
-const t = Astro.locals.translations;
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 ---
 
 <Layout>
 	<div class="notfound">
-		<h1 class="__title">{t.notfound.title()}</h1>
-		<p class="__desc">{t.notfound.body()}</p>
-		<button class="__button" onclick="window.history.go(-1);">{t.notfound.button()}</button>
+		<h1 class="__title">{t.notfound.title}</h1>
+		<p class="__desc">{t.notfound.body}</p>
+		<button class="__button" onclick="window.history.go(-1);">{t.notfound.button}</button>
 	</div>
 </Layout>
 

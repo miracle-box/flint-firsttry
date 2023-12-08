@@ -1,5 +1,8 @@
 ---
 import Callout from '../content-components/callout.astro';
+import { getLocaleFromUrl } from '../utils';
+import { useTranslation } from '../utils/dicts';
+import { localeLabel, replacePrarms } from '../utils/translations';
 
 type Props = {
 	fallbackLocale: string;
@@ -7,10 +10,10 @@ type Props = {
 
 const { fallbackLocale } = Astro.props;
 
-const { locale } = Astro.locals;
-const t = Astro.locals.translations;
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 ---
 
 <Callout type="warning" title={false}>
-	{t.docs.fallbackTip(locale, fallbackLocale)}
+	{replacePrarms(t.docs.fallbackTip, localeLabel(locale), localeLabel(fallbackLocale))}
 </Callout>
