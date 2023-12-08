@@ -17,7 +17,6 @@ const RawFlintConfigSchema = z.object({
 		return locales;
 	}),
 	defaultLocale: z.string(),
-	flintTranslationsPath: z.string(),
 	// Taken from AstroConfigSchema: https://github.com/withastro/astro/blob/ab7e745cc9abd592aa631bffb35880221e7ac89c/packages/astro/src/core/config/schema.ts#L174
 	redirects: z
 		.record(
