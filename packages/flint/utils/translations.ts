@@ -1,3 +1,5 @@
+import Config from 'virtual:flint/config';
+
 export function replacePrarms(string: string, ...parameters: string[]): string {
 	let replacedString = string;
 
@@ -6,4 +8,8 @@ export function replacePrarms(string: string, ...parameters: string[]): string {
 	}
 
 	return replacedString;
+}
+
+export function localeLabel(locale: string): string {
+	return Config.locales[locale]!.label;
 }

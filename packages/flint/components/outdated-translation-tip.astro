@@ -2,7 +2,7 @@
 import Callout from '../content-components/callout.astro';
 import { useTranslation } from '../utils/dicts';
 import { changePathLocale, getLocaleFromUrl } from '../utils/i18n-path';
-import { replacePrarms } from '../utils/translations';
+import { localeLabel, replacePrarms } from '../utils/translations';
 
 type Props = {
 	originalLocale: string;
@@ -19,7 +19,7 @@ const t = useTranslation(locale);
 <Callout type="warning" title={false}>
 	{t.docs.outdatedTranslationTip[0]}
 	<a href={changePathLocale(pathname, originalLocale)}>
-		{replacePrarms(t.docs.outdatedTranslationTip[1], originalLocale)}
+		{replacePrarms(t.docs.outdatedTranslationTip[1], localeLabel(originalLocale))}
 	</a>
 	{t.docs.outdatedTranslationTip[2]}
 	<a href={sourceLink}>{t.docs.outdatedTranslationTip[3]}</a>
