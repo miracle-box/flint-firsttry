@@ -1,13 +1,15 @@
 ---
 import type { LocaleItem } from './locale-selector';
 import Config from 'virtual:flint/config';
-import { changePathLocale } from '../utils/i18n-path';
+import { useTranslation } from '../utils/dicts';
+import { changePathLocale, getLocaleFromUrl } from '../utils/i18n-path';
 import { getPagePath } from '../utils/route';
 import { LocaleSelector } from './locale-selector';
 
 const { url } = Astro;
-const { locale } = Astro.locals;
-const t = Astro.locals.translations;
+
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 
 function getLocaleItems(): Record<string, LocaleItem> {
 	return Object.fromEntries(
@@ -27,8 +29,8 @@ function getLocaleItems(): Record<string, LocaleItem> {
 	<div class="__group">
 		<!-- Logo -->
 		<a class="__logo" href={getPagePath(locale)}>
-			<img class="__logo-img" src={Config.legacy.logoImg} alt={t.site.logoAlt()} />
-			<span>{t.site.logotype()}</span>
+			<img class="__logo-img" src={Config.legacy.logoImg} alt={t.site.logoAlt} />
+			<span>{t.site.logotype}</span>
 		</a>
 	</div>
 	<!-- Right -->

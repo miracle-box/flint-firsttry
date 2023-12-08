@@ -1,0 +1,10 @@
+{
+  "custom": {
+    "hero": {
+      "title": "Flint",
+      "desc": "A lightweight Astro theme for documentation sites",
+      "primaryButton": "Get started",
+      "secondaryButton": "Read the docs"
+    }
+  }
+}

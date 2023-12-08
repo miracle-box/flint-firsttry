@@ -1,0 +1,10 @@
+{
+  "custom": {
+    "hero": {
+      "title": "Flint",
+      "desc": "一个轻量的 Astro 主题，为文档站点打造",
+      "primaryButton": "快速开始",
+      "secondaryButton": "阅读文档"
+    }
+  }
+}
