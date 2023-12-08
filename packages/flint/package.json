@@ -12,11 +12,9 @@
     ".": "./index.ts",
     "./404.astro": "./404.astro",
     "./page.astro": "./page.astro",
-    "./locals": "./locals.d.ts",
     "./utils": "./utils.ts",
     "./i18n": "./i18n/index.ts",
     "./schemas": "./schemas/index.ts",
-    "./middlewares": "./middlewares/index.ts",
     "./components": "./components.ts"
   },
   "dependencies": {

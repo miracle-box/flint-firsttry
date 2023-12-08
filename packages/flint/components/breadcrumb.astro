@@ -1,5 +1,7 @@
 ---
 import Config from 'virtual:flint/config';
+import { getLocaleFromUrl } from '../utils';
+import { useTranslation } from '../utils/dicts';
 import { fetchDocs } from '../utils/docs';
 import { getPagePath } from '../utils/route';
 
@@ -10,8 +12,8 @@ type Props = {
 const { filePath } = Astro.props;
 
 // Load i18n
-const { locale } = Astro.locals;
-const t = Astro.locals.translations;
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 
 // Grab info for each level in breadcrumb.
 const allPages = await fetchDocs();
@@ -40,7 +42,7 @@ const breadcrumb: Array<Record<'text' | 'url', string>> = fileDir.map((_, index,
 ---
 
 <div class="breadcrumb">
-	<a class="__link" href={getPagePath(locale, 'docs', 'main')}>{t.docs.breadcrumbBase()}</a>
+	<a class="__link" href={getPagePath(locale, 'docs', 'main')}>{t.docs.breadcrumbBase}</a>
 	{
 		breadcrumb.map((item) => (
 			<>

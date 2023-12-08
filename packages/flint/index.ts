@@ -76,18 +76,14 @@ export default function flint(rawFlintConfig: RawFlintConfig): AstroIntegration[
 }
 
 function vitePluginFlint(
-	astroConfig: AstroConfig,
+	_astroConfig: AstroConfig,
 	flintConfig: FlintConfig,
 ): NonNullable<ViteUserConfig['plugins']>[number] {
-	const resolvePath = (path: string) => JSON.stringify(resolve(fileURLToPath(astroConfig.root), path));
 	const resolveVirtualModuleId = (id: string) => '\0' + id;
 
 	const virtualModules: Record<string, string> = {
 		// Export flint config as a virtual module (like the way Starlight did)
 		'virtual:flint/config': `export default ${JSON.stringify(flintConfig)}`,
-		// Import i18n dicts from root directory.
-		'virtual:flint/user-translation':
-			'export { flintUserDict, customSchema, customDict } from ' + resolvePath(flintConfig.flintTranslationsPath),
 	};
 
 	return {

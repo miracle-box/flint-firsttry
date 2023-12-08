@@ -8,5 +8,4 @@ declare module 'virtual:flint/config' {
 declare module 'virtual:flint/user-translation' {
 	export const customSchema: import('astro/zod').ZodUnknown;
 	export const customDict: Record<string, unknown>;
-	export const flintUserDict: Record<string, import('./i18n').FlintUserDictionary>;
 }

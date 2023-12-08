@@ -2,6 +2,8 @@
 import type { DocsPageProps as Props } from '../types';
 import Config from 'virtual:flint/config';
 import '../styles/markdown.css';
+import { getLocaleFromUrl } from '../utils';
+import { useTranslation } from '../utils/dicts';
 import { getTocTree } from '../utils/generate-toc';
 import Breadcrumb from './breadcrumb.astro';
 import FallbackTip from './fallback-tip.astro';
@@ -10,7 +12,8 @@ import OutdatedTranslationTip from './outdated-translation-tip.astro';
 import Layout from './page-frame.astro';
 import TableOfContents from './table-of-contents';
 
-const t = Astro.locals.translations;
+const locale = getLocaleFromUrl(Astro.url.pathname);
+const t = useTranslation(locale);
 const { contentProps, pageProps } = Astro.props;
 ---
 
@@ -22,7 +25,7 @@ const { contentProps, pageProps } = Astro.props;
 		<aside class="right-sidebar">
 			<nav class="__toc">
 				<div class="__toc-heading">
-					{t.docs.tocHeading()}
+					{t.docs.tocHeading}
 				</div>
 				<div class="__toc-wrapper">
 					<TableOfContents tocTree={getTocTree(contentProps.headings)} client:visible />
