@@ -1,6 +1,13 @@
-# Flint
+# Flint (The very first try)
 
-[![npm version](https://badge.fury.io/js/@miracle-box%2Fflint.svg)](https://badge.fury.io/js/@miracle-box%2Fflint)
+> ## Deprecated
+> This is my very first try on creating a Astro template.
+> 
+> Now, this package is deprecated, use my new Astro template instead! ([See my repos](https://github.com/Nixieboluo))
+
+# Original README
+
+*(Since nobody uses this package, I deleted it.)*
 
 Static document generator as an [Astro](https://astro.build/) integration. (Just like [Starlight](https://starlight.astro.build/))
 
